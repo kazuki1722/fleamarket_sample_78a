@@ -23,6 +23,18 @@ Things you may want to cover:
 
 * ...
 
+#78期 aチーム フリマアプリ DB設計
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|family_name|
+|first_name|
+|family_name_kana|
+|first_name_kana|
+|nickname|
+|email|
+|password|
+|image|
+|Birthday|
 
-
-# pushできますか！？
+### Association
