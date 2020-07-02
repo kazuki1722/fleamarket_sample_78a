@@ -1,0 +1,40 @@
+%h2 住所情報登録
+= form_for @address do |f|
+  = render "devise/shared/error_messages", resource: @address
+  .field
+    = f.label :送付先氏名
+    %br/
+    = f.text_field :address_family_name
+    = f.text_field :address_first_name
+  .field
+    = f.label :送付先氏名かな
+    %br/
+    = f.text_field :address_family_name_kana
+    = f.text_field :address_first_name_kana
+  .field
+    = f.label :郵便番号
+    %br/
+    = f.text_field :zipcode
+  .field
+    = f.label :都道府県
+    %br/
+    = f.text_field :prefecture
+  .field
+    = f.label :市区町村
+    %br/
+    = f.text_field :city
+  .field
+    = f.label :番地
+    %br/
+    = f.text_field :house_number
+  .field
+    = f.label :マンション名やビル名、そしてその部屋番号
+    %br/
+    = f.text_field :building
+  .field
+    = f.label :お届け先のお届け先の電話番号
+    %br/
+    = f.text_field :phone_number
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
