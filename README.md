@@ -37,6 +37,8 @@ Things you may want to cover:
 |user_image|string|null: false|
 |birthday|date|null: false|
 ### Association
+- has_one :credit_cards dependent: :destroy
+- has_one :address dependent: :destroy
 - has_many :seller_items, foreign_key: "seller_id", class_name: "items"
 - has_many :buyer_items, foreign_key: "buyer_id", class_name: "items"
 
@@ -44,7 +46,7 @@ Things you may want to cover:
 # itemsテーブル
 |Column|Type|Options|
 |name|string|null: false|
-|introduction|string|null: false|
+|introduction|text|null: false|
 |condition|string|null: false|
 |price|integer|null: false|
 |category_id|integer|null: false, unque: false|
@@ -78,7 +80,7 @@ Things you may want to cover:
 |phone_number|integer|null: false, unque: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
-- berongs_to :user, :optional	true
+- berongs_to :user, :optional	true, dependent: :destroy
 
 # credit_cardsテーブル
 |Column|Type|Options|
