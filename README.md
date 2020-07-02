@@ -38,7 +38,7 @@ Things you may want to cover:
 |birthday|date|null: false|
 ### Association
 
-# Addressテーブル
+# addressテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
@@ -51,14 +51,20 @@ Things you may want to cover:
 |house_number|string|null: false|
 |building|string|null: false|
 |phone_number|integer|null: false, unque: false|
-|user_id|references||
+|user_id|references|null: false, foreign_key: true|
+### Association
+
+# credit_cardsテーブル
+|Column|Type|Options|
+|customer_id|string|null: false, unque: false|
+|card_id|string|null: false, unque: false|
+|user_id|reference|null: false, foreign_key: true|
+### Association
+
+# itemsテーブル
+|Column|Type|Options|
 ### Association
 
 # Addressテーブル
-### Association
-
-# Addressテーブル
-### Association
-
-# Addressテーブル
+|Column|Type|Options|
 ### Association
