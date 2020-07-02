@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 #78期 aチーム フリマアプリ DB設計
-## usersテーブル
+# usersテーブル
 |Column|Type|Options|
 |------|----|-------|
 |family_name|string|null: false|
@@ -36,6 +36,21 @@ Things you may want to cover:
 |password|string|null: false|
 |user_image|string|null: false|
 |birthday|date|null: false|
+### Association
+
+# itemsテーブル
+|Column|Type|Options|
+|name|string|null: false|
+|introduction|string|null: false|
+|condition|string|null: false|
+|price|integer|null: false|
+|category_id|integer|null: false, unque: false|
+|shipping_charges_id|reference|null: false, unque: false|
+|shipping_from_id|reference|null: false, unque: false|
+|shipping_days_id|reference|null: false, unque: false|
+|item_image_id|reference|null: false, unque: false|
+|seller_id|reference|null: false, unque: false|
+|buyer_id|reference|null: false, unque: false|
 ### Association
 
 # addressテーブル
@@ -61,10 +76,14 @@ Things you may want to cover:
 |user_id|reference|null: false, foreign_key: true|
 ### Association
 
-# itemsテーブル
+# Addressテーブル
 |Column|Type|Options|
 ### Association
 
 # Addressテーブル
+|Column|Type|Options|
+### Association
+
+# commentsテーブル(予定)
 |Column|Type|Options|
 ### Association
