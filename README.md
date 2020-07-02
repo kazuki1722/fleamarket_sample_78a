@@ -37,6 +37,9 @@ Things you may want to cover:
 |user_image|string|null: false|
 |birthday|date|null: false|
 ### Association
+- has_many :seller_items, foreign_key: "seller_id", class_name: "items"
+- has_many :buyer_items, foreign_key: "buyer_id", class_name: "items"
+
 
 # itemsテーブル
 |Column|Type|Options|
@@ -52,6 +55,13 @@ Things you may want to cover:
 |seller_id|reference|null: false, unque: false|
 |buyer_id|reference|null: false, unque: false|
 ### Association
+- has_many :item_imgs, dependent: :destroy
+- berongs_to :categorie
+- berongs_to :shipping_charge
+- berongs_to :shipping_from
+- berongs_to :shipping_charge
+- belongs_to :seller, class_name: "User"
+- belongs_to :buyer, class_name: "User"
 
 # addressテーブル
 |Column|Type|Options|
@@ -68,6 +78,7 @@ Things you may want to cover:
 |phone_number|integer|null: false, unque: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
+- berongs_to :user, :optional	true
 
 # credit_cardsテーブル
 |Column|Type|Options|
@@ -75,33 +86,39 @@ Things you may want to cover:
 |card_id|string|null: false, unque: false|
 |user_id|reference|null: false, foreign_key: true|
 ### Association
+- berongs_to :user
 
 # shipping_chargesテーブル
 |Column|Type|Options|
 |shipping_charge|string|null: false|
 ### Association
+- hasmany :items
 
 # shipping_fromsテーブル
 |Column|Type|Options|
 |shipping_froms|string|null: false|
 ### Association
+- hasmany :items
 
 # shipping_daysテーブル
 |Column|Type|Options|
 |shipping_days|string|null: false|
 ### Association
+- hasmany :items
 
 # categoriesテーブル
 |Column|Type|Options|
 |name|string|null: false|
 |ancestry|string|null: false|
 ### Association
+- hasmany :items
 
 # item_imageテーブル
 |Column|Type|Options|
 |image|string|null: false|
 |item_id|reference|null: false, foreign_key: true|
 ### Association
+- belongs_to :item
 
 # commentsテーブル(仮)
 |Column|Type|Options|
@@ -109,3 +126,5 @@ Things you may want to cover:
 |item-id|reference|null: false, foreign_key: true|
 |user_id|reference|null: false, foreign_key: true|
 ### Association
+- belongs_to :user
+- belongs_to :item
