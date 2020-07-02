@@ -1,0 +1,52 @@
+<h2>会員情報入力</h2>
+
+<%= form_for(@user, url: user_registration_path) do |f| %>
+  <%= render "devise/shared/error_messages", resource: @user %>
+
+  <div class="field">
+    <%= f.label :ニックネーム %><br />
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :パスワード %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :お名前（全角） %><br />
+    <%= f.text_field :family_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :お名前かな（全角） %><br />
+    <%= f.text_field :family_name_kana %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, {prompt: "--", use_month_numbers: true, order:[:year,:month,:day], start_year:Time.now.year, end_year: 1900} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Next" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
