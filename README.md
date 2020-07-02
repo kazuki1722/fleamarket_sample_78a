@@ -91,6 +91,18 @@ Things you may want to cover:
 |shipping_days|string|null: false|
 ### Association
 
+# categoriesテーブル
+|Column|Type|Options|
+|name|string|null: false|
+|ancestry|string|null: false|
+### Association
+
+# item_imageテーブル
+|Column|Type|Options|
+|image|string|null: false|
+|item_id|reference|null: false, foreign_key: true|
+### Association
+
 # commentsテーブル(予定)
 |Column|Type|Options|
 ### Association
