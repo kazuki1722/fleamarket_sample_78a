@@ -76,12 +76,19 @@ Things you may want to cover:
 |user_id|reference|null: false, foreign_key: true|
 ### Association
 
-# Addressテーブル
+# shipping_chargesテーブル
 |Column|Type|Options|
+|shipping_charge|string|null: false|
 ### Association
 
-# Addressテーブル
+# shipping_fromsテーブル
 |Column|Type|Options|
+|shipping_froms|string|null: false|
+### Association
+
+# shipping_daysテーブル
+|Column|Type|Options|
+|shipping_days|string|null: false|
 ### Association
 
 # commentsテーブル(予定)
