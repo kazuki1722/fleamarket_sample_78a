@@ -103,6 +103,9 @@ Things you may want to cover:
 |item_id|reference|null: false, foreign_key: true|
 ### Association
 
-# commentsテーブル(予定)
+# commentsテーブル(仮)
 |Column|Type|Options|
+|comment|text|null: false|
+|item-id|reference|null: false, foreign_key: true|
+|user_id|reference|null: false, foreign_key: true|
 ### Association
