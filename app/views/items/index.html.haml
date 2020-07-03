@@ -1,3 +1,4 @@
+
 %header
   .main
     .exhibition
@@ -16,10 +17,16 @@
       .brand
         ブランド
     .contents__right
-      .login
-        ログイン
-      .register
-        新規会員登録
+      - if user_signed_in?
+        .login
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+      -else
+        .login
+          = link_to "ログイン", new_user_session_path
+        .register
+          = link_to "新規会員登録", new_user_registration_path
+  
+  
         
   .top-img
     = image_tag "/assets/bg-mainVisual-pict_pc.jpg", class: "visual"
