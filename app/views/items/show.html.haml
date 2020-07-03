@@ -1,4 +1,18 @@
 !!!
 %body
   %header
-    Hello world
+    ヘッダー
+  %nav
+    カテゴリ > ナビゲーション > なびげーしょん > いまここ
+  .wrapper
+    .items
+      %p.items__title
+        product2
+      .items__img-first
+        = image_tag '/assets/inu.jpg', alt: 'test', size: "400x300", class: 'image1'
+      .items__img-second
+        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
+        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
+        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
+  %footer
+    フッター

@@ -1,3 +1,33 @@
-header {
-  color: blue;
+nav {
+  border-bottom: 1px solid black;
+  height: 50px;
+  width: 100%;
+  background-color: #f9ffac;
 }
+
+header {
+  border-bottom: 1px solid black;
+}
+
+footer {
+  border-top: 1px solid black;
+}
+
+.wrapper {
+  background-color: #fcdddd;
+  
+  .items {
+    height: 1000px;
+    width: 600px;
+    background-color: #ffffff;
+
+    .items__img-first {
+
+    }
+
+    .items__img-second {
+
+    }
+  }
+}
+
