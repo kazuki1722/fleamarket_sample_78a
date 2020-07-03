@@ -68,6 +68,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
@@ -75,4 +76,5 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 group :production do
   gem 'unicorn'
 end
+
 
