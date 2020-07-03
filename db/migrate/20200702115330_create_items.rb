@@ -5,13 +5,13 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :introduction, null: false
       t.string :condition, null: false
       t.integer :price, null: false
-      t.integer :category_id, null: false, unque: false
-      t.references :shipping_charges_id, null: false, unque: false
-      t.references :shipping_from_id, null: false, unque: false
-      t.references :shipping_days_id, null: false, unque: false
-      t.references :item_image_id, null: false, unque: false
-      t.references :seller_id, null: false, unque: false
-      t.references :buyer_id, null: false, unque: false
+      t.integer :category_id, null: false
+      t.references :shipping_charges, null: false
+      t.references :shipping_from, null: false
+      t.references :shipping_days, null: false
+      t.references :item_image, null: false
+      t.references :seller, null: false
+      t.references :buyer, null: false
       t.timestamps
     end
   end
