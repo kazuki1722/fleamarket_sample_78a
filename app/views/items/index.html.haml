@@ -1,12 +1,14 @@
 
 %header
   .main
-    .exhibition
-      .exhibition__button
-        出品する
-        .icon
-          = image_tag "/assets/icon_camera.png", size: "54x54"
-    = image_tag "/assets/logo.png", class: "main__img", size: "140x40" 
+    = link_to do "#"
+      .exhibition
+        .exhibition__button
+          出品する
+          .icon
+            = image_tag "/assets/icon_camera.png", size: "54x54"
+    = link_to image_tag("/assets/logo.png", class: "main__img", size: "140x40"), "/"
+
     .main__input
       キーワードから探す 
     = image_tag "/assets/icon-search 1.png", class: "main__button", size: "40x40"   
@@ -103,14 +105,15 @@
     .sub-text
       新規投稿商品
     .new-items
-      .item
-        .item-image
-          = image_tag "/assets/member_photo_noimage_thumb.png", size: "220x150"
-        .item-information
-          .item-name
-            商品名
-          .item-price
-            1000円
+      = link_to do "#"
+        .item
+          .item-image
+            = image_tag "/assets/member_photo_noimage_thumb.png", size: "220x150"
+          .item-information
+            .item-name
+              商品名
+            .item-price
+              1000円
       .item
         .item-image
           item-image
