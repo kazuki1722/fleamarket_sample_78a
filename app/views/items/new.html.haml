@@ -1,6 +1,7 @@
 .product-container
   .product-header
-    = link_to image_tag("/assets/logo.png", size: "150x65")
+    = link_to "#" do
+      = image_tag "/assets/logo.png", size: "150x65"
   .product-form
     %form
       .product-form__image-container
@@ -8,7 +9,7 @@
           商品出品画像
           %span.style_attention.required
             必須
-        %p.sub-message
+        %p.image-message
           最大10枚までアップロード出来ます
         #image-box
           #previews

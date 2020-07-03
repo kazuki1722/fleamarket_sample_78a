@@ -17,7 +17,7 @@ a {
 // ---------------フォームの始まり-------------------------
 .product-form {
   background-color: #fff;
-  margin:30px auto;
+  margin: 0 auto;
   width: 70%;
   padding-top: 20px;
 
@@ -56,7 +56,7 @@ a {
       font-size: inherit;
       height: 48px;
       outline: none;
-      padding: 0 16px;
+      padding: 13px 16px;
       width: 100%;
       height: 120px;
       margin: 8px 0 40px;
@@ -163,6 +163,7 @@ a {
       color: #222;
       font-size: 16px;
       height: 48px;
+      width: 250px;
       line-height: 1;
       margin: 0;
       outline: none;
@@ -213,7 +214,8 @@ a {
 // -----------------フッター-----------------------
 .product-footer {
   background-color: #f8f8f8;
-  height: 150px;
+  height: 220px;
+  padding: 40px 0;
 
   &__clearfix {
     display: flex;
@@ -244,6 +246,13 @@ a {
 .sub-message {
   font-size: 14px;
 }
+
+.image-message {
+  font-size: 14px;
+  margin-top: 16px;
+  line-height: 1.4em;
+}
+
 .explanation {
   color: rgb(136, 136, 136);
   font-size: 14px;
