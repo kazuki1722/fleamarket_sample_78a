@@ -1,31 +1,37 @@
 .product-container
   .product-header
-    = link_to "#" do
-      = image_tag "/assets/images/material/logo/logo.png", size: "150x65"
+    = link_to image_tag("/assets/logo.png", size: "150x65")
   .product-form
     %form
       .product-form__image-container
         %p.message
           商品出品画像
-          %span
+          %span.style_attention.required
             必須
-        %p.message
+        %p.sub-message
           最大10枚までアップロード出来ます
+        #image-box
+          #previews
+            %label{class: "label-box"}
+              %input{class:"js-field", type: "file"}
+              %p.label-box__text クリックしてファイルをアップロード
       .product-form__item-container
         %p.message
           商品名
-          %span
+          %span.style_attention.required
             必須
         %input{type: "text", class: "product-form__item-container__name-box", placeholder: "40文字まで"}
         %p.message
           商品の説明
-          %span
+          %span.style_attention.required
             必須
         %textarea{class: "product-form__item-container__description-box", placeholder: "商品の説明"}
       .product-form__details-container
+        %h3.explanation
+          商品の詳細
         %p.message
           カテゴリー
-          %span
+          %span.style_attention.required
             必須
         %select{class: "product-form__details-container__category-box"}
           %option
@@ -34,12 +40,12 @@
             レディース
         %p.message
           ブランド
-          %span
+          %span.style_attention.any
             任意
-        %input{type: "text", class: "product-form__details-container__brand-box", placeholder: "40文字まで"}
+        %input{type: "text", class: "product-form__details-container__brand-box", placeholder: "例) シャネル"}
         %p.message
           商品の状態
-          %span
+          %span.style_attention.required
             必須
         %select{class: "product-form__details-container__condition-box"}
           %option
@@ -47,9 +53,11 @@
           %option
             悪い
       .product-form__post-container
+        %h3.explanation
+          配送について
         %p.message
           配送料
-          %span
+          %span.style_attention.required
             必須
         %select{class: "product-form__post-container__shipping-charge-box"}
           %option
@@ -58,7 +66,7 @@
             着払い
         %p.message
           配送元
-          %span
+          %span.style_attention.required
             必須
         %select{class: "product-form__post-container__shipping-charge-box"}
           %option
@@ -67,7 +75,7 @@
             大阪
         %p.message
           配送までの日数
-          %span
+          %span.style_attention.required
             必須
         %select{class: "product-form__post-container__shipping-charge-box"}
           %option
@@ -75,13 +83,13 @@
           %option
             3〜4
       .product-form__price-container
-        %h3.message
+        %h3.explanation
           販売価格(300〜9,999,999)
         %ul
           %li
             %p.message
               販売価格
-              %span
+              %span.style_attention.required
                 必須
           %li
             .price
@@ -91,7 +99,8 @@
         .product-form__submit-container__button
           %input{type: "submit", class: "product-form__submit-container__exhibition", value: "出品する"}
         .product-form__submit-container__back
-          = link_to "もどる"
+          = link_to "#" do
+            もどる
       .product-form__attention-container
         %p.sub-message
           禁止されている
@@ -124,5 +133,5 @@
           特定商取引に関する表記
     .product-footer__logo
       = link_to "#" do
-        = image_tag "/assets/images/material/logo/logo.png", size: "140x55"
+        = image_tag "/assets/logo.png", size: "140x55"
       %p.product-footer__logo__message ©️FURIMA
