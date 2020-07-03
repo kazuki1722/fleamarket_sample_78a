@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_061259) do
+ActiveRecord::Schema.define(version: 2020_07_02_115330) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_family_name", null: false
@@ -27,6 +27,28 @@ ActiveRecord::Schema.define(version: 2020_07_02_061259) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "condition", null: false
+    t.integer "price", null: false
+    t.integer "category_id", null: false
+    t.bigint "shipping_charges_id_id", null: false
+    t.bigint "shipping_from_id_id", null: false
+    t.bigint "shipping_days_id_id", null: false
+    t.bigint "item_image_id_id", null: false
+    t.bigint "seller_id_id", null: false
+    t.bigint "buyer_id_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id_id"], name: "index_items_on_buyer_id_id"
+    t.index ["item_image_id_id"], name: "index_items_on_item_image_id_id"
+    t.index ["seller_id_id"], name: "index_items_on_seller_id_id"
+    t.index ["shipping_charges_id_id"], name: "index_items_on_shipping_charges_id_id"
+    t.index ["shipping_days_id_id"], name: "index_items_on_shipping_days_id_id"
+    t.index ["shipping_from_id_id"], name: "index_items_on_shipping_from_id_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
