@@ -1,5 +1,10 @@
 %header
   .main
+    .exhibition
+      .exhibition__button
+        出品する
+        .icon
+          = image_tag "/assets/icon_camera.png", size: "54x54"
     = image_tag "/assets/logo.png", class: "main__img", size: "140x40" 
     .main__input
       キーワードから探す 
@@ -15,11 +20,7 @@
         ログイン
       .register
         新規会員登録
-        .exhibition
-          .exhibition__button
-            出品する
-          .icon
-          = image_tag "/assets/icon_camera.png", size: "54x54"
+        
   .top-img
     = image_tag "/assets/bg-mainVisual-pict_pc.jpg", class: "visual"
     .text 

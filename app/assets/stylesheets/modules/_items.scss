@@ -13,6 +13,29 @@ body{
       display: flex;
       justify-content: center;
       padding: 15px 65px 0 65px;
+      .exhibition{
+        width: 120px;
+        height: 116px;
+        background-color: #3ccace;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 15px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        .exhibition__button{
+          text-align: center;
+          width: 90px;
+          height: 27px;
+          color: white;
+          margin-bottom: 5px;
+          font-size: 18px;
+        }
+        .icon{
+        }
+      }
       &__img{
         width: 140px;
         height: 40px;
@@ -58,29 +81,7 @@ body{
         .register{
           font-size: 14px;
           padding-left: 16px;         
-          .exhibition{
-            width: 120px;
-            height: 116px;
-            background-color: #3ccace;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            padding: 15px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            .exhibition__button{
-              text-align: center;
-              width: 90px;
-              height: 27px;
-              color: white;
-              margin-bottom: 5px;
-              font-size: 18px;
-            }
-            .icon{
-            }
-          }
+          
         }
       }
     }
