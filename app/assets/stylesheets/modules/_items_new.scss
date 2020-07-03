@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+}
+
+.product-container {
+  background-color: #f8f8f8;
+}
+
+.product-header {
+  padding-top: 30px;
+  margin: 0 auto;
+  width: 170px;
+}
+
+.product-form {
+  background-color: #fff;
+  margin:30px auto;
+  width: 60%;
+  padding-top: 20px;
+  
+  &__image-container {
+    padding-bottom: 30px;
+    border-bottom: solid 1px #eee;
+  }
+
+  &__item-container {
+    margin-top: 30px;
+    padding: 40px;
+    border-bottom: solid 1px #eee;
+
+    &__name-box {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: inherit;
+      height: 48px;
+      outline: none;
+      padding: 0 16px;
+      width: 100%;
+      margin: 8px 0 40px;      
+    }
+    &__description-box {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: inherit;
+      height: 48px;
+      outline: none;
+      padding: 0 16px;
+      width: 100%;
+      height: 120px;
+      margin: 8px 0 40px;
+    }
+  }
+
+  &__details-container {
+    margin-top: 30px;
+    padding: 40px;
+    border-bottom: solid 1px #eee;
+
+    &__category-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #222;
+      font-size: 16px;
+      height: 48px;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 0 56px 0 16px;
+      margin: 8px 0 40px;  
+      width: 100%;
+    }
+    &__brand-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #222;
+      font-size: 16px;
+      height: 48px;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 0 56px 0 16px;
+      margin: 8px 0 40px;  
+      width: 100%;
+    }
+    &__condition-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #222;
+      font-size: 16px;
+      height: 48px;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 0 56px 0 16px;
+      margin: 8px 0 40px;  
+      width: 100%;
+    }
+  }
+
+  &__post-container {
+    margin-top: 30px;
+    padding: 40px;
+    border-bottom: solid 1px #eee;
+
+    &__shipping-charge-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #222;
+      font-size: 16px;
+      height: 48px;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      padding: 0 56px 0 16px;
+      margin: 8px 0 40px;  
+      width: 100%;
+    }
+  }
+
+  &__price-container {
+    margin-top: 30px;
+    padding: 40px;
+    border-bottom: solid 1px #eee;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+    
+    &__price-box {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #222;
+      font-size: 16px;
+      height: 48px;
+      line-height: 1;
+      margin: 0;
+      outline: none;
+      text-align: right;
+      // padding: 0 56px 0 16px;
+      // width: 100%;
+    }
+  }
+
+  &__submit-container {
+    margin-top: 30px;
+    padding: 40px;
+    border-bottom: solid 1px #eee;
+
+    &__exhibition {
+      margin: 40px auto 0;
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      border-radius: 4px;
+      color: #fff;
+      display: block;
+      width: 60%;
+      line-height: 48px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-align: center;
+    }
+    &__back {
+      text-align: center;
+      margin-top: 24px;
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  &__attention-container {
+    padding: 0 40px 40px 40px;
+    padding-bottom: 50px;
+    .sub-message {
+      font-size: 12px;
+      line-height: 1.4em;
+    }
+  }
+}
+
+.product-footer {
+  background-color: #f8f8f8;
+  height: 150px;
+
+  &__clearfix {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 36px;
+
+    &__message {
+      font-size: 12px;
+      line-height: 1.4em;
+      margin: 16px 0px 0px 16px;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+    margin: 0 auto;
+
+    &__message {
+      font-size: 12px;
+    }
+  }
+}
+
+.message {
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
