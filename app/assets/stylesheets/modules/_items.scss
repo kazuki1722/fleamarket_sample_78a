@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 body{
+  a{
+    text-decoration: none;
+    color: black;
+  }
   width: 100vw;
   height: 100vh;  
   header {
