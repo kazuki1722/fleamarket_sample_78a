@@ -57,13 +57,13 @@
 |phone_number|integer|null: false, unique: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
-- belongs_to :user, :optional	true, dependent: :destroy
+- belongs_to :user, :optional	true
 
 # credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|customer_id|string|null: false, unque: false|
-|card_id|string|null: false, unque: false|
+|customer_id|string|null: false, unique: false|
+|card_id|string|null: false, unique: false|
 |user_id|reference|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -73,21 +73,21 @@
 |------|----|-------|
 |shipping_charge|string|null: false|
 ### Association
-- hasmany :items
+- has_many :items
 
-# shipping_fromsテーブル
+# shipping_fromテーブル
 |Column|Type|Options|
 |------|----|-------|
-|shipping_forms|string|null: false|
+|shipping_from|string|null: false|
 ### Association
-- hasmany :items
+- has_many :items
 
 # shipping_daysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |shipping_days|string|null: false|
 ### Association
-- hasmany :items
+- has_many :items
 
 # categoriesテーブル
 |Column|Type|Options|
@@ -97,7 +97,7 @@
 ### Association
 - has_many :items
 
-# item_imageテーブル
+# item_imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
