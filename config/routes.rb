@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -8,3 +9,4 @@ Rails.application.routes.draw do
   end
   root 'items#index'
 end
+
