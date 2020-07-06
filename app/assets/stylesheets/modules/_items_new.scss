@@ -24,7 +24,6 @@ a {
 
   // -----------------画像-----------------------
   &__image-container {
-    padding-bottom: 30px;
     padding: 40px;
     border-bottom: solid 1px #eee;
   }
@@ -54,7 +53,6 @@ a {
       box-sizing: border-box;
       font-family: inherit;
       font-size: inherit;
-      height: 48px;
       outline: none;
       padding: 13px 16px;
       width: 100%;
@@ -79,7 +77,6 @@ a {
       font-size: 16px;
       height: 48px;
       line-height: 1;
-      margin: 0;
       outline: none;
       padding: 0 56px 0 16px;
       margin: 8px 0 40px;  
@@ -94,7 +91,6 @@ a {
       font-size: 16px;
       height: 48px;
       line-height: 1;
-      margin: 0;
       outline: none;
       padding: 0 56px 0 16px;
       margin: 8px 0 40px;  
@@ -109,7 +105,6 @@ a {
       font-size: 16px;
       height: 48px;
       line-height: 1;
-      margin: 0;
       outline: none;
       padding: 0 56px 0 16px;
       margin: 8px 0 40px;  
@@ -133,7 +128,6 @@ a {
       font-size: 16px;
       height: 48px;
       line-height: 1;
-      margin: 0;
       outline: none;
       padding: 0 56px 0 16px;
       margin: 8px 0 40px;  
@@ -187,7 +181,6 @@ a {
       width: 60%;
       line-height: 48px;
       font-size: 14px;
-      border: 1px solid transparent;
       cursor: pointer;
       text-align: center;
     }
@@ -243,9 +236,7 @@ a {
   font-size: 14px;
   font-weight: 600;
 }
-.sub-message {
-  font-size: 14px;
-}
+
 
 .image-message {
   font-size: 14px;
