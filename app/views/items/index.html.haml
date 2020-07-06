@@ -1,0 +1,168 @@
+
+%header
+  .main
+    = link_to do "#"
+      .exhibition
+        .exhibition__button
+          出品する
+          .icon
+            = image_tag "/assets/icon_camera.png", size: "54x54"
+    = link_to image_tag("/assets/logo.png", class: "main__img", size: "140x40"), "/"
+
+    .main__input
+      キーワードから探す 
+    = image_tag "/assets/icon-search 1.png", class: "main__button", size: "40x40"   
+  .contents
+    .contents__left
+      .category
+        カテゴリー
+      .brand
+        ブランド
+    .contents__right
+      - if user_signed_in?
+        .login
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
+      -else
+        .login
+          = link_to "ログイン", new_user_session_path
+        .register
+          = link_to "新規会員登録", new_user_registration_path
+  
+  
+        
+  .top-img
+    = image_tag "/assets/bg-mainVisual-pict_pc.jpg", class: "visual"
+    .text 
+      人生を変えるフリマアプリ
+  .reasons
+    .subtitle
+      %h2 FURIMAが選ばれる3つの理由
+    .under-line
+    .reasons__lists
+      .left-list
+        .color
+          .left-img
+            = image_tag "/assets/pict-reason-01.jpg", size: "306x306"
+          .number
+            1
+        .text
+          %spn.color 3分 
+          %spn ですぐに出品
+        .sub-text
+          スマホで入力するだけで簡単に出品できる！
+      .center-list
+        .color
+          .center-img
+            = image_tag "/assets/pict-reason-02.jpg", size: "306x306"
+          .number
+            2
+        .text
+          %spn.color シンプル
+          %spn で使いやすい
+        .sub-text
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      .right-list
+        .color
+          .right-img
+            = image_tag "/assets/pict-reason-03.jpg", size: "306x306"
+          .number
+            3
+        .text
+          %spn 手数料
+          %spn.color 業界最安
+        .sub-text
+          最大3%でお得に出品&購入！
+  .center-img
+    = image_tag "/assets/bg-topMiddleDl-pict.jpg",class: "visual"
+    .text
+      会員数日本一位
+  .features
+    .text
+      %h2 FURIMAの特徴
+    .under-line
+    .features__lists
+      .left-list
+        = image_tag "/assets/icon-01.png", size: "219x337"
+        .text
+          簡単に売り買いできる
+        .sub-text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .center-list
+        = image_tag "/assets/icon-03.png", size: "219x337"
+        .text
+          売上金は即日振り込みに対応
+        .sub-text
+          午前9時までに振り込みを依頼いただければ、翌日に指定の口座に翌日に指定の口座に入金いたします！
+      .right-list
+        = image_tag "/assets/icon-04.png", size: "219x337"
+        .text
+          様々な支払いに対応
+        .sub-text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .items
+    .items__text
+      ピックアップカテゴリー
+    .sub-text
+      新規投稿商品
+    .new-items
+      = link_to do "#"
+        .item
+          .item-image
+            = image_tag "/assets/member_photo_noimage_thumb.png", size: "220x150"
+          .item-information
+            .item-name
+              商品名
+            .item-price
+              1000円
+      .item
+        .item-image
+          item-image
+        .item-information
+          .item-name
+            商品名
+          .item-price
+            2000円
+      .item
+        .item-image
+          item-image
+        .item-information
+          .item-name
+            商品名
+          .item-price
+            3000円
+      .item
+        .item-image
+          item-image
+        .item-information
+          .item-name
+            商品名
+          .item-price
+            4000円
+  .bottom-img
+    = image_tag "/assets/bg-appBanner-pict.jpg", class: "visual"
+    .text
+      今すぐ無料ダウンロード！
+  %footer
+    .footer-menu
+      .menu-lists
+        .left-lists
+          FURIMAについて
+          .list
+            %li 会社概要（運営会社）
+            %li プライバシーポリシー
+            %li FURIMA利用規約
+            %li ポイントに関する特約
+        .center-lists
+          FURIMAを見る
+          .list
+            %li カテゴリー一覧
+            %li ブランド一覧
+        .right-lists
+          ヘルプ＆ガイド
+          .list
+            %li FURIMAガイド
+            %li FURIMAロゴ利用ガイドライン
+            %li お知らせ
+      .icon  
+        = image_tag "/assets/logo-white.png", size: "160x46"
+        ©︎FURIMA
