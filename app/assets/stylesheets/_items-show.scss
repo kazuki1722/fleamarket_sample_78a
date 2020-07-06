@@ -11,22 +11,48 @@ header {
 
 footer {
   border-top: 1px solid black;
+  height: 500px;
 }
 
-.wrapper {
+.item-wrapper {
   background-color: #fcdddd;
-  
-  .items {
-    height: 1000px;
-    width: 600px;
+  display: flex;
+  justify-content: center;
+  .Items {
+    height: 2000px;
+    width: 700px;
     background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &__title {
 
-    .items__img-first {
+    }
+    &__img-first {
 
     }
 
-    .items__img-second {
+    &__img-second {
 
+    }
+    .Menu {
+      &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &--left {
+          border: 1px solid #000;
+          text-align: center;
+          width: 200px;
+          padding: 30px;
+        }
+        &--right {
+          border: 1px solid #000;
+          text-align: center;
+          padding: 30px;
+          width: 400px;
+        }
+      }
     }
   }
 }
