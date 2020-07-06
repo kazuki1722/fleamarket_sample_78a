@@ -2,7 +2,7 @@
   .AccountPage__logo
     = link_to image_tag("/assets/logo.png", size: "185x49"), "/"
   .AccountPage__box
-    %h2.AccountPage__box__title
+    .AccountPage__box__title
       会員情報入力
     .AccountPage__box__form
       = form_for(@user, url: user_registration_path) do |f|

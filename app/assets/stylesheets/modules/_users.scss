@@ -113,6 +113,67 @@
       }
     }
   }
+
+  &__sessionLogo{
+    height: 128px;
+    padding-top: 40px;
+    padding-left: 610px;
+  }
+  &__sessionBox{
+    background-color: #fff;
+    width: 456px;
+    margin: auto;
+    &__no-account{
+      height: 144px;
+      border-bottom: 1px solid #f5f5f5;
+      padding: 40px 64px;
+      text-align: center;
+      font-size: 14px;
+      &--link{
+        height: 42px;
+        display: block;
+        background-color: #0098e8;
+        color: #fff;
+        line-height: 42px;
+        margin-top: 8px;
+        border-radius: 4px;
+      }
+    }
+    &__form{
+      padding: 24px 64px 32px;
+      &__input{
+        height: 48px;
+        width: 100%;
+        display: block;
+        padding: 10px 16px 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+      &__login{
+        height: 50px;
+        width: 100%;
+        background-color: #ea352d;
+        border: 1px solid #ea352d;
+        display: block;
+        color: #fff;
+        font-size: 14px;
+      }
+      &__new-password{
+        display: block;
+        height: 14px;
+        font-size: 14px;
+        margin-top: 40px;
+        color: #0099e8;
+      }
+    }
+  }
+
+}
+
+.LoginBlank{
+  height: calc(100vh - 576px);
+  background-color: #f5f5f5;
 }
 
 .CreateBlank{
