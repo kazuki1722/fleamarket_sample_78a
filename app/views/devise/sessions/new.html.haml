@@ -1,17 +1,20 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+.AccountPage
+  .AccountPage__sessionLogo
+    = link_to image_tag("/assets/logo.png", size: "185x49"), "/"
+  .AccountPage__sessionBox
+    .AccountPage__sessionBox__no-account
+      アカウントをお持ちでない方はこちら
+      = link_to "新規会員登録", new_user_registration_path,  class: "AccountPage__sessionBox__no-account--link"
+    .AccountPage__sessionBox__form
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "AccountPage__sessionBox__form__input"
+        = f.password_field :password, placeholder: "パスワード", autocomplete: "current-password", class: "AccountPage__sessionBox__form__input"
+        -# - if devise_mapping.rememberable?
+        -#   .field
+        -#     = f.check_box :remember_me
+        -#     = f.label :remember_me
+        = f.submit "ログイン", class: "AccountPage__sessionBox__form__login"
+        -# = render "devise/shared/links"
+        = link_to "パスワードをお忘れの方", new_password_path(resource_name), class: "AccountPage__sessionBox__form__new-password"
+
+.LoginBlank
