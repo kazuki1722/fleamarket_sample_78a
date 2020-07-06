@@ -1,39 +1,67 @@
-%h2 会員情報入力
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :ニックネーム
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :メールアドレス
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :パスワード
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :お名前（全角）
-    %br/
-    = f.text_field :family_name
-    = f.text_field :first_name
-  .field
-    = f.label :お名前かな（全角）
-    %br/
-    = f.text_field :family_name_kana
-    = f.text_field :first_name_kana
-  .field
-    = f.label :birthday
-    %br/
-    = f.date_select :birthday, {prompt: "--", use_month_numbers: true, order:[:year,:month,:day], start_year:Time.now.year, end_year: 1900}
-  .actions
-    = f.submit "Next"
-= render "devise/shared/links"
+.AccountPage
+  .AccountPage__logo
+    = link_to image_tag("/assets/logo.png", size: "185x49"), "/"
+  .AccountPage__box
+    .AccountPage__box__title
+      会員情報入力
+    .AccountPage__box__form
+      = form_for(@user, url: user_registration_path) do |f|
+        = render "devise/shared/error_messages", resource: @user
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :ニックネーム
+            .AccountPage__box__form__field__label__right
+              必須
+          = f.text_field :nickname, placeholder: "例)フリマ太郎", class: "AccountPage__box__form__field__input"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :メールアドレス
+            .AccountPage__box__form__field__label__right
+              必須
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "AccountPage__box__form__field__input"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :パスワード
+            .AccountPage__box__form__field__label__right
+              必須
+            -# - if @minimum_password_length
+            -#   %em
+            -#     (#{@minimum_password_length} characters minimum)
+          = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :パスワード（確認）
+            .AccountPage__box__form__field__label__right
+              必須
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :お名前（全角）
+            .AccountPage__box__form__field__label__right
+              必須
+          = f.text_field :family_name, placeholder: "例)山田", class: "AccountPage__box__form__field__input--family"
+          = f.text_field :first_name, placeholder: "例)彩", class: "AccountPage__box__form__field__input--first"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :お名前かな（全角）
+            .AccountPage__box__form__field__label__right
+              必須
+          = f.text_field :family_name_kana, placeholder: "例)やまだ", class: "AccountPage__box__form__field__input--family"
+          = f.text_field :first_name_kana, placeholder: "例)あや", class: "AccountPage__box__form__field__input--first"
+
+        .AccountPage__box__form__field
+          .AccountPage__box__form__field__label
+            = f.label :生年月日
+            .AccountPage__box__form__field__label__right
+              必須
+          != sprintf(f.date_select(:birthday,with_css_classes:'a', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          -# フォーム間に文字を入れたいのだがオプションがないためsprintf関数を用いて挿入
+
+        .AccountPage__box__form__actions
+          = f.submit "次へ進む", class: "AccountPage__box__form__actions"
+      = render "devise/shared/links"

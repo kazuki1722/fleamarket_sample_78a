@@ -1,0 +1,182 @@
+#error_explanation{
+  margin-bottom: 20px;
+}
+
+.AccountPage{
+  background-color: #f5f5f5;
+  width: 100vw;
+  &__logo{
+    height: 128px;
+    padding-top: 40px;
+    padding-left: 470px;
+  }
+  &__box{
+    background-color: #fff;
+    width: 700px;
+    margin: auto;
+    &__title{
+      font-size: 22px;
+      font-weight: bold;
+      padding: 32px;
+      text-align: center;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__form{
+      padding: 24px 178px 40px;
+      &__field{
+        height: 70px;
+        margin-bottom: 24px;
+        &__label{
+          font-weight: bold;
+          font-size: 13px;
+          display: flex;
+          &__right{
+            height: 19px;
+            width: 32px;
+            background-color: red;
+            color: white;
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-weight: normal;
+            margin-left: 8px;
+          }
+        }
+        &__input{
+          height: 48px;
+          width: 100%;
+          display: block;
+          margin-top: 6px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        &__input--family{
+          height: 48px;
+          width: calc(50% - 8px);
+          margin-right: 6px;
+          display: inline-block;
+          margin-top: 6px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        &__input--first{
+          height: 48px;
+          width: 49%;
+          display: inline-block;
+          margin-top: 6px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        .year, .month, .day{
+          display: inline-block;
+          height: 48px;
+          width: 80px;
+          padding-left: 10px;
+          margin-top: 6px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        .month, .day {
+          margin-left: 5px;
+        }
+      }  
+      &__actions{
+        display: block;
+        height: 48px;
+        width: 100%;
+        background-color: red;
+        // #00FFFF
+        color: white;
+        font-size: 14px;
+        border: none;
+        margin: 40px 0px 10px;
+        border-radius: 4px;
+      }
+      &__create{
+        text-align: center;
+        margin-top: 59px;
+      }
+      &__start{
+        display: block;
+        height: 48px;
+        width: 100%;
+        background-color: red;
+        color: white;
+        font-size: 14px;
+        border: none;
+        margin: 40px 0px 10px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 48px;
+      }
+    }
+  }
+
+  &__sessionLogo{
+    height: 128px;
+    padding-top: 40px;
+    padding-left: 610px;
+  }
+  &__sessionBox{
+    background-color: #fff;
+    width: 456px;
+    margin: auto;
+    &__no-account{
+      height: 144px;
+      border-bottom: 1px solid #f5f5f5;
+      padding: 40px 64px;
+      text-align: center;
+      font-size: 14px;
+      &--link{
+        height: 42px;
+        display: block;
+        background-color: #0098e8;
+        color: #fff;
+        line-height: 42px;
+        margin-top: 8px;
+        border-radius: 4px;
+      }
+    }
+    &__form{
+      padding: 24px 64px 32px;
+      &__input{
+        height: 48px;
+        width: 100%;
+        display: block;
+        padding: 10px 16px 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-bottom: 24px;
+      }
+      &__login{
+        height: 50px;
+        width: 100%;
+        background-color: #ea352d;
+        border: 1px solid #ea352d;
+        display: block;
+        color: #fff;
+        font-size: 14px;
+      }
+      &__new-password{
+        display: block;
+        height: 14px;
+        font-size: 14px;
+        margin-top: 40px;
+        color: #0099e8;
+      }
+    }
+  }
+
+}
+
+.LoginBlank{
+  height: calc(100vh - 576px);
+  background-color: #f5f5f5;
+}
+
+.CreateBlank{
+  background-color: #f5f5f5;
+  height: calc(100vh - 491px);
+}
