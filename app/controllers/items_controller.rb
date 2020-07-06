@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Product.includes(:images).order('created_at DESC')
+    @items = Items.includes(:item_images).order('created_at DESC')
   end
 
   def new
