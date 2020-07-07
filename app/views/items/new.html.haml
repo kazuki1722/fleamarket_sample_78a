@@ -3,7 +3,7 @@
     = link_to "#" do
       = image_tag "/assets/logo.png", size: "150x65"
   .product-form
-    %form
+    = form_with model: @item, local: true do |f|
       .product-form__image-container
         %p.message
           商品出品画像
@@ -48,11 +48,7 @@
           商品の状態
           %span.style_attention.required
             必須
-        %select{class: "product-form__details-container__condition-box"}
-          %option
-            新品
-          %option
-            悪い
+        = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
       .product-form__post-container
         %h3.explanation
           配送について
@@ -60,29 +56,17 @@
           配送料
           %span.style_attention.required
             必須
-        %select{class: "product-form__post-container__shipping-charge-box"}
-          %option
-            送料込み
-          %option
-            着払い
+        = f.collection_select :shipping_charges_id, ShippingCharges.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
         %p.message
           配送元
           %span.style_attention.required
             必須
-        %select{class: "product-form__post-container__shipping-charge-box"}
-          %option
-            東京
-          %option
-            大阪
+        = f.collection_select :shipping_from_id, ShippingFrom.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
         %p.message
           配送までの日数
           %span.style_attention.required
             必須
-        %select{class: "product-form__post-container__shipping-charge-box"}
-          %option
-            1〜2
-          %option
-            3〜4
+        = f.collection_select :shipping_day_id, ShippingDay.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
       .product-form__price-container
         %h3.explanation
           販売価格(300〜9,999,999)
