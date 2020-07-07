@@ -1,0 +1,50 @@
+
+= render partial: "items/header"
+.Mypage
+  .Mypage__Wrapper
+    .Mypage__Wrapper__Side
+      %ul
+        %li.Mypage__Wrapper__Side__list
+          = link_to "マイページ", users_path
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "お知らせ", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "いいね！一覧", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品する", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品した商品-出品中", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品した商品-売却済み", "#"
+          = icon('fa','chevron-right')
+        
+      %ul.Mypage__Wrapper__Side__unli  
+        設定
+        %li.Mypage__Wrapper__Side__list
+          = link_to "プロフィール", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "発送元・お届け先住所変更", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "支払い方法", card_users_path
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "メール/パスワード", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "本人情報", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "ログアウト", logout_users_path, class: "PageActive"
+          = icon('fa','chevron-right')
+    .Mypage__Wrapper__Main
+      .Mypage__Wrapper__Main__logout
+        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "Mypage__Wrapper__Main__logout--link"
+= render partial: "items/footer"
+     

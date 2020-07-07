@@ -9,5 +9,12 @@ Rails.application.routes.draw do
   end
   root 'items#index'
   resources :items, only: [:index, :new]
+  resources :users, only: :index do
+    collection do
+      get 'logout'
+      get 'card'
+    end
+  end
+  resources :credit_cards, only: :new
 end
 

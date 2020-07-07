@@ -1,4 +1,3 @@
-
 %header
   .main
     = link_to do "#"
@@ -21,7 +20,7 @@
     .contents__right
       - if user_signed_in?
         .login
-          = link_to "マイページ", "#"
+          = link_to "マイページ", users_path
         .register
           = link_to "ログアウト", destroy_user_session_path, method: :delete
       -else
@@ -144,27 +143,4 @@
     = image_tag "/assets/bg-appBanner-pict.jpg", class: "visual"
     .text
       今すぐ無料ダウンロード！
-  %footer
-    .footer-menu
-      .menu-lists
-        .left-lists
-          FURIMAについて
-          .list
-            %li 会社概要（運営会社）
-            %li プライバシーポリシー
-            %li FURIMA利用規約
-            %li ポイントに関する特約
-        .center-lists
-          FURIMAを見る
-          .list
-            %li カテゴリー一覧
-            %li ブランド一覧
-        .right-lists
-          ヘルプ＆ガイド
-          .list
-            %li FURIMAガイド
-            %li FURIMAロゴ利用ガイドライン
-            %li お知らせ
-      .icon  
-        = image_tag "/assets/logo-white.png", size: "160x46"
-        ©︎FURIMA
+  = render partial: "footer"
