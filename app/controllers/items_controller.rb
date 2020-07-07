@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
       redirect_to root_path, notice: "出品しました"
     else 
       redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
+    end
   end
 
   def edit
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
 
   def destroy
   end
-
 
   private
 
