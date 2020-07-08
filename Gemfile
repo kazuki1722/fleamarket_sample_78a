@@ -80,4 +80,4 @@ group :production do
   gem 'unicorn'
 end
 
-
+gem "font-awesome-sass"
