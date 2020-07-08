@@ -8,12 +8,9 @@ a {
 }
 
 .Wrapper {
-  // padding: 40px;
   width: 100vw;
   height: 2100px;
   background-color: #f5ffee;
-  // display: flex;
-  // justify-content: center;
 
   .List-box {
     height: 50px;
@@ -128,9 +125,6 @@ a {
         &__icon {
           margin-right: 10px;
           color: #797979;
-        }
-        &__link {
-
         }
       }
       .Prev {
