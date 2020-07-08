@@ -5,12 +5,12 @@
         .exhibition__button
           出品する
           .icon
-            = image_tag "/assets/icon_camera.png", size: "54x54"
-    = link_to image_tag("/assets/logo.png", class: "main__img", size: "140x40"), "/"
-
+            = image_tag "icon_camera.png", size: "54x54"
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), class: "main__img", size: "140x40"
     .main__input
       キーワードから探す 
-    = image_tag "/assets/icon-search 1.png", class: "main__button", size: "40x40"   
+    = image_tag "icon-search 1.png", class: "main__button", size: "40x40"   
   .contents
     .contents__left
       .category
@@ -32,7 +32,7 @@
   
         
   .top-img
-    = image_tag "/assets/bg-mainVisual-pict_pc.jpg", class: "visual"
+    = image_tag asset_path("bg-mainVisual-pict_pc.jpg"), class: "visual"
     .text 
       人生を変えるフリマアプリ
   .reasons
@@ -43,7 +43,7 @@
       .left-list
         .color
           .left-img
-            = image_tag "/assets/pict-reason-01.jpg", size: "306x306"
+            = image_tag asset_path("pict-reason-01.jpg"), size: "306x306"
           .number
             1
         .text
@@ -54,7 +54,7 @@
       .center-list
         .color
           .center-img
-            = image_tag "/assets/pict-reason-02.jpg", size: "306x306"
+            = image_tag asset_path("pict-reason-02.jpg"), size: "306x306"
           .number
             2
         .text
@@ -65,7 +65,7 @@
       .right-list
         .color
           .right-img
-            = image_tag "/assets/pict-reason-03.jpg", size: "306x306"
+            = image_tag asset_path("pict-reason-03.jpg"), size: "306x306"
           .number
             3
         .text
@@ -74,7 +74,7 @@
         .sub-text
           最大3%でお得に出品&購入！
   .center-img
-    = image_tag "/assets/bg-topMiddleDl-pict.jpg",class: "visual"
+    = image_tag asset_path("bg-topMiddleDl-pict.jpg"),class: "visual"
     .text
       会員数日本一位
   .features
@@ -83,19 +83,19 @@
     .under-line
     .features__lists
       .left-list
-        = image_tag "/assets/icon-01.png", size: "219x337"
+        = image_tag asset_path("icon-01.png"), size: "219x337"
         .text
           簡単に売り買いできる
         .sub-text
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .center-list
-        = image_tag "/assets/icon-03.png", size: "219x337"
+        = image_tag asset_path("icon-03.png"), size: "219x337"
         .text
           売上金は即日振り込みに対応
         .sub-text
           午前9時までに振り込みを依頼いただければ、翌日に指定の口座に翌日に指定の口座に入金いたします！
       .right-list
-        = image_tag "/assets/icon-04.png", size: "219x337"
+        = image_tag asset_path("icon-04.png"), size: "219x337"
         .text
           様々な支払いに対応
         .sub-text
@@ -109,7 +109,7 @@
       = link_to do "#"
         .item
           .item-image
-            = image_tag "/assets/member_photo_noimage_thumb.png", size: "220x150"
+            = image_tag asset_path("member_photo_noimage_thumb.png"), size: "220x150"
           .item-information
             .item-name
               商品名
@@ -140,7 +140,7 @@
           .item-price
             4000円
   .bottom-img
-    = image_tag "/assets/bg-appBanner-pict.jpg", class: "visual"
+    = image_tag asset_path("bg-appBanner-pict.jpg"), class: "visual"
     .text
       今すぐ無料ダウンロード！
   = render partial: "footer"
