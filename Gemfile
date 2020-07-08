@@ -77,6 +77,8 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
 gem 'dotenv-rails'
 gem 'payjp'
+gem 'jquery-rails'
+
 
 group :production do
   gem 'unicorn'
