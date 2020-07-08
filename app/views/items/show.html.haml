@@ -29,11 +29,11 @@
         %p.Items__title
           product2
         .Items__img-first
-          = image_tag '/assets/inu.jpg', alt: 'test', size: "500x400", class: 'image1'
+          = image_tag asset_path('inu.jpg'), size: "500x400"
         .Items__img-second
-          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
-          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
-          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
+          = image_tag asset_path('inu.jpg'), size: "160x120"
+          = image_tag asset_path('inu.jpg'), size: "160x120"
+          = image_tag asset_path('inu.jpg'), size: "160x120"
         %p.Items__price
           ¥30000
         %p.Items__sipping
@@ -115,7 +115,7 @@
 
         .Recommend__category
           .recommend__category__img
-            = image_tag '/assets/inu.jpg', alt: 'test', size: "220x150", class: 'image3'
+            = image_tag asset_path('inu.jpg'), size: "220x150"
           .Recommend__category__content
             .Recommend__left
               .Recommend__left__title
@@ -126,5 +126,5 @@
                 （税込み）
             .Recommend__right
               ★０
-              
-  = render partial: "footer"
+
+= render partial: "footer"
