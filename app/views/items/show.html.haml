@@ -2,24 +2,29 @@
 %body
   -# 部分テンプレート。マージ時に解除。
   -# = render partial: "header"
-  %nav
-    %ul.List-menu
-      %li.List-menu__content
-        = link_to "カテゴリ", "#"
-      %li.List-menu__icon
-        = icon('fas', 'angle-right')
-      %li.List-menu__content
-        = link_to "ナビゲーション", "#"
-      %li.List-menu__icon
-        = icon('fas', 'angle-right')
-      %li.List-menu__content
-        = link_to "なびげーしょん", "#"
-      %li.List-menu__icon
-        = icon('fas', 'angle-right')
-      %li.List-menu__content__last
-        = link_to "いまここ", "#"
-
   .Wrapper
+
+    %nav.List-box
+      %ul.List-menu
+        %li.List-menu__content
+          = link_to "カテゴリ", "#"
+        %li.List-menu__icon
+          = icon('fas', 'angle-right')
+        %li.List-menu__content
+          = link_to "ベビー・キッズ", "#"
+        %li.List-menu__icon
+          = icon('fas', 'angle-right')
+        %li.List-menu__content
+          = link_to "ベビー服(男女兼用) ~95cm", "#"
+        %li.List-menu__icon
+          = icon('fas', 'angle-right')
+        %li.List-menu__content
+          = link_to "アウター", "#"
+        %li.List-menu__icon
+          = icon('fas', 'angle-right')
+        %li.List-menu__content__last
+          = link_to "product2", "#"
+
     .Container
       .Items
         %p.Items__title
@@ -105,22 +110,23 @@
             = link_to "後ろの商品", "#"
           .Prev__icon
             = icon('fas', 'angle-right')
-      .Recommend__link
-        = link_to "ベビー・キッズをもっと見る", "#"
+      .Recommend  
+        .Recommend__link
+          = link_to "ベビー・キッズをもっと見る", "#"
 
-      .Recommend__category
-        .recommend__category__img
-          = image_tag '/assets/inu.jpg', alt: 'test', size: "220x150", class: 'image3'
-        .Recommend__category__content
-          .Recommend__left
-            .Recommend__left__title
-              product2
-            .Recommend__left__price
-              ¥30000
-            .Recommend__left__sipping
-              （税込み）
-          .Recommend__right
-            ★０
+        .Recommend__category
+          .recommend__category__img
+            = image_tag '/assets/inu.jpg', alt: 'test', size: "220x150", class: 'image3'
+          .Recommend__category__content
+            .Recommend__left
+              .Recommend__left__title
+                product2
+              .Recommend__left__price
+                ¥30000
+              .Recommend__left__sipping
+                （税込み）
+            .Recommend__right
+              ★０
 
 -# 部分テンプレート。マージ時に解除。
 -# = render partial: "footer"z
