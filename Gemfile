@@ -75,6 +75,8 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
+gem 'dotenv-rails'
+gem 'payjp'
 
 group :production do
   gem 'unicorn'
