@@ -40,26 +40,31 @@ ActiveRecord::Schema.define(version: 2020_07_03_094414) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
-    t.string "condition", null: false
     t.integer "price", null: false
-    t.string "shipping_charges", null: false
-    t.string "shipping_from", null: false
-    t.string "shipping_days", null: false
+    t.integer "condition_id", null: false
+    t.integer "shipping_charge_id", null: false
+    t.integer "shipping_day_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "seller_id", null: false
+    t.integer "buyer_id"
+    t.string "brand"
+    t.bigint "category_id", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
     t.string "family_name", null: false
     t.string "first_name", null: false
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
