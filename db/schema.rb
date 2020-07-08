@@ -10,23 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_061259) do
+ActiveRecord::Schema.define(version: 2020_07_03_094414) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_family_name", null: false
     t.string "address_first_name", null: false
     t.string "address_family_name_kana", null: false
     t.string "address_first_name_kana", null: false
-    t.integer "zipcode", null: false
+    t.string "zipcode", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
     t.string "house_number", null: false
     t.string "building"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.string "condition", null: false
+    t.integer "price", null: false
+    t.string "shipping_charges", null: false
+    t.string "shipping_from", null: false
+    t.string "shipping_days", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -47,4 +69,6 @@ ActiveRecord::Schema.define(version: 2020_07_02_061259) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "item_images", "items"
+  add_foreign_key "items", "users"
 end
