@@ -1,83 +1,126 @@
 !!!
 %body
-  %header
-    ヘッダー
+  -# 部分テンプレート。マージ時に解除。
+  -# = render partial: "header"
   %nav
-    カテゴリ > ナビゲーション > なびげーしょん > いまここ
-  .item-wrapper
-    .Items
-      %p.Items__title
-        product2
-      .Items__img-first
-        = image_tag '/assets/inu.jpg', alt: 'test', size: "400x300", class: 'image1'
-      .Items__img-second
-        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
-        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
-        = image_tag '/assets/inu.jpg', alt: 'test', size: "100x50", class: 'image2'
-      %p.Items__price
-        ¥30000
-      %p.Items__sipping
-        (税込) 送料込み
-      %p.Items__introduction
-        親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
-        二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
-        たと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を
-        出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降
-        りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰
-        って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
-      %ul.Menu
-        %li.Menu__list
-          .Menu__list--left
-            出品者
-          .Menu__list--right
-            やまだ
-        %li.Menu__list
-          .Menu__list--left
-            カテゴリ
-          .Menu__list--right
-            = link_to "ベビー・キッズ", "#"
-            %br
-            = link_to "ベビー服(男女兼用) ~95cm", "#"
-            %br
-            = link_to "アウター", "#"
-            %br
-        %li.Menu__list
-          .Menu__list--left
-            ブランド
-          .Menu__list--right
-            Chanel
-        %li.Menu__list
-          .Menu__list--left
-            商品のサイズ
-          .Menu__list--right
-            000×000
-        %li.Menu__list
-          .Menu__list--left
-            商品の状態
-          .Menu__list--right
-            未使用に近い
-        %li.Menu__list
-          .Menu__list--left
-            配送料の負担
-          .Menu__list--right
-            送料込み（出品者負担）
-        %li.Menu__list
-          .Menu__list--left
-            発送元の地域
-          .Menu__list--right
-            岩手県
-        %li.Menu__list
-          .Menu__list--left
-            発送日の目安
-          .Menu__list--right
-            4-7日で発送
-        .option-area    
-          .favorite
+    %ul.List-menu
+      %li.List-menu__content
+        = link_to "カテゴリ", "#"
+      %li.List-menu__icon
+        = icon('fas', 'angle-right')
+      %li.List-menu__content
+        = link_to "ナビゲーション", "#"
+      %li.List-menu__icon
+        = icon('fas', 'angle-right')
+      %li.List-menu__content
+        = link_to "なびげーしょん", "#"
+      %li.List-menu__icon
+        = icon('fas', 'angle-right')
+      %li.List-menu__content__last
+        = link_to "いまここ", "#"
+
+  .Wrapper
+    .Container
+      .Items
+        %p.Items__title
+          product2
+        .Items__img-first
+          = image_tag '/assets/inu.jpg', alt: 'test', size: "500x400", class: 'image1'
+        .Items__img-second
+          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
+          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
+          = image_tag '/assets/inu.jpg', alt: 'test', size: "160x120", class: 'image2'
+        %p.Items__price
+          ¥30000
+        %p.Items__sipping
+          (税込) 送料込み
+        %p.Items__introduction
+          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
+          二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
+          たと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を
+          出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降
+          りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰
+          って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        %table.Menu
+          %tr.Menu__list
+            %td.Menu__list__left
+              出品者
+            %td.Menu__list__right
+              やまだ
+          %tr.Menu__list
+            %td.Menu__list__left
+              カテゴリ
+            %td.Menu__list__right
+              = link_to "ベビー・キッズ", "#"
+              %br
+              = link_to "ベビー服(男女兼用) ~95cm", "#"
+              %br
+              = link_to "アウター", "#"
+              %br
+          %tr.Menu__list
+            %td.Menu__list__left
+              ブランド
+            %td.Menu__list__right
+              Chanel
+          %tr.Menu__list
+            %td.Menu__list__left
+              商品のサイズ
+            %td.Menu__list__right
+              000×000
+          %tr.Menu__list
+            %td.Menu__list__left
+              商品の状態
+            %td.Menu__list__right
+              未使用に近い
+          %tr.Menu__list
+            %td.Menu__list__left
+              配送料の負担
+            %td.Menu__list__right
+              送料込み（出品者負担）
+          %tr.Menu__list
+            %td.Menu__list__left
+              発送元の地域
+            %td.Menu__list__right
+              岩手県
+          %tr.Menu__list
+            %td.Menu__list__left
+              発送日の目安
+            %td.Menu__list__right
+              4-7日で発送
+
+        .Option-area
+          .Favorite
             ★ お気に入り ０
-          .report
+          .Report
             不適切な商品の通報
 
-  -# 以下、コメント機能のエリア追加時にまた使用。
+      %ul.Move-area
+        %li.Next
+          .Next__icon
+            = icon('fas', 'angle-left')
+          .Next__link
+            = link_to "前の商品", "#"
+        %li.Prev
+          .Prev__link
+            = link_to "後ろの商品", "#"
+          .Prev__icon
+            = icon('fas', 'angle-right')
+      .Recommend__link
+        = link_to "ベビー・キッズをもっと見る", "#"
 
-  %footer
-    フッター
+      .Recommend__category
+        .recommend__category__img
+          = image_tag '/assets/inu.jpg', alt: 'test', size: "220x150", class: 'image3'
+        .Recommend__category__content
+          .Recommend__left
+            .Recommend__left__title
+              product2
+            .Recommend__left__price
+              ¥30000
+            .Recommend__left__sipping
+              （税込み）
+          .Recommend__right
+            ★０
+
+-# 部分テンプレート。マージ時に解除。
+-# = render partial: "footer"z
