@@ -8,15 +8,16 @@ class ItemsController < ApplicationController
       @item = Item.new
       @item.item_images.new
     else
-      redirect_to user_session_path  
+      redirect_to user_session_path
+    end
   end
 
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to root_path, notice: "出品しました"
+      redirect_to root_path
     else 
-      redirect_to new_item_path, alert: "出品できません。入力必須項目を確認してください"
+      render :new
     end
   end
 
@@ -34,7 +35,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :user_id, 
       :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, 
-      :brand, item_images_attributes: [:image])
-      #:category_id,:buyer_id, :seller_id,
+      :category_id,:brand, item_images_attributes: [:image]).merge(user_id: current_user.id)
+      #:buyer_id, :seller_id,
   end
 end
