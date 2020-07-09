@@ -5,12 +5,12 @@
         .exhibition__button
           出品する
           .icon
-            = image_tag "/assets/icon_camera.png", size: "54x54"
+            = image_tag asset_path("icon_camera.png"), size: "54x54"
     = link_to root_path do
       = image_tag asset_path("logo.png"), class: "main__img", size: "140x40"
     .main__input
       キーワードから探す 
-    = image_tag "/assets/icon-search 1.png", class: "main__button", size: "40x40"   
+    = image_tag asset_path("icon-search 1.png"), class: "main__button", size: "40x40"   
   .contents
     .contents__left
       .category
