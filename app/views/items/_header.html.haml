@@ -20,7 +20,7 @@
     .contents__right
       - if user_signed_in?
         .login
-          = link_to "マイページ", users_path
+          = link_to "マイページ", mypages_path
         .register
           = link_to "ログアウト", destroy_user_session_path, method: :delete
       -else
