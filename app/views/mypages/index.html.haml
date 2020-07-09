@@ -1,11 +1,10 @@
-
 = render partial: "items/header"
 .Mypage
   .Mypage__Wrapper
     .Mypage__Wrapper__Side
       %ul
         %li.Mypage__Wrapper__Side__list
-          = link_to "マイページ", users_path
+          = link_to "マイページ", mypages_path, class: "PageActive"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "お知らせ", "#"
@@ -32,7 +31,7 @@
           = link_to "発送元・お届け先住所変更", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "支払い方法", card_users_path
+          = link_to "支払い方法", cards_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "メール/パスワード", "#"
@@ -41,10 +40,9 @@
           = link_to "本人情報", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "ログアウト", logout_users_path, class: "PageActive"
+          = link_to "ログアウト", logout_mypages_path
           = icon('fa','chevron-right')
     .Mypage__Wrapper__Main
-      .Mypage__Wrapper__Main__logout
-        = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "Mypage__Wrapper__Main__logout--link"
+      .Mypage__Wrapper__Main__user-name
+        = "#{current_user.nickname}さんのマイページ"
 = render partial: "items/footer"
-     

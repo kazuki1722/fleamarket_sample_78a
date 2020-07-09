@@ -4,7 +4,7 @@
     .Mypage__Wrapper__Side
       %ul
         %li.Mypage__Wrapper__Side__list
-          = link_to "マイページ", users_path, class: "PageActive"
+          = link_to "マイページ", mypages_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "お知らせ", "#"
@@ -31,7 +31,7 @@
           = link_to "発送元・お届け先住所変更", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "支払い方法", card_users_path
+          = link_to "支払い方法", cards_path, class: "PageActive"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "メール/パスワード", "#"
@@ -40,10 +40,24 @@
           = link_to "本人情報", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "ログアウト", logout_users_path
+          = link_to "ログアウト", logout_mypages_path
           = icon('fa','chevron-right')
     .Mypage__Wrapper__Main
-      .Mypage__Wrapper__Main__user-name
-        = "#{current_user.nickname}さんのマイページ"
-= render partial: "items/footer"
-     
+      .Mypage__Wrapper__Main__CardTitle
+        支払い方法
+      .Mypage__Wrapper__Main__CardInner
+        .Mypage__Wrapper__Main__CardInner__title
+          クレジットカード一覧
+        .Mypage__Wrapper__Main__CardInner__add
+          = link_to new_card_path, class: "Mypage__Wrapper__Main__CardInner__add--link" do
+            %i.fa.fa-credit-card クレジットカードを追加する 
+        -# 条件分岐で表示させるものをわける予定  
+        .Mypage__Wrapper__Main__CardInner__add
+          .Mypage__Wrapper__Main__CardInner__add__show
+            = image_tag asset_path('visa.svg'), size: '49x15'
+            .Mypage__Wrapper__Main__CardInner__add__show__num
+              ************0000
+            .Mypage__Wrapper__Main__CardInner__add__show__limit
+              00/00
+            = link_to '削除する', "#", class: 'Mypage__Wrapper__Main__CardInner__add__show__destroy'
+= render partial: "items/footer" 
