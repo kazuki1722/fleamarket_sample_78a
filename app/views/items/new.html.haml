@@ -12,10 +12,15 @@
         %p.image-message
           最大10枚までアップロード出来ます
         #image-box
+          %p.label-box__text クリックしてファイルをアップロード
           #previews
-            %label{class: "label-box"}
-              %input{class:"js-field", type: "file"}
-              %p.label-box__text クリックしてファイルをアップロード            
+        .hidden-content
+          = f.fields_for :item_images do |i|
+            = i.file_field :image, class: "hidden-field"
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }          
       .product-form__item-container
         %p.message
           商品名
@@ -36,17 +41,19 @@
           カテゴリー
           %span.style_attention.required
             必須
-        %select{class: "product-form__details-container__category-box"}
-          %option
+        -#= f.text_field :category_id
+        -#= f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__category-box"}
+        -#%select{class: "product-form__details-container__category-box"}
+          -#%option
             メンズ
-          %option
+          -#%option
             レディース
         %p.message
           ブランド
           %span.style_attention.any
             任意
-        -# = f.text_field :brand, class: "product-form__details-container__brand-box",  placeholder: "例) シャネル"    
-        %input{type: "text", class: "product-form__details-container__brand-box", placeholder: "例) シャネル"}
+        = f.text_field :brand, class: "product-form__details-container__brand-box",  placeholder: "例) シャネル"    
+        -#%input{type: "text", class: "product-form__details-container__brand-box", placeholder: "例) シャネル"}
         %p.message
           商品の状態
           %span.style_attention.required

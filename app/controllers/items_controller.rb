@@ -4,8 +4,11 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item = Item.new
-    @item.item_images.new
+    if user_signed_in?
+      @item = Item.new
+      @item.item_images.new
+    else
+      redirect_to user_session_path  
   end
 
   def create
@@ -29,6 +32,9 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :user_id, :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, :category_id, :buyer_id, :seller_id, item_images_attributes: [:image])
+    params.require(:item).permit(:name, :introduction, :price, :user_id, 
+      :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, 
+      :brand, item_images_attributes: [:image])
+      #:category_id,:buyer_id, :seller_id,
   end
 end
