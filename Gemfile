@@ -77,9 +77,13 @@ gem 'mini_magick'
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
+# 出品機能でのimage関連gem
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn'
 end
 
-
+gem "font-awesome-sass"
