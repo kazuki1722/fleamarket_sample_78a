@@ -82,7 +82,7 @@
     .new-items 
       - @items.each do |item|
         .item 
-          = link_to do "#" 
+          = link_to item_path(item.id) do
             .item-image 
               = image_tag item.item_images.first.image.url , size: "220x150"  if item.item_images.present?
               -if item.buyer_id.present? 
