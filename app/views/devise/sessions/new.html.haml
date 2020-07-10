@@ -6,6 +6,12 @@
     .AccountPage__sessionBox__no-account
       アカウントをお持ちでない方はこちら
       = link_to "新規会員登録", new_user_registration_path,  class: "AccountPage__sessionBox__no-account--link"
+    .AccountPage__sessionBox__sns
+      = link_to user_facebook_omniauth_authorize_path, method: :post, class: "AccountPage__sessionBox__sns__google" do
+        = image_tag asset_path("medium.jpg"), size: "28x28"
+        Googleでログイン
+      = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "AccountPage__sessionBox__sns__facebook" do
+        %i.fab.fa-facebook-square Facebookでログイン
     .AccountPage__sessionBox__form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         = f.email_field :email, placeholder: "メールアドレス", autofocus: true, autocomplete: "email", class: "AccountPage__sessionBox__form__input"
