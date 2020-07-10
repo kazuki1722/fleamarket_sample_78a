@@ -8,7 +8,6 @@
           .icon
             = image_tag "/assets/icon_camera.png", size: "54x54"
     = link_to image_tag("/assets/logo.png", class: "main__img", size: "140x40"), "/"
-
     .main__input
       キーワードから探す 
     = image_tag "/assets/icon-search 1.png", class: "main__button", size: "40x40"   
@@ -29,9 +28,6 @@
           = link_to "ログイン", new_user_session_path
         .register
           = link_to "新規会員登録", new_user_registration_path
-  
-  
-        
   .top-img
     = image_tag "/assets/bg-mainVisual-pict_pc.jpg", class: "visual"
     .text 
@@ -106,40 +102,17 @@
       ピックアップカテゴリー
     .sub-text
       新規投稿商品
-    .new-items
-      = link_to do "#"
-        .item
-          .item-image
-            = image_tag "/assets/member_photo_noimage_thumb.png", size: "220x150"
-          .item-information
-            .item-name
-              商品名
-            .item-price
-              1000円
-      .item
-        .item-image
-          item-image
-        .item-information
-          .item-name
-            商品名
-          .item-price
-            2000円
-      .item
-        .item-image
-          item-image
-        .item-information
-          .item-name
-            商品名
-          .item-price
-            3000円
-      .item
-        .item-image
-          item-image
-        .item-information
-          .item-name
-            商品名
-          .item-price
-            4000円
+    .new-items 
+      - @items.each do |item|
+        .item 
+          = link_to do "#" 
+            .item-image 
+              = image_tag item.item_images.first.image.url , size: "220x150"  if item.item_images.present?
+            .item-information
+              .item-name
+                = item.name
+              .item-price
+                = item.price    
   .bottom-img
     = image_tag "/assets/bg-appBanner-pict.jpg", class: "visual"
     .text

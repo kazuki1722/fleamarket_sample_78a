@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.includes(:item_images).order('created_at DESC')
+    @items = Item.all.order('created_at DESC').limit(4)
+    
   end
   
   def new
