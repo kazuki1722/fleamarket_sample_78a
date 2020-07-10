@@ -25,15 +25,16 @@
 |------|----|-------|
 |name|string|null: false|
 |introduction|text|null: false|
-|condition|string|null: false|
 |price|integer|null: false|
-|category|integer|null: false|
-|brand|string||
+|condition_id|integer|null: false|
 |shipping_charge_id|integer|null: false|
-|prefecture|integer|null: false|
 |shipping_day_id|integer|null: false|
-|seller|reference|null: false|
-|buyer|reference|null: false|
+|prefecture_id|integer|null: false|
+|brand|string||
+|seller|references|null: false|
+|buyer|references||
+|category|references|null: false|
+|user|references|foreign_key: true|
 ### Association
 - has_many :item_images, dependent: :destroy
 - has_many :comments, dependent: :destroy
@@ -68,7 +69,7 @@
 |------|----|-------|
 |customer_id|string|null: false, unique: false|
 |card_id|string|null: false, unique: false|
-|user_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -105,7 +106,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|reference|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 
@@ -113,8 +114,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |comment|text|null: false|
-|item_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
