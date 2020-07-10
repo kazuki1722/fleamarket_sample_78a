@@ -2,8 +2,6 @@ class PurchaseController < ApplicationController
 
   require 'payjp'
 
-  # before_action :set_item, only: [:index, :pay]
-
   def index
     card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
@@ -22,7 +20,7 @@ class PurchaseController < ApplicationController
     card = CreditCard.where(user_id: current_user.id).first
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     Payjp::Charge.create(
-    :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :amount => 13500, #支払金額を入力
     :customer => card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
     )
@@ -35,11 +33,6 @@ class PurchaseController < ApplicationController
     @default_card_information = customer.cards.retrieve(card.card_id)
     @default_card_brand = @default_card_information.brand
   end
-
-  # private
-  # def set_item
-  #   @item = Item.find(params[:item_id])
-  # end
 
   
 end

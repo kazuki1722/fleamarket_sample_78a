@@ -1,7 +1,8 @@
 .product-container
-  .product-header
-    = link_to "#" do
-      = image_tag "/assets/logo.png", size: "150x65"
+  = render 'items/form_header'
+  -# .product-header
+  -#   = link_to "#" do
+  -#     = image_tag "/assets/logo.png", size: "150x65"
   .product-form
     %form
       .product-form__image-container
@@ -120,19 +121,19 @@
           = link_to "#" do
             加盟店規約
           同意したことになります。
-          
-  .product-footer
-    %ul.product-footer__clearfix
-      %li.product-footer__clearfix__message
-        = link_to "#" do
-          プライバシーポリシー
-      %li.product-footer__clearfix__message
-        = link_to "#" do
-          メルカリ利用規約
-      %li.product-footer__clearfix__message
-        = link_to "#" do
-          特定商取引に関する表記
-    .product-footer__logo
-      = link_to "#" do
-        = image_tag "/assets/logo.png", size: "140x55"
-      %p.product-footer__logo__message ©️FURIMA
+  = render 'items/form_footer'
+  -# .product-footer
+  -#   %ul.product-footer__clearfix
+  -#     %li.product-footer__clearfix__message
+  -#       = link_to "#" do
+  -#         プライバシーポリシー
+  -#     %li.product-footer__clearfix__message
+  -#       = link_to "#" do
+  -#         メルカリ利用規約
+  -#     %li.product-footer__clearfix__message
+  -#       = link_to "#" do
+  -#         特定商取引に関する表記
+  -#   .product-footer__logo
+  -#     = link_to "#" do
+  -#       = image_tag "/assets/logo.png", size: "140x55"
+  -#     %p.product-footer__logo__message ©️FURIMA
