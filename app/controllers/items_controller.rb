@@ -1,15 +1,13 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: :new
+  
   def index
     @items = Item.includes(:item_images).order('created_at DESC')
   end
 
   def new
-    if user_signed_in?
       @item = Item.new
       @item.item_images.new
-    else
-      redirect_to user_session_path
-    end
   end
 
   def create
