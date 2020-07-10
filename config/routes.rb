@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:index, :new, :show] do
+  resources :items, only: [:new, :show, :create] do
     collection do
       get 'signup'
     end
   end
-    
+   
   resources :mypages, only: :index do
     collection do
       get 'logout'

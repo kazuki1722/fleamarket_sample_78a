@@ -25,23 +25,27 @@
 |------|----|-------|
 |name|string|null: false|
 |introduction|text|null: false|
-|condition|string|null: false|
 |price|integer|null: false|
-|category|integer|null: false|
-|shipping_charges|reference|null: false|
-|shipping_from|reference|null: false|
-|shipping_days|reference|null: false|
-|seller|reference|null: false|
-|buyer|reference|null: false|
+|condition_id|integer|null: false|
+|shipping_charge_id|integer|null: false|
+|shipping_day_id|integer|null: false|
+|prefecture_id|integer|null: false|
+|brand|string||
+|seller|references|null: false|
+|buyer|references||
+|category|references|null: false|
+|user|references|foreign_key: true|
 ### Association
 - has_many :item_images, dependent: :destroy
 - has_many :comments, dependent: :destroy
-- belongs_to :category, dependent: :destroy
-- belongs_to :shipping_charge
-- belongs_to :shipping_from
-- belongs_to :shipping_charge
+- belongs_to :user, optional: true
+- belongs_to :category, optional: true
 - belongs_to :seller, class_name: "User", foreign_key: 'seller_id'
 - belongs_to :buyer, class_name: "User", foreign_key: 'buyer_id'
+- belongs_to_active_hash :shipping_charge
+- belongs_to_active_hash :shipping_day
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :condition
 
 # addressテーブル
 |Column|Type|Options|
@@ -65,7 +69,7 @@
 |------|----|-------|
 |customer_id|string|null: false, unique: false|
 |card_id|string|null: false, unique: false|
-|user_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -102,7 +106,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|reference|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 
@@ -110,8 +114,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |comment|text|null: false|
-|item_id|reference|null: false, foreign_key: true|
-|user_id|reference|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
