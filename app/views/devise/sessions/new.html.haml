@@ -1,7 +1,8 @@
 .AccountPage
   .AccountPage__sessionLogo
-    = link_to image_tag("/assets/logo.png", size: "185x49"), "/"
-  .AccountPage__sessionBox
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), size: "185x49"
+  .AccountPage__sessionBox 
     .AccountPage__sessionBox__no-account
       アカウントをお持ちでない方はこちら
       = link_to "新規会員登録", new_user_registration_path,  class: "AccountPage__sessionBox__no-account--link"
