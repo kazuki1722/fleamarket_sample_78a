@@ -85,10 +85,15 @@
           = link_to do "#" 
             .item-image 
               = image_tag item.item_images.first.image.url , size: "220x150"  if item.item_images.present?
+              -if item.buyer_id.present? 
+                .items-box_photo__sold
+                  .items-box_photo__sold__inner
+                    SOLD
             .item-information
               .item-name
                 = item.name
               .item-price
+                ¥
                 = item.price    
 
   .bottom-img
