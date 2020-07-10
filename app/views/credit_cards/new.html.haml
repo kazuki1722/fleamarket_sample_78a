@@ -8,7 +8,7 @@
           %label カード番号
           %span.card-main__form-require 必須
           = text_field_tag "number", "", class: "card-main__input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
-          %ul.signup-main__has-error-text{ id: 'card-no-error-wrapper' }
+          %ul.signup-main__has-error-text
           %ul.card-main__card-list
             %li
               = image_tag asset_path("visa.svg"), width: '49', height: '20'
@@ -61,22 +61,22 @@
               %option{value: "2029"}29
             = icon 'fas', 'chevron-down'
             %span 年
-          %ul.card-main__has-error-text{ id: 'expire-mm-error-wrapper' }
-          %ul.card-main__has-error-text{ id: 'expire-yy-error-wrapper' }
+          %ul.card-main__has-error-text
+          %ul.card-main__has-error-text
         .card-main__form-group
           %label セキュリティコード
           %span.card-main__form-require 必須
           = text_field_tag "cvc", "", class: "card-main__input-default", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
-          %ul.card-main__has-error-text{ id: 'security-code-error-wrapper' }
+          %ul.card-main__has-error-text
           .card-main__seqcode
-            .card-main__seqcode__text{ id: 'seqcode-tips-toggle' }
+            .card-main__seqcode__text
               %span.card-main__form-question
                 ?
               カード裏面の番号とは？
-            .card-main__seqcode__info.is-show{ id: 'seqcode-tips-content' }
+            .card-main__seqcode__info.is-show
               カードの裏面をご参照ください。
               %br
               = image_tag asset_path("seq-card.png"), type: '', width: '240'
-        %p.card-main__has-error-text{ id: 'primary-error' }
+        %p.card-main__has-error-text
           #card_token.card-main__form-group
           = submit_tag "追加する", id: "token_submit", class: 'card-main__btn-default card-main__btn-red'
