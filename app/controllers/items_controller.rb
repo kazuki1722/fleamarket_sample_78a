@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.includes(:item_images).order('created_at DESC')
   end
-  
+
   def new
     if user_signed_in?
       @item = Item.new
@@ -22,6 +22,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+
+  def show
   end
 
   def update
