@@ -28,20 +28,23 @@
 |condition|string|null: false|
 |price|integer|null: false|
 |category|integer|null: false|
-|shipping_charges|reference|null: false|
-|shipping_from|reference|null: false|
-|shipping_days|reference|null: false|
+|brand|string||
+|shipping_charge_id|integer|null: false|
+|prefecture|integer|null: false|
+|shipping_day_id|integer|null: false|
 |seller|reference|null: false|
 |buyer|reference|null: false|
 ### Association
 - has_many :item_images, dependent: :destroy
 - has_many :comments, dependent: :destroy
-- belongs_to :category, dependent: :destroy
-- belongs_to :shipping_charge
-- belongs_to :shipping_from
-- belongs_to :shipping_charge
+- belongs_to :user, optional: true
+- belongs_to :category, optional: true
 - belongs_to :seller, class_name: "User", foreign_key: 'seller_id'
 - belongs_to :buyer, class_name: "User", foreign_key: 'buyer_id'
+- belongs_to_active_hash :shipping_charge
+- belongs_to_active_hash :shipping_day
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :condition
 
 # addressテーブル
 |Column|Type|Options|
