@@ -79,9 +79,13 @@ gem 'dotenv-rails'
 gem 'payjp'
 gem 'jquery-rails'
 
+# 出品機能でのimage関連gem
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn'
 end
 
-
+gem "font-awesome-sass"
