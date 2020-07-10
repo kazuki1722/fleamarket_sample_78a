@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
   
-end
+
 
   root 'items#index'
   resources :items, only: [:new, :show, :create]
