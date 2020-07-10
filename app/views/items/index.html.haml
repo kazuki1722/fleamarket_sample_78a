@@ -1,104 +1,122 @@
 %body
-= render partial: "header"
 
+  %header
+    = render partial: "header"
 
-.Top-wrapper
-  .top-img
-    = image_tag asset_path("bg-mainVisual-pict_pc.jpg"), class: "visual"
-    .text 
-      人生を変えるフリマアプリ
-  .reasons
-    .subtitle
-      %h2
-        FURIMAが選ばれる3つの理由
-    .under-line
+  .Top-wrapper
+    .top-img
+      = image_tag asset_path("bg-mainVisual-pict_pc.jpg"), class: "visual"
+      .text
+        人生を変えるフリマアプリ
 
-    .reasons__lists
-      .left-list
-        .color
-          .left-img
-            = image_tag asset_path("pict-reason-01.jpg"), size: "306x306"
-          .number
-            1
-        .text
-          %spn.color 3分 
-          %spn ですぐに出品
-        .sub-text
-          スマホで入力するだけで簡単に出品できる！
-      .center-list
-        .color
-          .center-img
-            = image_tag asset_path("pict-reason-02.jpg"), size: "306x306"
-          .number
-            2
-        .text
-          %spn.color シンプル
-          %spn で使いやすい
-        .sub-text
-          めんどくさい入力は必要なく、検索も購入もスムーズ！
-      .right-list
-        .color
-          .right-img
-            = image_tag asset_path("pict-reason-03.jpg"), size: "306x306"
-          .number
-            3
-        .text
-          %spn 手数料
-          %spn.color 業界最安
-        .sub-text
-          最大3%でお得に出品&購入！
-  .center-img
-    = image_tag asset_path("bg-topMiddleDl-pict.jpg"),class: "visual"
-    .text
-      会員数日本一位
-  .features
-    .text
-      %h2 FURIMAの特徴
-    .under-line
-    .features__lists
-      .left-list
-        = image_tag asset_path("icon-01.png"), size: "219x337"
-        .text
-          簡単に売り買いできる
-        .sub-text
-          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
-      .center-list
-        = image_tag asset_path("icon-03.png"), size: "219x337"
-        .text
-          売上金は即日振り込みに対応
-        .sub-text
-          午前9時までに振り込みを依頼いただければ、翌日に指定の口座に翌日に指定の口座に入金いたします！
-      .right-list
-        = image_tag asset_path("icon-04.png"), size: "219x337"
-        .text
-          様々な支払いに対応
-        .sub-text
-          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
-  .items
-    .items__text
-      ピックアップカテゴリー
-    .sub-text
-      新規投稿商品
-    .new-items 
-      - @items.each do |item|
-        .item 
-          = link_to item_path(item.id) do
-            .item-image 
-              = image_tag item.item_images.first.image.url , size: "220x150"  if item.item_images.present?
-              -if item.buyer_id.present? 
-                .items-box_photo__sold
-                  .items-box_photo__sold__inner
-                    SOLD
+    .reasons
+      .subtitle
+        %h2
+          FURIMAが選ばれる3つの理由
+      .under-line
+
+      .reasons__lists
+        .left-list
+          .color
+            .left-img
+              = image_tag asset_path("pict-reason-01.jpg"), size: "306x306"
+            .number
+              1
+          .text
+            %spn.color 3分 
+            %spn ですぐに出品
+          .sub-text
+            スマホで入力するだけで簡単に出品できる！
+        .center-list
+          .color
+            .center-img
+              = image_tag asset_path("pict-reason-02.jpg"), size: "306x306"
+            .number
+              2
+          .text
+            %spn.color シンプル
+            %spn で使いやすい
+          .sub-text
+            めんどくさい入力は必要なく、検索も購入もスムーズ！
+        .right-list
+          .color
+            .right-img
+              = image_tag asset_path("pict-reason-03.jpg"), size: "306x306"
+            .number
+              3
+          .text
+            %spn 手数料
+            %spn.color 業界最安
+          .sub-text
+            最大3%でお得に出品&購入！
+    .center-img
+      = image_tag asset_path("bg-topMiddleDl-pict.jpg"),class: "visual"
+      .text
+        会員数日本一位
+    .features
+      .text
+        %h2 FURIMAの特徴
+      .under-line
+      .features__lists
+        .left-list
+          = image_tag asset_path("icon-01.png"), size: "219x337"
+          .text
+            簡単に売り買いできる
+          .sub-text
+            スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+        .center-list
+          = image_tag asset_path("icon-03.png"), size: "219x337"
+          .text
+            売上金は即日振り込みに対応
+          .sub-text
+            午前9時までに振り込みを依頼いただければ、翌日に指定の口座に翌日に指定の口座に入金いたします！
+        .right-list
+          = image_tag asset_path("icon-04.png"), size: "219x337"
+          .text
+            様々な支払いに対応
+          .sub-text
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    .items
+      .items__text
+        ピックアップカテゴリー
+      .sub-text
+        新規投稿商品
+      .new-items
+        = link_to do "#"
+          .item
+            .item-image
+              = image_tag asset_path("member_photo_noimage_thumb.png"), size: "220x150"
             .item-information
               .item-name
-                = item.name
+                商品名
               .item-price
-                ¥
-                = item.price    
+                1000円
 
-  .bottom-img
-    = image_tag asset_path("bg-appBanner-pict.jpg"), class: "visual"
-    .text
-      今すぐ無料ダウンロード！
+        .item
+          .item-image
+            item-image
+          .item-information
+            .item-name
+              商品名
+            .item-price
+              2000円
 
-  = render partial: "footer"
+        .item
+          .item-image
+            item-image
+          .item-information
+            .item-name
+              商品名
+            .item-price
+              3000円
+        .item
+          .item-image
+            item-image
+          .item-information
+            .item-name
+              商品名
+            .item-price
+              4000円
+
+  %footer
+    = render partial: "footer"
