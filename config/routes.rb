@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:index, :new, :show]
+  resources :items, only: [:new, :show, :create]
   resources :mypages, only: :index do
     collection do
       get 'logout'

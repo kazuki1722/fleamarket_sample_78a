@@ -1,29 +1,45 @@
-%footer.footer-menu
-  .bottom-img
-    = image_tag asset_path("bg-appBanner-pict.jpg"), class: "visual"
-    .text
-      今すぐ無料ダウンロード！
+%footer
+  .Footer-img
+    .Footer-img__area
+      = image_tag asset_path("bg-appBanner-pict.jpg"), class: "visual"
+      .Footer-img__area__text
+        今すぐ無料ダウンロード！
 
-  .menu-lists
-    .left-lists
-      FURIMAについて
-      .list
-        %li 会社概要（運営会社）
-        %li プライバシーポリシー
-        %li FURIMA利用規約
-        %li ポイントに関する特約
-    .center-lists
-      FURIMAを見る
-      .list
-        %li カテゴリー一覧
-        %li ブランド一覧
-    .right-lists
-      ヘルプ＆ガイド
-      .list
-        %li FURIMAガイド
-        %li FURIMAロゴ利用ガイドライン
-        %li お知らせ
-  .icon  
+  .Footer-lists
+    .Footer-lists__content
+      .Footer-lists__content__head
+        FURIMAについて
+      %ul
+        %li.Footer-lists__content__text
+          会社概要（運営会社）
+        %li.Footer-lists__content__text
+          プライバシーポリシー
+        %li.Footer-lists__content__text
+          FURIMA利用規約
+        %li.Footer-lists__content__text
+          ポイントに関する特約
+
+    .Footer-lists__content
+      .Footer-lists__content__head
+        FURIMAを見る
+      %ul
+        %li.Footer-lists__content__text
+          カテゴリー一覧
+        %li.Footer-lists__content__text
+          ブランド一覧
+
+    .Footer-lists__content
+      .Footer-lists__content__head
+        ヘルプ＆ガイド
+      %ul
+        %li.Footer-lists__content__text
+          FURIMAガイド
+        %li.Footer-lists__content__text
+          FURIMAロゴ利用ガイドライン
+        %li.Footer-lists__content__text
+          お知らせ
+
+  .Footer-icon
     = image_tag asset_path("logo-white.png"), size: "160x46"
     ©︎FURIMA
     
