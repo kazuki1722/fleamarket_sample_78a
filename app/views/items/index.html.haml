@@ -81,42 +81,22 @@
         ピックアップカテゴリー
       .sub-text
         新規投稿商品
-      .new-items
-        = link_to do "#"
-          .item
-            .item-image
-              = image_tag asset_path("member_photo_noimage_thumb.png"), size: "220x150"
-            .item-information
-              .item-name
-                商品名
-              .item-price
-                1000円
-
-        .item
-          .item-image
-            item-image
-          .item-information
-            .item-name
-              商品名
-            .item-price
-              2000円
-
-        .item
-          .item-image
-            item-image
-          .item-information
-            .item-name
-              商品名
-            .item-price
-              3000円
-        .item
-          .item-image
-            item-image
-          .item-information
-            .item-name
-              商品名
-            .item-price
-              4000円
+      .new-items 
+        - @items.each do |item|
+          .item 
+            = link_to item_path(item.id) do
+              .item-image 
+                = image_tag item.item_images.first.image.url , size: "220x150"  if item.item_images.present?
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner
+                      SOLD
+              .item-information
+                .item-name
+                  = item.name
+                .item-price
+                  ¥
+                  = item.price 
 
   %footer
     = render partial: "footer"
