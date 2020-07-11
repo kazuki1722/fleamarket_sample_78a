@@ -458,6 +458,26 @@ body{
           .item-image{
             width: 220px;
             height: 150px;
+            position: relative;
+            .items-box_photo__sold{
+              width: 0;
+              height: 0;
+              border-top: 60px solid #3ccace ;
+              border-right: 60px solid transparent;
+              border-bottom: 60px solid transparent;
+              border-left: 60px solid #3ccace ;
+              z-index:100;
+              position: relative;
+              top:-156px;
+              &__inner{
+                transform: rotate(-45deg);
+                font-size: 28px;
+                margin:-35px 0px 0px -55px;
+                color: #fff;
+                letter-spacing: 2px;
+                font-weight: 600;
+              }
+            }
           }
           .item-information{
             padding: 16px;
