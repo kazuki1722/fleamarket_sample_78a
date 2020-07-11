@@ -71,6 +71,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'font-awesome-sass'
+gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
@@ -86,3 +88,6 @@ group :production do
 end
 
 gem "font-awesome-sass"
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
