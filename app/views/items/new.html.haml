@@ -50,16 +50,12 @@
           カテゴリー
           %span.style_attention.required
             必須
-        = f.text_field :category_id, class: "product-form__details-container__category-box"
         -if @item.errors.messages[:category_id].any?
           .error-message
             %p2 選択してください
-        -#= f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__category-box"}
-        -#%select{class: "product-form__details-container__category-box"}
-          -#%option
-            メンズ
-          -#%option
-            レディース
+        .category-form
+          = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください"}, {class: "product-form__details-container__category-box", id: 'parent_category'}
+          -# = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "---"}, {class: "product-form__details-container__category-box", id: 'parent_category'}
         %p.message
           ブランド
           %span.style_attention.any
