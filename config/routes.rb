@@ -16,18 +16,20 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :purchase, only: [:index] do
-    collection do
-      get 'index', to: 'purchase#index'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
-    end
-  end
+  
   
 
 
   root 'items#index'
-  resources :items, only: [:new, :show, :create]
+  resources :items, only: [:new, :show, :create] do
+    resources :purchase, only: [:index] do
+      collection do
+        get 'index', to: 'purchase#index'
+        post 'pay', to: 'purchase#pay'
+        get 'done', to: 'purchase#done'
+      end
+    end
+  end
   resources :mypages, only: :index do
     collection do
       get 'logout'
@@ -36,4 +38,6 @@ Rails.application.routes.draw do
   scope :mypages do
     resources :cards, only: [:index, :new]
   end
+  
+
 end
