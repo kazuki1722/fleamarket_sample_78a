@@ -106,12 +106,18 @@ a {
         display: flex;
         justify-content: center;
         .Items-btn {
+          margin-top: 30px;
+          a {
+            display: block;
+            height: 100px;
+            width: 400px;
+            border: 1px solid #000;
+          }
+        }
+        .seller-btn {
           height: 100px;
           width: 400px;
-          border: 1px solid #000;
-          margin-top: 30px;
         }
-
         
       }
 

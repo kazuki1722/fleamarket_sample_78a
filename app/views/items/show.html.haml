@@ -94,17 +94,22 @@
         .Btn-area
           - if user_signed_in? && current_user.id == @item.seller_id
             .Items-btn.seller-btn
-              編集・削除はこちらから
+              = link_to "#" do
+                編集・削除はこちらから
+
           - elsif user_signed_in? && current_user.id != @item.seller_id
             .Items-btn.buyer-btn
-              購入する
+              = link_to "#" do
+                購入する
+
           - else
             .Items-btn.login-btn
-              %span.login-btn__up
-                ※ログインすると購入できます。
-                %br
-              %span.login-btn__down
-                ログインはこちらから
+              = link_to "#" do
+                %span.login-btn__up
+                  ※ログインすると購入できます。
+                  %br
+                %span.login-btn__down
+                  ログインはこちらから
 
         .Option-area
           .Favorite
