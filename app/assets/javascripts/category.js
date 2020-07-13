@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function(){
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = `<select class="product-form__details-container__category-box" id="child_category" name="item[category_id]">
-                            <option value="---" data-category="---">---</option>
+                            <option value="---" data-category="---">選択してください</option>
                             ${insertHTML}
                           <select>`;
     $('.category-form').append(childSelectHtml);
@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function(){
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `    <select class="product-form__details-container__category-box" id="grandchild_category" name="item[category_id]">
-                                  <option value="---" data-category="---">---</option>
+                                  <option value="---" data-category="---">選択してください</option>
                                   ${insertHTML}
                                 </select>`;
     $('.category-form').append(grandchildSelectHtml);
