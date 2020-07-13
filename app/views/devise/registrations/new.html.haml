@@ -1,6 +1,7 @@
 .AccountPage
   .AccountPage__logo
-    = link_to image_tag("/assets/logo.png", size: "185x49"), "/"
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), size: "185x49"
   .AccountPage__box
     .AccountPage__box__title
       会員情報入力
@@ -20,23 +21,23 @@
             .AccountPage__box__form__field__label__right
               必須
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "AccountPage__box__form__field__input"
+        
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .AccountPage__box__form__field
+            .AccountPage__box__form__field__label
+              = f.label :パスワード
+              .AccountPage__box__form__field__label__right
+                必須
+            = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
 
-        .AccountPage__box__form__field
-          .AccountPage__box__form__field__label
-            = f.label :パスワード
-            .AccountPage__box__form__field__label__right
-              必須
-            -# - if @minimum_password_length
-            -#   %em
-            -#     (#{@minimum_password_length} characters minimum)
-          = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
-
-        .AccountPage__box__form__field
-          .AccountPage__box__form__field__label
-            = f.label :パスワード（確認）
-            .AccountPage__box__form__field__label__right
-              必須
-          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
+          .AccountPage__box__form__field
+            .AccountPage__box__form__field__label
+              = f.label :パスワード（確認）
+              .AccountPage__box__form__field__label__right
+                必須
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字", class: "AccountPage__box__form__field__input"
 
         .AccountPage__box__form__field
           .AccountPage__box__form__field__label
@@ -64,4 +65,5 @@
 
         .AccountPage__box__form__actions
           = f.submit "次へ進む", class: "AccountPage__box__form__actions"
-      = render "devise/shared/links"
+      -# = render "devise/shared/links"
+      = link_to "Log in", new_session_path(resource_name)
