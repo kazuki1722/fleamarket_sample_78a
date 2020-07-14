@@ -20,17 +20,27 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
   def update
+    item = Item.find(params[:id])
+    item_image = item.item_images
+    if item.update(item_params)
+      redirect_to item_path(item.id)
+    else 
+      render :edit
+    end
   end
 
   def destroy
+    item = Item.find(params[:id])
+    item.destroy
   end
 
   private
@@ -38,6 +48,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :category_id,
       :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, 
-      :brand, :buyer_id, :seller_id, item_images_attributes: [:image]).merge(seller_id: current_user.id, user_id: current_user.id)
+      :brand, :buyer_id, :seller_id, item_images_attributes: [:image, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
   end
 end

@@ -1,0 +1,27 @@
+.product-container
+  .product-header
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), size: "150x65"
+  
+  .Destroy-wrapper
+    .Success
+      商品を削除しました
+    .Toppage-link
+      = link_to "トップページへ戻る", root_path
+
+  .product-footer
+    %ul.product-footer__clearfix
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          プライバシーポリシー
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          メルカリ利用規約
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          特定商取引に関する表記
+    .product-footer__logo
+      = link_to root_path do
+        = image_tag asset_path("logo.png"), size: "140x55"
+      %p.product-footer__logo__message ©️FURIMA
+    

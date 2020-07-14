@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:new, :show, :create] do
+  resources :items, only: [:new, :show, :create,:edit, :update, :destroy] do
     collection do
       get 'signup'
     end
