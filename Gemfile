@@ -76,7 +76,6 @@ gem 'mini_magick'
 
 gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
-gem 'turbolinks', '~> 5'
 gem 'ancestry'
 gem 'jquery-rails'
 

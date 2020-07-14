@@ -1,10 +1,12 @@
 $(document).on('turbolinks:load', function(){
   function appendOption(category){
-    var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+    var html = `
+                <option value="${category.id}" data-category="${category.id}">${category.name}</option>
+              `;
     return html;
   }
 
-  function appendChidrenBox(insertHTML){
+  function appendChildrenBox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = `   
                       <select class="product-form__details-container__category-box" id="child_category" name="item[category_id]">
@@ -14,7 +16,7 @@ $(document).on('turbolinks:load', function(){
                       `;
     $('.category-form').append(childSelectHtml);
   }
-  function appendGrandchidrenBox(insertHTML){
+  function appendGrandchildrenBox(insertHTML){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `    
                             <select class="product-form__details-container__category-box" id="grandchild_category" name="item[category_id]">
@@ -42,7 +44,7 @@ $(document).on('turbolinks:load', function(){
           console.log(child);
           insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML);
+        appendChildrenBox(insertHTML);
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
@@ -68,7 +70,7 @@ $(document).on('turbolinks:load', function(){
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
           });
-          appendGrandchidrenBox(insertHTML);
+          appendGrandchildrenBox(insertHTML);
         }
       })
       .fail(function(){
