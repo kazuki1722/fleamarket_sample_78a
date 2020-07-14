@@ -6,12 +6,15 @@
   .main__item
     .main__item__box
       .main__item__box__image
-        -# = image_tag item.item_images.first.image.url , size: "220x150"
+        = image_tag @item.item_images.first.image.url , size: "100x100"
       .main__item__box__detail
         .main__item__box__detail__name
           = @item.name
         .main__item__box__detail__price
-          = "(税込み、送料込み)" "¥ #{@item.price}"
+          .main__item__box__detail__price__main
+            = "¥ #{@item.price}"
+          .main__item__box__detail__price__sub
+            (税込)  送料込み
   .main__purchase-box
     .main__purchase-box__inner
       .main__purchase-box__inner__price
