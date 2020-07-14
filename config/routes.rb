@@ -15,9 +15,6 @@ Rails.application.routes.draw do
       post 'delete', to: 'credit_cards#delete'
     end
   end
-end
-  
-
 
   root 'items#index'
   resources :items, only: [:new, :show, :create] do
@@ -37,6 +34,4 @@ end
   scope :mypages do
     resources :cards, only: [:index, :new]
   end
-  
-
 end
