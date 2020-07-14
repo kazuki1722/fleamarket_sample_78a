@@ -23,11 +23,18 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else 
+    @category_parent_array = Category.where(ancestry: nil)
+    if item_params[:category_id] == ""
+      
       render :new
+    else
+      if @item.save
+        redirect_to root_path
+      else 
+        render :new
+      end
     end
+
   end
 
   def edit

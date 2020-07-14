@@ -6,24 +6,28 @@ $(document).on('turbolinks:load', function(){
 
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<select class="product-form__details-container__category-box" id="child_category" name="item[category_id]">
-                            <option value="---" data-category="---">選択してください</option>
-                            ${insertHTML}
-                          <select>`;
+    childSelectHtml = `   
+                      <select class="product-form__details-container__category-box" id="child_category" name="item[category_id]">
+                        <option value>選択してください</option>
+                        ${insertHTML}
+                      <select>
+                      `;
     $('.category-form').append(childSelectHtml);
   }
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `    <select class="product-form__details-container__category-box" id="grandchild_category" name="item[category_id]">
-                                  <option value="---" data-category="---">選択してください</option>
-                                  ${insertHTML}
-                                </select>`;
+    grandchildSelectHtml = `    
+                            <select class="product-form__details-container__category-box" id="grandchild_category" name="item[category_id]">
+                              <option value>選択してください</option>
+                              ${insertHTML}
+                            </select>
+                            `;
     $('.category-form').append(grandchildSelectHtml);
   }
 
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value;
-    if (parentCategory != "---"){
+    if (parentCategory != ""){
       $.ajax({
         url: '/items/get_category_children',
         type: 'GET',
@@ -50,9 +54,9 @@ $(document).on('turbolinks:load', function(){
   });
   $('.category-form').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category');
-    if (childId != "---"){
+    if (childId != ""){
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: '/items/get_category_grandchildren',
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
