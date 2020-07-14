@@ -41,7 +41,6 @@ $(document).on('turbolinks:load', function(){
         $('#grandchild_category').remove();
         var insertHTML = '';
         children.forEach(function(child){
-          console.log(child);
           insertHTML += appendOption(child);
         });
         appendChildrenBox(insertHTML);
