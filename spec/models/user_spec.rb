@@ -95,4 +95,64 @@ describe User do
 
     end
   end
+
+  describe "#omniauth" do
+    it "Have authenticated sns" do
+      auth = request_omniauth_mock
+      user = create(:user, email: auth.info.email)
+      # 既に登録済みのユーザー
+      sns = create(:sns_credential,
+        provider: auth.provider,
+        uid: auth.uid,
+        user_id: nil || user.id
+      )
+      # userが持っているsns
+      sns.user_id = user.id
+      # userが持っているsnsの更新
+      expect(User.from_omniauth(auth)).to eq({user: user, sns: sns})
+    end
+
+    context "never authenticated sns" do
+
+      it "I haven't registered an email yet" do
+        auth = request_omniauth_mock
+        sns = create(:sns_credential,
+          provider: auth.provider,
+          uid: auth.uid,
+          user_id: nil
+        )
+        # snsをビルド
+        user = build(:user,
+          nickname: auth.info.name,
+          family_name: nil,
+          first_name: nil,
+          family_name_kana: nil,
+          first_name_kana: nil,
+          birthday: nil,
+          email: auth.info.email,
+          password: nil,
+          password_confirmation: nil
+        )
+        # userをビルド
+        # expect(User.from_omniauth(auth)).to eq({sns: sns, user: user})
+        expect(User.from_omniauth(auth)[:user][:email]).to eq(user.email)
+      end
+      
+      it "I have registered an email" do
+        auth = request_omniauth_mock
+        sns = create(:sns_credential,
+          provider: auth.provider,
+          uid: auth.uid,
+          user_id: nil
+        )
+        # snsをビルド
+        user = create(:user, email: "john@example.com")
+        # 既に存在するユーザー
+        sns.user_id = user.id
+        # userが持つsnsを更新
+        expect(User.from_omniauth(auth)).to eq({user: user, sns: sns})
+      end
+      
+    end
+  end
 end
