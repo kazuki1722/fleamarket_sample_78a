@@ -1,11 +1,27 @@
 .product-container
   = render 'items/form_header'
+.main
+  .main__title
+    購入内容の確認
+  .main__item
+    .main__item__box
+      .main__item__box__image
+        画像
+      .main__item__box__detail
+        .main__item__box__detail__name
+          商品名
+        .main__item__box__detail__price
+          値段
+
+  
+  
   = @item.price
   - if @item.buyer_id.present? #buyer_idがあれば
     %p SOLD
   - if @default_card_information.blank?
     %br /
   - else
+    .main__
     -#以下カード情報を表示
     = "**** **** **** " + @default_card_information.last4
     - exp_month = @default_card_information.exp_month.to_s
@@ -14,4 +30,7 @@
   %br
   = form_tag(action: :pay, method: :post) do
     %button 購入する
+
+
+
   = render 'items/form_footer'
