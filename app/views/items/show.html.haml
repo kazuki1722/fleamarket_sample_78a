@@ -26,30 +26,25 @@
     .Container
       .Items
         %p.Items__title
-          product2
+          = @item.name
         .Items__img-first
-          = image_tag asset_path('inu.jpg'), size: "500x400"
+          = image_tag "#{@images.first.image}", size: "500x400"
         .Items__img-second
-          = image_tag asset_path('inu.jpg'), size: "160x120"
-          = image_tag asset_path('inu.jpg'), size: "160x120"
-          = image_tag asset_path('inu.jpg'), size: "160x120"
+          - @images.each do |i|
+            = image_tag "#{i.image}", size: "160x120"
+
         %p.Items__price
-          ¥30000
+          = "¥#{@item.price}"
         %p.Items__sipping
           (税込) 送料込み
         %p.Items__introduction
-          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
-          二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
-          たと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を
-          出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降
-          りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰
-          って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          = @item.introduction
         %table.Menu
           %tr.Menu__list
             %td.Menu__list__left
               出品者
             %td.Menu__list__right
-              やまだ
+              = @item.user.nickname
           %tr.Menu__list
             %td.Menu__list__left
               カテゴリ
@@ -57,14 +52,14 @@
               = link_to "ベビー・キッズ", "#"
               %br
               = link_to "ベビー服(男女兼用) ~95cm", "#"
-              %br
+              %brs
               = link_to "アウター", "#"
               %br
           %tr.Menu__list
             %td.Menu__list__left
               ブランド
             %td.Menu__list__right
-              Chanel
+              = @item.brand
           %tr.Menu__list
             %td.Menu__list__left
               商品のサイズ
@@ -74,22 +69,22 @@
             %td.Menu__list__left
               商品の状態
             %td.Menu__list__right
-              未使用に近い
+              = @item.condition.name
           %tr.Menu__list
             %td.Menu__list__left
               配送料の負担
             %td.Menu__list__right
-              送料込み（出品者負担）
+              = @item.shipping_charge.name
           %tr.Menu__list
             %td.Menu__list__left
               発送元の地域
             %td.Menu__list__right
-              岩手県
+              = @item.prefecture.name
           %tr.Menu__list
             %td.Menu__list__left
               発送日の目安
             %td.Menu__list__right
-              4-7日で発送
+              = @item.shipping_day.name
 
         .Btn-area
           - if user_signed_in? && current_user.id == @item.seller_id
