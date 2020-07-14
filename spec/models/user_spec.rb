@@ -78,11 +78,11 @@ describe User do
       let(:user) { build(:user) }
 
       it "is valid with a family_name that is written in kanji" do
-        expect(user.family_name).to match(/\A[一-龥]+\z/)
+        expect(user.family_name).to match(/\A[一-龥ぁ-ん]+\z/)
       end
 
       it "is valid with a first_name that is written in kanji" do
-        expect(user.first_name).to match(/\A[一-龥]+\z/)
+        expect(user.first_name).to match(/\A[一-龥ぁ-ん]+\z/)
       end
 
       it "is valid with a family_name_kana that is written in hiragana" do
