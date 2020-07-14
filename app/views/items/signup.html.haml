@@ -1,0 +1,18 @@
+.AccountPage
+  .AccountPage__sessionLogo
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), size: "185x49"
+  .AccountPage__guidebox
+    .AccountPage__guidebox__title
+      新規会員登録
+    .AccountPage__guidebox__regist
+      .AccountPage__guidebox__regist__content
+        = link_to new_user_registration_path, class: "AccountPage__guidebox__regist__content__mail" do
+          %i.far.fa-envelope メールアドレスで登録する
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__google" do
+          = image_tag asset_path("medium.jpg"), size: "28x28"
+          Googleで登録する
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__facebook" do
+          %i.fab.fa-facebook-square Facebookで登録する
+.SignupBlank
+    

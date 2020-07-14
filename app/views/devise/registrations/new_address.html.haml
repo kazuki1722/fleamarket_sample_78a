@@ -64,4 +64,5 @@
 
         .AccountPage__box__form__actions
           = f.submit "Sign up", class: "AccountPage__box__form__actions"
-        = render "devise/shared/links"
+        -# = render "devise/shared/links"
+        = link_to "Log in", new_session_path(resource_name)

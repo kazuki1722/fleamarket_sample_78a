@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   
   def index
-    @items = Item.includes(:item_images).order('created_at DESC')
+    @items = Item.includes(:item_images).order('created_at DESC').limit(4)
+    
   end
 
   def new
@@ -23,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def update

@@ -1,4 +1,3 @@
-!!!
 %body
   = render partial: "header"
   .Wrapper
@@ -92,6 +91,25 @@
             %td.Menu__list__right
               4-7日で発送
 
+        .Btn-area
+          - if user_signed_in? && current_user.id == @item.seller_id
+            .Items-btn.seller-btn
+              = link_to "#" do
+                編集・削除はこちらから
+
+          - elsif user_signed_in? && current_user.id != @item.seller_id
+            .Items-btn.buyer-btn
+              = link_to "#" do
+                購入する
+
+          - else
+            .Items-btn.login-btn
+              = link_to "#" do
+                %span
+                  ※ログインすると購入できます。
+                  %br
+                  ログインはこちらから
+
         .Option-area
           .Favorite
             ★ お気に入り ０
@@ -127,4 +145,5 @@
             .Recommend__right
               ★０
 
-= render partial: "footer"
+  %footer
+    = render partial: "footer"
