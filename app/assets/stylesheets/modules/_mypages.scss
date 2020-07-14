@@ -114,6 +114,7 @@
     }
   }
 
+  // #ログインページ
   &__sessionLogo{
     height: 128px;
     padding-top: 40px;
@@ -137,6 +138,46 @@
         line-height: 42px;
         margin-top: 8px;
         border-radius: 4px;
+      }
+    }
+    &__sns{
+      padding: 32px 64px;
+      &__google{
+        height: 50px;
+        width: 100%;
+        display: block;
+        border: 1px solid #979797;
+        border-radius: 4px;
+        margin-top: 16px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 48px;
+        position: relative;
+        img{
+          position: absolute;
+          top: 10px;
+          left: 18px;
+        }
+      }
+      &__facebook{
+        height: 50px;
+        width: 100%;
+        display: block;
+        border: 1px solid #979797;
+        border-radius: 4px;
+        margin-top: 16px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 48px;
+        color: #fff;
+        background-color: #385185;
+        position: relative;
+        .fa-facebook-square:before{
+          font-size: 23px;
+          position: absolute;
+          top: 11px;
+          left: 20px;
+        }
       }
     }
     &__form{
@@ -168,7 +209,85 @@
       }
     }
   }
+  &__guidebox{
+    background-color: #fff;
+    width: 700px;
+    margin: 0px auto 0px;
+    &__title{
+      height: 97px;
+      padding: 32px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    &__regist{
+      padding: 24px 16px 40px;
+      &__content{
+        width: 343px;
+        margin: 0px auto 0px;
+        &__mail{
+          height: 50px;
+          width: 100%;
+          display: block;
+          color: #fff;
+          background-color: #ea352d;
+          border-radius: 4px;
+          font-size: 14px;
+          text-align: center;
+          line-height: 48px;
+          position: relative;
+          .fa-envelope:before{
+            font-size: 20px;
+            position: absolute;
+            top: 15px;
+            left: 23px;
+          }
+        }
+        &__google{
+          height: 50px;
+          width: 100%;
+          display: block;
+          border: 1px solid #979797;
+          border-radius: 4px;
+          margin-top: 16px;
+          font-size: 14px;
+          text-align: center;
+          line-height: 48px;
+          position: relative;
+          img{
+            position: absolute;
+            top: 10px;
+            left: 18px;
+          }
+        }
+        &__facebook{
+          height: 50px;
+          width: 100%;
+          display: block;
+          border: 1px solid #979797;
+          border-radius: 4px;
+          margin-top: 16px;
+          font-size: 14px;
+          text-align: center;
+          line-height: 48px;
+          color: #fff;
+          background-color: #385185;
+          position: relative;
+          .fa-facebook-square:before{
+            font-size: 23px;
+            position: absolute;
+            top: 11px;
+            left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
 
+.SignupBlank{
+  height: calc(100vh - 471px);
+  background-color: #f5f5f5;
 }
 
 .LoginBlank{

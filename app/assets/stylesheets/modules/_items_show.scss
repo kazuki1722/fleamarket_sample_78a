@@ -9,7 +9,7 @@ a {
 
 .Wrapper {
   width: 100vw;
-  height: 2100px;
+  height: 2250px;
   background-color: #f5ffee;
 
   .List-box {
@@ -48,7 +48,7 @@ a {
     flex-direction: column;
     .Items {
       padding: 40px;
-      height: 1600px;
+      height: 1750px;
       width: 700px;
       background-color: #fff;
       display: flex;
@@ -80,7 +80,7 @@ a {
         margin: 20px 0px;
         text-align: justify;
       }
-
+      
       .Menu {
         &__list {
           border: 1px solid #797979;
@@ -98,9 +98,37 @@ a {
           }
         }
       }
+      
+      // 購入、変更、ログインボタン
+      .Btn-area {
+        height: 150px;
+        width: 700px;
+        display: flex;
+        justify-content: center;
+        .Items-btn {
+          margin-top: 30px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          a {
+            display: block;
+            height: 100px;
+            width: 400px;
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .seller-btn {
+          height: 100px;
+          width: 400px;
+        }
+      }
 
       .Option-area {
-        margin: 10px;
+        margin-top: 20px;
         width: 500px;
         display: flex;
         justify-content: space-between;
