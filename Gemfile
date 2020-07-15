@@ -77,7 +77,6 @@ gem 'jquery-rails'
 
 gem 'dotenv-rails'
 gem 'payjp'
-gem 'jquery-rails'
 
 # 出品機能でのimage関連gem
 gem 'carrierwave'
