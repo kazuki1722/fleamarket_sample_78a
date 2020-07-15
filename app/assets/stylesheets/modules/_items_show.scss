@@ -9,7 +9,6 @@ a {
 
 .Wrapper {
   width: 100vw;
-  height: 2250px;
   background-color: #f5ffee;
 
   .List-box {
@@ -48,7 +47,6 @@ a {
     flex-direction: column;
     .Items {
       padding: 40px;
-      height: 1750px;
       width: 700px;
       background-color: #fff;
       display: flex;
@@ -121,9 +119,19 @@ a {
             justify-content: center;
           }
         }
+
+        // 編集ボタン
         .seller-btn {
-          height: 100px;
-          width: 400px;
+        }
+
+        // 削除ボタン
+        .buyer-btn {
+
+        }
+
+        // ログインボタン
+        .login-btn {
+
         }
       }
 
@@ -178,7 +186,7 @@ a {
       }
       
       .Recommend__category {
-        margin-top: 10px;
+        margin: 10px 0 50px;
         background-color: #fff;
         height: 250px;
         width: 220px;

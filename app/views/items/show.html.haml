@@ -52,7 +52,7 @@
               = link_to "ベビー・キッズ", "#"
               %br
               = link_to "ベビー服(男女兼用) ~95cm", "#"
-              %brs
+              %br
               = link_to "アウター", "#"
               %br
           %tr.Menu__list
@@ -60,11 +60,6 @@
               ブランド
             %td.Menu__list__right
               = @item.brand
-          %tr.Menu__list
-            %td.Menu__list__left
-              商品のサイズ
-            %td.Menu__list__right
-              000×000
           %tr.Menu__list
             %td.Menu__list__left
               商品の状態
@@ -122,10 +117,10 @@
             = link_to "後ろの商品", "#"
           .Prev__icon
             = icon('fas', 'angle-right')
+
       .Recommend  
         .Recommend__link
           = link_to "ベビー・キッズをもっと見る", "#"
-
         .Recommend__category
           .recommend__category__img
             = image_tag asset_path('inu.jpg'), size: "220x150"
