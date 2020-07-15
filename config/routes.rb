@@ -39,6 +39,6 @@ Rails.application.routes.draw do
     end
   end
   scope :mypages do
-    resources :cards, only: [:index, :new]
+    resources :cards, only: [:index]
   end
 end

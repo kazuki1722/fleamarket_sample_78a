@@ -1,6 +1,8 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
+  before_action :set_item
+  before_action :set_card
 
   def index
     @item = Item.find(params[:item_id])
@@ -55,5 +57,13 @@ class PurchaseController < ApplicationController
     end
   end
 
+  private
+  def set_card
+    card = CreditCard.where(user_id: current_user.id).first
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
   
 end

@@ -27,6 +27,4 @@ class CardsController < ApplicationController
     end
   end
   
-  def new
-  end
 end

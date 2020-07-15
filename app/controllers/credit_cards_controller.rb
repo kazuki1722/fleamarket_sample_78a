@@ -2,12 +2,12 @@ class CreditCardsController < ApplicationController
 
   require "payjp"
 
+
   def new
     card = CreditCard.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
   end
 
-  
   
   def pay #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -69,6 +69,11 @@ class CreditCardsController < ApplicationController
         @default_card_src = "saison-card.svg"
       end
     end
+  end
+
+  private
+  def set_card
+    card = CreditCard.where(user_id: current_user.id).first
   end
 
 end
