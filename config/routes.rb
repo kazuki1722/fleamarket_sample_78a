@@ -17,10 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  
-  
-
-
   root 'items#index'
   resources :items, only: [:new, :show, :create] do
     resources :purchase, only: [:index] do
@@ -43,6 +39,4 @@ Rails.application.routes.draw do
   scope :mypages do
     resources :cards, only: [:index, :new]
   end
-  
-
 end
