@@ -1,6 +1,7 @@
 class CreditCardsController < ApplicationController
 
   require "payjp"
+  before_action :set_card, only:["show", "delete"]
 
 
   def new
@@ -31,7 +32,7 @@ class CreditCardsController < ApplicationController
   
   
   def delete #PayjpとCardデータベースを削除します
-    card = CreditCard.where(user_id: current_user.id).first
+    # card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -44,7 +45,7 @@ class CreditCardsController < ApplicationController
   
 
   def show
-    card = CreditCard.where(user_id: current_user.id).first
+    # card = CreditCard.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else
