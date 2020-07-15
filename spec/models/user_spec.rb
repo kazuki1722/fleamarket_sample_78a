@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   describe "#create" do
     it "is valid with a nickname, family_name, first_name, family_name_kana,
         first_name_kana, birthday, email, password, password_confirmation" do
