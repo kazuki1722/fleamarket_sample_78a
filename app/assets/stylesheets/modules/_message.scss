@@ -1,0 +1,73 @@
+
+.item-detail-message {
+  width: 700px;
+  margin: 8px auto;
+}
+
+.message-content {
+  padding: 24px 7.5%;
+  background: #fff;
+}
+
+.massage-form p {
+  padding: 8px;
+  font-size: 14px;
+  background: #fff6de;
+}
+
+.textarea-default {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.message-submit {
+  width: 100%;
+  margin: 8px 0 0;
+  font-size: 0;
+  text-align: center;
+}
+.btn-default {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  -webkit-transition: all ease-out .3s;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+.btn-gray {
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+}
+
+.message-items li {
+  margin: 30px 0 0;
+}
+
+.message-body {
+  background: #fbf0e6;
+  border-radius: 15px;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.message-icons {
+  margin: 8px 0 0;
+}
+
+.message-icons time {
+  display: block;
+  color: #aaa;
+}

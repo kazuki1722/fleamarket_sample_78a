@@ -46,6 +46,8 @@ class ItemsController < ApplicationController
     @category_parent = Category.find(@category_id).parent.parent
     @category_child = Category.find(@category_id).parent
     @category_grandchild = Category.find(@category_id)
+    @message = Message.new
+    @messages = @item.messages
   end
 
   def update

@@ -26,4 +26,5 @@ class User < ApplicationRecord
   # ひらがな
   has_one :address
   has_many :items
+  has_many :messages, dependent: :destroy
 end
