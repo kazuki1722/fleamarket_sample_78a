@@ -9,10 +9,10 @@
       .AccountPage__guidebox__regist__content
         = link_to new_user_registration_path, class: "AccountPage__guidebox__regist__content__mail" do
           %i.far.fa-envelope メールアドレスで登録する
-        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__google" do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__google" do
           = image_tag asset_path("medium.jpg"), size: "28x28"
           Googleで登録する
-        = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__facebook" do
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: "AccountPage__guidebox__regist__content__facebook" do
           %i.fab.fa-facebook-square Facebookで登録する
-.SignupBlank
+.SignupBlank  
     

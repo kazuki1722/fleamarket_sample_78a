@@ -54,11 +54,11 @@
             %td.Menu__list__left
               カテゴリ
             %td.Menu__list__right
-              = link_to "ベビー・キッズ", "#"
+              = link_to "#{@category_parent.name}","#"
               %br
-              = link_to "ベビー服(男女兼用) ~95cm", "#"
+              = link_to "#{@category_child.name}","#"
               %br
-              = link_to "アウター", "#"
+              = link_to "#{@category_grandchild.name}","#"
               %br
           %tr.Menu__list
             %td.Menu__list__left

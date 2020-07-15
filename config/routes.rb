@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
     collection do
       get 'signup'
+      get 'get_category_children', defaults: { fomat: 'json'}
+      get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
   end
    
