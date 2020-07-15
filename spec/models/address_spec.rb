@@ -77,11 +77,11 @@ describe Address do
       let(:address) { build(:address) }
 
       it "is valid with an address_family_name that is written in kanji" do
-        expect(address.address_family_name).to match(/\A[一-龥]+\z/)
+        expect(address.address_family_name).to match(/\A[一-龥ぁ-ん]+\z/)
       end
 
       it "is valid with an address_first_name that is written in kanji" do
-        expect(address.address_first_name).to match(/\A[一-龥]+\z/)
+        expect(address.address_first_name).to match(/\A[一-龥ぁ-ん]+\z/)
       end
 
       it "is valid with an address_family_name_kana that is written in hiragana" do
@@ -90,6 +90,10 @@ describe Address do
 
       it "is valid with an address_first_name that is written in hiragana" do
         expect(address.address_first_name_kana).to match(/\A[ぁ-んー－]+\z/)
+      end
+
+      it "is valid with a zipcode that is 7 digit integer" do
+        expect(address.zipcode).to match(/\A\d{7}\z/)
       end
 
     end

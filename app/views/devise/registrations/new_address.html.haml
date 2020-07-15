@@ -26,10 +26,10 @@
 
         .AccountPage__box__form__field
           .AccountPage__box__form__field__label
-            = f.label :郵便番号
+            = f.label :郵便番号（ハイフンなし）
             .AccountPage__box__form__field__label__right
               必須
-          = f.text_field :zipcode, placeholder: "000-0000", class: "AccountPage__box__form__field__input"
+          = f.text_field :zipcode, placeholder: "例)1234567", class: "AccountPage__box__form__field__input"
 
         .AccountPage__box__form__field
           .AccountPage__box__form__field__label

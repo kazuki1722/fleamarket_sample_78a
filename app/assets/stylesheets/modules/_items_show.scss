@@ -107,18 +107,24 @@ a {
         justify-content: center;
         .Items-btn {
           margin-top: 30px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           a {
             display: block;
             height: 100px;
             width: 400px;
             border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
         .seller-btn {
           height: 100px;
           width: 400px;
         }
-        
       }
 
       .Option-area {
