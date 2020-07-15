@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   
+  before_action :set_items, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @items = Item.includes(:item_images).order('created_at DESC').limit(4)
     
@@ -21,28 +24,28 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    if item.update(item_params)
-      redirect_to item_path(item.id)
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
     else 
       render :edit
     end
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item.destroy
   end
 
   private
+
+  def set_items
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :category_id,
