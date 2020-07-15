@@ -27,7 +27,6 @@ class PurchaseController < ApplicationController
     :currency => 'jpy', #日本円
     )
     #製品のbuyer_idを付与
-    # @item_buyer = Item.find(params[:id])
     @item.update( buyer_id: current_user.id)
     redirect_to action: 'done' #完了画面に移動
   end
