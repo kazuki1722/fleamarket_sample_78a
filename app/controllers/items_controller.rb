@@ -54,6 +54,11 @@ class ItemsController < ApplicationController
   def destroy
   end
 
+  def search
+    @keyword = params[:keyword]
+    @items = Item.search(params[:keyword])
+  end
+
   private
 
   def item_params
