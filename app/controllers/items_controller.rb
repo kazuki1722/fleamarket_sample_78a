@@ -30,7 +30,6 @@ class ItemsController < ApplicationController
 
   def update
     item = Item.find(params[:id])
-    item_image = item_params
     if item.update(item_params)
       redirect_to item_path(item.id)
     else 
