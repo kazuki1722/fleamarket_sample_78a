@@ -95,9 +95,9 @@
           - else
             .Items-btn.login-btn
               = link_to "#" do
-                %span
+                .login-btn__top
                   ※ログインすると購入できます。
-                  %br
+                .login-btn__down
                   ログインはこちらから
 
         .Option-area
@@ -107,18 +107,25 @@
             不適切な商品の通報
 
       %ul.Move-area
-        %li.Next
-          .Next__icon
-            = icon('fas', 'angle-left')
-          .Next__link
-            = link_to "前の商品", "#"
-        %li.Prev
-          .Prev__link
-            = link_to "後ろの商品", "#"
-          .Prev__icon
-            = icon('fas', 'angle-right')
+        - if @item.id > 1
+          %li.Next
+            .Next__icon
+              = icon('fas', 'angle-left')
+            .Next__link
+              = link_to "前の商品", "/items/#{@item.id - 1}"
+        - else
+          %li.Next
 
-      .Recommend  
+        - if @item.id != @lastitem
+          %li.Prev
+            .Prev__link
+              = link_to "後ろの商品", "/items/#{@item.id + 1}"
+            .Prev__icon
+              = icon('fas', 'angle-right')
+        - else
+          %li.Prev
+
+      .Recommend
         .Recommend__link
           = link_to "ベビー・キッズをもっと見る", "#"
         .Recommend__category

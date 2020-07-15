@@ -26,6 +26,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @images = @item.item_images
+    @lastitem = Item.last.id
   end
 
   def update

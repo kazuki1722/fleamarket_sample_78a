@@ -109,29 +109,47 @@ a {
           display: flex;
           align-items: center;
           justify-content: center;
+          height: 100px;
+          width: 400px;
+          box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+          border-radius: 50px;
           a {
             display: block;
             height: 100px;
             width: 400px;
-            border: 1px solid #000;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            color: #fff;
           }
         }
 
         // 編集ボタン
         .seller-btn {
+          background-color: #46dde2;
+          a {
+            font-size: 30px;
+          }
         }
 
-        // 削除ボタン
+        // 購入ボタン
         .buyer-btn {
-
+          background-color: #e43333;
+          a {
+            font-size: 30px;
+          }
         }
 
         // ログインボタン
         .login-btn {
-
+          background-color: #ffa034;
+          &__top {
+            font-size: 18px;
+          }
+          &__down {
+            font-size: 30px;
+          }
         }
       }
 
