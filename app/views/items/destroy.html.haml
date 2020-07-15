@@ -2,12 +2,12 @@
   .product-header
     = link_to root_path do
       = image_tag asset_path("logo.png"), size: "150x65"
-  
   .Destroy-wrapper
     .Success
       商品を削除しました
-    .Toppage-link
-      = link_to "トップページへ戻る", root_path
+    = link_to "/" do
+      .Toppage-link
+        トップページへ戻る
 
   .product-footer
     %ul.product-footer__clearfix
