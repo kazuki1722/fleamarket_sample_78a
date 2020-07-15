@@ -11,14 +11,18 @@
             必須
         %p.image-message
           最大10枚までアップロード出来ます
-        .hidden-content
-          = f.fields_for :item_images do |i|
-            = i.file_field :image, class: "hidden-field"
-            -# 下記インプットはJS導入までの仮置
-            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
-            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
-            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
-            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }
+        .upload-space
+              .icon
+                #image-box
+                  #previews
+                    - if @item.persisted?
+                      - @item.item_images.each_with_index do |image, i|
+                        .preview
+                          = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                  = f.fields_for :images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :image, class: "js-file"
+                    %span.js-remove 削除
       .product-form__item-container
         %p.message
           商品名
