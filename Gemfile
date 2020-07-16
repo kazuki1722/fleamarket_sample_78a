@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'factory_bot_rails'
   gem 'pry-rails'
+  gem 'faker'
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
