@@ -1,0 +1,126 @@
+= render partial: "items/header"
+.Mypage
+  .Mypage__Wrapper
+    .Mypage__Wrapper__Side
+      %ul
+        %li.Mypage__Wrapper__Side__list
+          = link_to "マイページ", mypages_path
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "お知らせ", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "いいね！一覧", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品する", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品した商品-出品中", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "出品した商品-売却済み", "#"
+          = icon('fa','chevron-right')
+        
+      %ul.Mypage__Wrapper__Side__unli  
+        設定
+        %li.Mypage__Wrapper__Side__list
+          = link_to "プロフィール", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "発送元・お届け先住所変更", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "支払い方法", cards_path, class: "PageActive"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "メール/パスワード", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "本人情報", "#"
+          = icon('fa','chevron-right')
+        %li.Mypage__Wrapper__Side__list
+          = link_to "ログアウト", logout_mypages_path
+          = icon('fa','chevron-right')
+    .Mypage__Wrapper__Main
+      %section.mypage-content__chapter-container
+        %h2.card-main__chapter-head
+          クレジットカード情報入力
+        = form_tag(pay_credit_cards_path, method: :post, id: 'charge-form', class: 'card-main__inner card-main__inner--registration-form',  name: "inputForm") do
+          .card-main__content
+            .card-main__form-group
+              %label カード番号
+              %span.card-main__form-require 必須
+              = text_field_tag "number", "", class: "card-main__input-default", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+              %ul.signup-main__has-error-text
+              %ul.card-main__card-list
+                %li
+                  = image_tag asset_path("visa.svg"), width: '49', height: '20'
+                %li
+                  = image_tag asset_path("master-card.svg"), width: '34', height: '20'
+                %li
+                  = image_tag asset_path("saison-card.svg"), width: '30', height: '20'
+                %li
+                  = image_tag asset_path("jcb.svg"), width: '32', height: '20'
+                %li
+                  = image_tag asset_path("american_express.svg"), width: '21', height: '20'
+                %li
+                  = image_tag asset_path("dinersclub.svg"), width: '32', height: '20'
+                %li
+                  = image_tag asset_path("discover.svg"), width: '32', height: '20'
+            .card-main__form-group.card-main__form-expire
+              %label 有効期限
+              %span.card-main__form-require 必須
+              %br
+              .card-main__select-wrap.card-main__select-wrap--half
+                %select#exp_month{name: "exp_month", type: "text", class: 'card-main__month__select'}
+                  %option{value: ""} --
+                  %option{value: "1"}01
+                  %option{value: "2"}02
+                  %option{value: "3"}03
+                  %option{value: "4"}04
+                  %option{value: "5"}05
+                  %option{value: "6"}06
+                  %option{value: "7"}07
+                  %option{value: "8"}08
+                  %option{value: "9"}09
+                  %option{value: "10"}10
+                  %option{value: "11"}11
+                  %option{value: "12"}12
+                = icon 'fas', 'chevron-down'
+                %span 月
+              .card-main__select-wrap.card-main__select-wrap--half
+                %select#exp_year{name: "exp_year", type: "text", class: 'card-main__month__select'}
+                  %option{value: ""} --
+                  %option{value: "2019"}19
+                  %option{value: "2020"}20
+                  %option{value: "2021"}21
+                  %option{value: "2022"}22
+                  %option{value: "2023"}23
+                  %option{value: "2024"}24
+                  %option{value: "2025"}25
+                  %option{value: "2026"}26
+                  %option{value: "2027"}27
+                  %option{value: "2028"}28
+                  %option{value: "2029"}29
+                = icon 'fas', 'chevron-down'
+                %span 年
+              %ul.card-main__has-error-text
+              %ul.card-main__has-error-text
+            .card-main__form-group
+              %label セキュリティコード
+              %span.card-main__form-require 必須
+              = text_field_tag "cvc", "", class: "card-main__input-default", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+              %ul.card-main__has-error-text
+              .card-main__seqcode
+                .card-main__seqcode__text
+                  %span.card-main__form-question
+                    ?
+                  カード裏面の番号とは？
+                .card-main__seqcode__info.is-show
+                  カードの裏面をご参照ください。
+                  %br
+                  = image_tag asset_path("seq-card.png"), type: '', width: '240'
+            %p.card-main__has-error-text
+              #card_token.card-main__form-group
+              = submit_tag "追加する", id: "token_submit", class: 'card-main__btn-default card-main__btn-red'

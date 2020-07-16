@@ -75,6 +75,9 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'ancestry'
 gem 'jquery-rails'
 
+gem 'dotenv-rails'
+gem 'payjp'
+
 # 出品機能でのimage関連gem
 gem 'carrierwave'
 gem 'mini_magick'

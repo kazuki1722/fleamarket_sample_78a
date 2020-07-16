@@ -1,5 +1,7 @@
 .product-container
-  = render 'items/form_header'
+  .product-header
+    = link_to root_path do
+      = image_tag asset_path("logo.png"), size: "150x65"
   .product-form
     = form_with model: @item, local: true do |f|
       .product-form__image-container
@@ -9,6 +11,8 @@
             必須
         %p.image-message
           最大10枚までアップロード出来ます
+        -# #image-box
+          -# #previews
         .hidden-content
           = f.fields_for :item_images do |i|
             = i.file_field :image, class: "hidden-field"
@@ -16,12 +20,16 @@
             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][1][image]", id: "item_images_attributes_1_image" }
             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][2][image]", id: "item_images_attributes_2_image" }
             %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][3][image]", id: "item_images_attributes_3_image" }
-            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }
+            %input{class:"hidden-field", type: "file", name: "item[item_images_attributes][4][image]", id: "item_images_attributes_4_image" }          
+            -# %label{class: "label-box"}
+              -# %input{class:"js-field", type: "file"}
+              -# %p.label-box__text クリックしてファイルをアップロード
       .product-form__item-container
         %p.message
           商品名
           %span.style_attention.required
             必須  
+          -#%input{type: "text", class: "product-form__item-container__name-box", placeholder: "40文字まで"}
           = f.text_field :name, class: "product-form__item-container__name-box",  placeholder: "商品名（必須 40文字まで)"
           -if @item.errors.messages[:name].any?
             .error-message
@@ -30,6 +38,7 @@
           商品の説明
           %span.style_attention.required
             必須
+          -#%textarea{class: "product-form__item-container__description-box", placeholder: "商品の説明"}
           = f.text_area :introduction, class: "product-form__item-container__description-box", placeholder: "商品の説明"
           -if @item.errors.messages[:introduction].any?
             .error-message
@@ -41,20 +50,31 @@
           カテゴリー
           %span.style_attention.required
             必須
+        = f.text_field :category_id, class: "product-form__details-container__category-box"
         -if @item.errors.messages[:category_id].any?
           .error-message
             %p2 選択してください
-        .category-form
-          = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください"}, {class: "product-form__details-container__category-box", id: 'parent_category'}
+        -#= f.collection_select :category_id, Category.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__category-box"}
+        -#%select{class: "product-form__details-container__category-box"}
+          -#%option
+            メンズ
+          -#%option
+            レディース
         %p.message
           ブランド
           %span.style_attention.any
             任意
         = f.text_field :brand, class: "product-form__details-container__brand-box",  placeholder: "例) シャネル"    
+        -#%input{type: "text", class: "product-form__details-container__brand-box", placeholder: "例) シャネル"}
         %p.message
           商品の状態
           %span.style_attention.required
             必須
+        -#%select{class: "product-form__details-container__condition-box"}
+          -#%option
+            新品
+          -#%option
+            悪い 
         = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__condition-box"}
         -if @item.errors.messages[:condition].any?
           .error-message
@@ -66,6 +86,11 @@
           配送料
           %span.style_attention.required
             必須
+        -#%select{class: "product-form__post-container__shipping-charge-box"}
+          -#%option
+            送料込み
+          -#%option
+            着払い
         = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
         -if @item.errors.messages[:shipping_charge_id].any?
           .error-message
@@ -74,6 +99,11 @@
           配送元
           %span.style_attention.required
             必須
+        -#%select{class: "product-form__post-container__shipping-charge-box"}
+          -#%option
+            東京
+          -#%option
+            大阪
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"} 
         -if @item.errors.messages[:prefecture_id].any?
           .error-message
@@ -82,6 +112,11 @@
           配送までの日数
           %span.style_attention.required
             必須
+        -#%select{class: "product-form__post-container__shipping-charge-box"}
+          -#%option
+            1〜2
+          -#%option
+            3〜4
         = f.collection_select :shipping_day_id, ShippingDay.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
         -if @item.errors.messages[:shipping_day_id].any?
           .error-message
@@ -98,13 +133,17 @@
           %li
             .price
               %span ¥
+              -#%input{type: "number", class:"product-form__price-container__price-box", placeholder: "0"}
               =f.number_field :price, placeholder: "0", type: "number", class: "product-form__price-container__price-box"
               -if @item.errors.messages[:shipping_day_id].any?
                 .error-message
                   %p2 300以上9,999,999以下で入力してください 
       .product-form__submit-container
         .product-form__submit-container__button
-          %input{type: "submit", class: "product-form__submit-container__exhibition", value: "出品する"}
+          %input{type: "submit", class: "product-form__submit-container__exhibition", value: "変更を保存する"}
+          -#= f.submit "出品する", class: "product-form__submit-container__exhibition"
+        .product-form__submit-container__button
+          = link_to "この商品を削除する", item_path(@item.id), method: :delete, class: "product-form__submit-container__exhibition", data: {confirm: "削除しますか？"}
         .product-form__submit-container__back
           = link_to "#" do
             もどる
@@ -126,4 +165,19 @@
           = link_to "#" do
             加盟店規約
           同意したことになります。
-  = render 'items/form_footer'
+
+  .product-footer
+    %ul.product-footer__clearfix
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          プライバシーポリシー
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          メルカリ利用規約
+      %li.product-footer__clearfix__message
+        = link_to "#" do
+          特定商取引に関する表記
+    .product-footer__logo
+      = link_to root_path do
+        = image_tag asset_path("logo.png"), size: "140x55"
+      %p.product-footer__logo__message ©️FURIMA

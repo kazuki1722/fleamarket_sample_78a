@@ -84,7 +84,7 @@
         .Btn-area
           - if user_signed_in? && current_user.id == @item.seller_id
             .Items-btn.seller-btn
-              = link_to "#" do
+              = link_to edit_item_path(@item.id) do
                 編集・削除はこちらから
 
           - elsif user_signed_in? && current_user.id != @item.seller_id
