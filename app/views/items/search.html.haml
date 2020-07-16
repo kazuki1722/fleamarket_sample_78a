@@ -1,0 +1,26 @@
+= render partial: "items/header"
+
+.Search
+  .Search__Wrapper
+    .Search__Wrapper__Side
+    .Search__Wrapper__Main
+      %h2.Search__Wrapper__Main__result
+        -if @keyword.present?
+          = @keyword
+          %span の検索結果
+        -else 
+          検索結果
+      .Search__Wrapper__Main__number
+        = "#{@items.count}件の表示"
+      .Search__Wrapper__Main__items
+        - @items.each do |i|
+          = link_to item_path(i.id), class: "Search__Wrapper__Main__items__box" do
+            .Search__Wrapper__Main__items__box__image
+              = image_tag asset_path("#{i.item_images.first.image}"), size: "160x160"
+            .Search__Wrapper__Main__items__box__text
+              .Search__Wrapper__Main__items__box__text__field
+                = i.name
+            .Search__Wrapper__Main__items__box__price
+              = "¥#{i.price}"
+          
+= render partial: "items/footer"

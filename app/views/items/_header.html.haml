@@ -8,9 +8,10 @@
             = image_tag asset_path("icon_camera.png"), size: "54x54"
     = link_to root_path do
       = image_tag asset_path("logo.png"), class: "main__img", size: "140x40"
-    .main__input
-      キーワードから探す 
-    = image_tag asset_path("icon-search 1.png"), class: "main__button", size: "40x40"   
+    = form_with url: search_items_path, local: true, method: :get, class: "main__form" do |f|
+      = f.text_field :keyword, placeholder: "キーワードから探す", class: "main__form__input"
+      = image_submit_tag asset_path("icon-search 1.png"), class: "main__form__button"
+   
   .contents
     .contents__left
       .category

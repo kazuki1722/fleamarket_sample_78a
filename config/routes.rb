@@ -18,17 +18,19 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:new, :show, :create] do
+    
+  resources :items do
+    collection do
+      get 'signup'
+      get 'search'
+      get 'get_category_children', defaults: { fomat: 'json'}
+      get 'get_category_grandchildren', defaults: { fomat: 'json'}
+    end
     resources :purchase, only: [:index] do
       collection do
         post 'pay', to: 'purchase#pay'
         get 'done', to: 'purchase#done'
       end
-    end
-    collection do
-      get 'signup'
-      get 'get_category_children', defaults: { fomat: 'json'}
-      get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
   end
    
