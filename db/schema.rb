@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_070041) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+    t.index ["user_id"], name: "fk_rails_c5d66654bc"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_07_10_070041) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "sns_credentials", "users"
 end

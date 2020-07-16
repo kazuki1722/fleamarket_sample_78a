@@ -43,21 +43,40 @@
           = link_to "ログアウト", logout_mypages_path
           = icon('fa','chevron-right')
     .Mypage__Wrapper__Main
-      .Mypage__Wrapper__Main__CardTitle
-        支払い方法
-      .Mypage__Wrapper__Main__CardInner
-        .Mypage__Wrapper__Main__CardInner__title
-          クレジットカード一覧
-        .Mypage__Wrapper__Main__CardInner__add
-          = link_to new_card_path, class: "Mypage__Wrapper__Main__CardInner__add--link" do
-            %i.fa.fa-credit-card クレジットカードを追加する 
-        -# 条件分岐で表示させるものをわける予定  
-        .Mypage__Wrapper__Main__CardInner__add
-          .Mypage__Wrapper__Main__CardInner__add__show
-            = image_tag asset_path('visa.svg'), size: '49x15'
-            .Mypage__Wrapper__Main__CardInner__add__show__num
-              ************0000
-            .Mypage__Wrapper__Main__CardInner__add__show__limit
-              00/00
-            = link_to '削除する', "#", class: 'Mypage__Wrapper__Main__CardInner__add__show__destroy'
+      - if @card.present?
+        %section.mypage-content__chapter-container
+          %h2.card-main__chapter-head
+            支払い方法
+          .card-main__inner
+            %section
+              .card-main__content
+                %h3.card-main__chapter-sub-head
+                  クレジットカード一覧
+              %ul.mypage-content__payment-list
+                %li
+                  .card-main__content.card-main__content-form{ action: '#', method: 'GET' }
+                    %div
+                      = image_tag "#{@default_card_src}", width: '49', height: '15', alt: @default_card_brand, id: "card_image",class:"card__card-main__mask__contents__content__menu__brand"
+                    .mypage-content__payment-num
+                      = "**** **** **** " + @default_card_information.last4
+                    .mypage-content__payment-num
+                      - exp_month = @default_card_information.exp_month.to_s
+                      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                      = exp_month + ' / ' + exp_year
+                    = form_tag(delete_credit_cards_path, method: :post, id: 'charge-form',  name: 'inputForm', class: 'mypage-content__card--form') do
+                      %input{ type: 'hidden', name: 'card_id', value: '' }
+                      %button.mypage-content__payment-remove 削除する
+            .mypage-content__not-regist
+              = link_to '#', target: '_blank' do
+                %span 支払い方法について
+                = icon 'fas', 'chevron-right'
+      - else 
+        .Mypage__Wrapper__Main__CardTitle
+          支払い方法
+        .Mypage__Wrapper__Main__CardInner
+          .Mypage__Wrapper__Main__CardInner__title
+            クレジットカード一覧
+          .Mypage__Wrapper__Main__CardInner__add
+            = link_to new_credit_card_path, class: "Mypage__Wrapper__Main__CardInner__add--link" do
+              %i.fa.fa-credit-card クレジットカードを追加する 
 = render partial: "items/footer" 

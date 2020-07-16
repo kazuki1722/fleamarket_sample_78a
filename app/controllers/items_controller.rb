@@ -1,6 +1,9 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   
+  before_action :set_items, only: [:edit, :update, :destroy]
+
+
   def index
     @items = Item.includes(:item_images).order('created_at DESC').limit(4)
     
@@ -37,24 +40,40 @@ class ItemsController < ApplicationController
 
   end
 
-  def edit
-  end
-
   def show
     @item = Item.find(params[:id])
+    @images = @item.item_images
     @category_id = @item.category_id
     @category_parent = Category.find(@category_id).parent.parent
     @category_child = Category.find(@category_id).parent
     @category_grandchild = Category.find(@category_id)
   end
 
+  def edit
+  end
+  
   def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else 
+      render :edit
+    end
   end
 
   def destroy
+    redirect_to edit_item_path notice: "削除に失敗しました" unless @item.destroy
+  end
+
+  def search
+    @keyword = params[:keyword]
+    @items = Item.search(params[:keyword])
   end
 
   private
+
+  def set_items
+    @item = Item.find(params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :category_id,
