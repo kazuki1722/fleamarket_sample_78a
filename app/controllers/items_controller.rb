@@ -41,9 +41,3 @@ class ItemsController < ApplicationController
       :brand, :buyer_id, :seller_id, item_images_attributes: [:image]).merge(seller_id: current_user.id, user_id: current_user.id)
   end
 end
-
-def foge
-end
-
-def hoge
-end
