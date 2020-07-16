@@ -18,4 +18,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to_active_hash :shipping_charge
   belongs_to_active_hash :shipping_day
+
+  def self.search(search)
+    return Item.all unless search
+    Item.where('name LIKE(?)', "%#{search}%")
+  end
 end
