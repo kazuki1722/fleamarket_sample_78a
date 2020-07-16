@@ -143,7 +143,7 @@
           %input{type: "submit", class: "product-form__submit-container__exhibition", value: "変更を保存する"}
           -#= f.submit "出品する", class: "product-form__submit-container__exhibition"
         .product-form__submit-container__button
-          = link_to "この商品を削除する", item_path(@item.id), method: :delete, class: "product-form__submit-container__exhibition"
+          = link_to "この商品を削除する", item_path(@item.id), method: :delete, class: "product-form__submit-container__exhibition", data: {confirm: "削除しますか？"}
         .product-form__submit-container__back
           = link_to "#" do
             もどる
