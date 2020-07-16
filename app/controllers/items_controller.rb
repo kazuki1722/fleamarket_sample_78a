@@ -60,10 +60,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
-    else
-      redirect_to edit_item_path notice: "削除に失敗しました"
-    end
+    redirect_to edit_item_path notice: "削除に失敗しました" unless @item.destroy
   end
 
   def search
