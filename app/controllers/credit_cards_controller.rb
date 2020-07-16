@@ -1,12 +1,12 @@
 class CreditCardsController < ApplicationController
 
   require "payjp"
-  before_action :set_card, only:["show", "delete"]
+  before_action :set_card, only:[:show, :delete]
 
 
   def new
-    card = CreditCard.where(user_id: current_user.id)
-    redirect_to action: "show" if card.exists?
+    @card = CreditCard.where(user_id: current_user.id)
+    redirect_to action: "show" if @card.exists?
   end
 
   
@@ -32,26 +32,23 @@ class CreditCardsController < ApplicationController
   
   
   def delete #PayjpとCardデータベースを削除します
-    # card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
-    else
+    if @card.present?
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
-      card.delete
+      @card.delete
     end
     redirect_to action: "new"
   end
   
 
   def show
-    # card = CreditCard.where(user_id: current_user.id).first
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new" 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
       @default_card_brand = @default_card_information.brand      
       case @default_card_brand
       when "Visa"
@@ -74,7 +71,7 @@ class CreditCardsController < ApplicationController
 
   private
   def set_card
-    card = CreditCard.where(user_id: current_user.id).first
+    @card = CreditCard.where(user_id: current_user.id).first
   end
 
 end
