@@ -44,3 +44,6 @@ end
 
 def foge
 end
+
+def hoge
+end
