@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2020_07_14_125357) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "item_images", "items"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
   add_foreign_key "messages", "items"
   add_foreign_key "messages", "users"
