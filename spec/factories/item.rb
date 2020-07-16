@@ -1,7 +1,6 @@
 FactoryBot.define do
 
   factory :item do
-    item_images           { nil }
     name                  {"aaaa"}
     introduction          {"bbbbbbbbbbb"}
     price                 {"12345"}
@@ -10,10 +9,13 @@ FactoryBot.define do
     shipping_day_id       {"1"}
     prefecture_id         {"1"}
     brand                 {"ブランド"}
-    seller                { nil }
+    seller                { create(:user) }
     buyer                 { nil }
-    category              { nil }
-    user                  { nil }
+    category  
+    # user                  { nil }
+    after(:build) do |item|
+      item.item_images << build(:item_image)
+    end
   end
 
 end

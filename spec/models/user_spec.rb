@@ -107,7 +107,8 @@ RSpec.describe User, type: :model do
         user_id: nil || user.id
       )
       # userが持っているsns
-      sns.user_id = user.id
+      sns.user = user
+      sns.save
       # userが持っているsnsの更新
       expect(User.from_omniauth(auth)).to eq({user: user, sns: sns})
     end
@@ -148,8 +149,9 @@ RSpec.describe User, type: :model do
         # snsをビルド
         user = create(:user, email: "john@example.com")
         # 既に存在するユーザー
-        sns.user_id = user.id
-        # userが持つsnsを更新
+        sns.user = user
+        sns.save
+        # snsと紐づくuserを更新
         expect(User.from_omniauth(auth)).to eq({user: user, sns: sns})
       end
       

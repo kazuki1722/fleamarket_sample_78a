@@ -4,10 +4,14 @@ RSpec.describe Item, type: :model do
   describe "#search" do
     it "search aaa" do
       item = create(:item)
-      item.item_images << create(:item_image)
       other_item = create(:item, name: "bbbb")
-      other_item.item_images << create(:item_image)
-      expect(Item.search(a)).to eq(item)
+      expect(Item.search("a")).to include(item)
+    end
+
+    it "search Item.all" do
+      items = create_list(:item, 10)
+      expect(Item.search(nil)).to eq(items)
     end
   end
+
 end
