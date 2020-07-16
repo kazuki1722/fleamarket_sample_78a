@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-  resources :items, only: [:new, :show, :create,:edit, :update, :destroy] do
+  resources :items do
     collection do
       get 'signup'
       get 'get_category_children', defaults: { fomat: 'json'}
