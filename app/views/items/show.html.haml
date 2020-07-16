@@ -94,7 +94,7 @@
 
           - else
             .Items-btn.login-btn
-              = link_to "#" do
+              = link_to new_user_session_path do
                 .login-btn__top
                   ※ログインすると購入できます。
                 .login-btn__down
@@ -107,19 +107,21 @@
             不適切な商品の通報
 
       %ul.Move-area
-        - if @item.id > 1
+        - if @item.next.present?
           %li.Next
             .Next__icon
               = icon('fas', 'angle-left')
             .Next__link
-              = link_to "前の商品", "/items/#{@item.id - 1}"
+              = link_to item_path(@item.next) do
+                前の商品
         - else
           %li.Next
 
-        - if @item.id != @lastitem
+        - if @item.precious.present?
           %li.Prev
             .Prev__link
-              = link_to "後ろの商品", "/items/#{@item.id + 1}"
+              = link_to item_path(@item.precious) do
+                後ろの商品
             .Prev__icon
               = icon('fas', 'angle-right')
         - else
