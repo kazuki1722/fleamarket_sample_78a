@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-    
   resources :items do
     collection do
       get 'signup'
       get 'search'
+      get 'ransack'
       get 'get_category_children', defaults: { fomat: 'json'}
       get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end

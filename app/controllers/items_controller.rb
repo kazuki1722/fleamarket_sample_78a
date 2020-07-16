@@ -68,6 +68,11 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
+  def ransack
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
+  end
+
   private
 
   def set_items
