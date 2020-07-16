@@ -1,10 +1,4 @@
 class ItemImageUploader < CarrierWave::Uploader::Base
-  # ローカルではアプリ内に、本番環境ではE3に画像を保存するための条件分岐
-  if Rails.env.development? || Rails.env.test?
-    storage :file
-  else
-    storage :fog
-  end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -13,7 +7,12 @@ class ItemImageUploader < CarrierWave::Uploader::Base
   
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # ローカルではアプリ内に、本番環境ではE3に画像を保存するための条件分岐
+  if Rails.env.development? || Rails.env.test?
+    storage :file
+  else
+    storage :fog
+  end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.

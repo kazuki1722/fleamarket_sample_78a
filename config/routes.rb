@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :items, only: [:new, :show, :create,:edit, :update, :destroy] do
     collection do
       get 'signup'
+      get 'get_category_children', defaults: { fomat: 'json'}
+      get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
   end
    
