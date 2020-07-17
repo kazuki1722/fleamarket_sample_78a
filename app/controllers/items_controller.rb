@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  
-  before_action :set_items, only: [:edit, :update, :destroy]
+  before_action :category_parent_array, only: [:new, :create, :edit, :update]
+  before_action :set_items, only: [:edit, :update, :destroy, :show]
 
 
   def index
@@ -12,21 +12,10 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_images.new
-
-    @category_parent_array = Category.where(ancestry: nil)
-  end
-  # 子カテゴリー
-  def get_category_children
-    @category_children = Category.find("#{params[:parent_id]}").children
-  end
-  # 孫カテゴリー
-  def get_category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def create
     @item = Item.new(item_params)
-    @category_parent_array = Category.where(ancestry: nil)
     if item_params[:category_id] == ""
       
       render :new
@@ -37,11 +26,9 @@ class ItemsController < ApplicationController
         render :new
       end
     end
-
   end
 
   def show
-    @item = Item.find(params[:id])
     @images = @item.item_images
     @category_id = @item.category_id
     @category_parent = Category.find(@category_id).parent.parent
@@ -69,7 +56,21 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
+
+  # 子カテゴリー
+  def get_category_children
+    @category_children = Category.find("#{params[:parent_id]}").children
+  end
+  # 孫カテゴリー
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+  
   private
+
+  def category_parent_array
+    @category_parent_array = Category.where(ancestry: nil) 
+  end
 
   def set_items
     @item = Item.find(params[:id])
