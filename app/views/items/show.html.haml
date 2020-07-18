@@ -102,7 +102,7 @@
 
         .Option-area
           .Favorite
-            ★ お気に入り ０
+            = render partial: 'likes/like', locals: { item: @item }
           .Report
             不適切な商品の通報
 

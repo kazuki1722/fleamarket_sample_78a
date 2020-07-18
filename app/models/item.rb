@@ -7,6 +7,8 @@ class Item < ApplicationRecord
   validates :item_images, presence: true
 
   has_many :item_images, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 
   accepts_nested_attributes_for :item_images, allow_destroy: true
   

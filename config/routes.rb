@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { fomat: 'json'}
       get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
+    member do
+      post   '/like/:item_id' => 'likes#like',   as: 'like'
+      delete '/like/:item_id' => 'likes#unlike', as: 'unlike'
+    end
     resources :purchase, only: [:index] do
       collection do
         post 'pay', to: 'purchase#pay'
