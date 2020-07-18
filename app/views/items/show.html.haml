@@ -122,28 +122,30 @@
             - if user_signed_in?
               %ul.message-items
                 - @messages.each do |message|
-                  - if message.user_id == current_user.id  #コメントユーザーとログインユーザーが同一の場合  
-                    %li.message-self
-                      - if message.delete_check == 1   # 仮削除状態の場合
-                        .message-body
-                          .message-body-text
-                            出品者によりこのコメントは削除されました。
-                        - if message.item.seller == current_user  #ログイン中のユーザーが出品者である場合
-                          .comment_restore{data:{index: message.id}} 
-                            = link_to "復元する",restore_item_message_path(item_id: @item, id: message.id)
-                          .comment_delete.complete_delete{data:{index: message.id}}     
-                            = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :delete
-                      - else #仮削除状態でない場合
-                        .comment_user_name
-                          = message.user.nickname
-                        .message-body
-                          .message-body-text
-                            = message.message
-                            .message-icons
-                              = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-                        - if message.item.seller == current_user  #ログイン中のユーザーが出品者である場合
-                          .comment_delete.complete_delete{data:{index: message.id}}     
-                            = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :patch
+                  - if message.user_id == current_user.id  #コメントユーザーとカレントユーザーが同一の場合
+                    .comment_Me.comment_one_block{data:{index: message.id}} 
+                      %li.message-self
+                        - if message.delete_check == 1   # 仮削除状態の場合
+                          .message-body
+                            .message-body-text
+                              出品者によりこのコメントは削除されました。
+                          - if message.item.seller_id == current_user.id  #カレントユーザーが出品者である場合
+                            .comment_restore{data:{index: message.id, item: @item.id}}
+                              = link_to "復元する",restore_item_message_path(item_id: @item, id: message.id)
+                            .comment_delete.complete_delete{data:{index: message.id, item: @item.id}}    
+                              = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :delete
+                        - else #仮削除状態でない場合
+                          .comment_user_name
+                            = message.user.nickname
+                          .message-body
+                            .message-body-text
+                              -# = safe_join(message.message.split("\n"),tag(:br))  改行表示
+                              = message.message
+                              .message-icons
+                                = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+                          - if message.item.seller_id == current_user.id  #ログイン中のユーザーが出品者である場合
+                            .comment_delete.me_pre_delete{data:{index: message.id, item: @item.id}}  
+                              = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :patch
                   - else #コメントユーザーとログインユーザーが異なる（他人のコメント）の場合 
                     .comment_Other.comment_one_block{data:{index: message.id}}    
                       %li.message-self
@@ -151,38 +153,32 @@
                           .message-body-other
                             .message-body-text
                               出品者によりこのコメントは削除されました。
-                          - if message.item.seller == current_user  #ログイン中のユーザーが出品者である場合
-                            .comment_restore{data:{index: message.id}} 
+                          - if message.item.seller_id == current_user.id  #ログイン中のユーザーが出品者である場合
+                            .comment_restore{data:{index: message.id, item: @item.id}}
                               = link_to "復元する",restore_item_message_path(item_id: @item, id: message.id)
-                            .comment_delete.complete_delete{data:{index: message.id}}     
+                            .comment_delete.complete_delete{data:{index: message.id, item: @item.id}}
                               = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :delete
                         - else #仮削除状態でない場合
                           .comment_user_name_other
                             = message.user.nickname
                           .message-body-other
                             .message-body-text
+                              -# = safe_join(message.message.split("\n"),tag(:br))  改行表示
                               = message.message
                               .message-icons
                                 = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
                           - if message.item.seller == current_user  #ログイン中のユーザーが出品者である場合
-                            .comment_delete.other_pre_delete{data:{index: message.id}}     
+                            .comment_delete.other_pre_delete{data:{index: message.id, item: @item.id}}  
                               = link_to '削除する', item_message_path(item_id: @item, id: message.id) , method: :patch
-                          
           .message-content
-            = form_with model: [@item, @message], class: "massage-form" do |f|
-              %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            = form_with model: [@item, @message], class: "massage-form", local: true do |f|
+              %p 
+                相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
               = f.text_area :message, id:"comment_body", class: "textarea-default", wrap: "soft"
               = f.hidden_field :item_id, value: @item.id
-              %button.message-submit.btn-default.btn-gray{name: "button", type: "submit"}
-                コメントする
-                  
-            -# %form.massage-form
-            -#   %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            -#   %textarea.textarea-default
-            -#   %button.message-submit.btn-default.btn-gray
-            -#     %span コメントする
-                                                  
-      
+              = f.submit "コメントする", class: "message-submit btn-default btn-gray"
+              
+
       %ul.Move-area
         %li.Next
           .Next__icon
@@ -211,6 +207,5 @@
                 （税込み）
             .Recommend__right
               ★０
-
   %footer
     = render partial: "footer"

@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     @category_child = Category.find(@category_id).parent
     @category_grandchild = Category.find(@category_id)
     @message = Message.new
-    @messages = @item.messages
+    @messages = @item.messages.includes(:user)
   end
 
   def update
