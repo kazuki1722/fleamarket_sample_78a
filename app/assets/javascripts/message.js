@@ -25,7 +25,7 @@ $(document).on('turbolinks:load', function(){
     `
     return html;
   }
-  
+
   function new_message_other(message_data){
     var html = `
     <div class="comment_Me comment_one_block" data-index="${message_data.message_id}">
@@ -153,7 +153,6 @@ $(document).on('turbolinks:load', function(){
         $('#comment_body').val('');
         $('.message-submit').prop('disabled', false);
       }
-    
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
