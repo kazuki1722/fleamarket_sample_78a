@@ -24,7 +24,8 @@ $(document).on('turbolinks:load', function(){
     </div>
     `
     return html;
-  };
+  }
+  
   function new_message_other(message_data){
     var html = `
     <div class="comment_Me comment_one_block" data-index="${message_data.message_id}">
@@ -44,7 +45,7 @@ $(document).on('turbolinks:load', function(){
     </div>
     `
     return html;
-  };
+  }
   
 
   // 仮削除表示用
@@ -63,7 +64,8 @@ $(document).on('turbolinks:load', function(){
         </div>
     `
   return html;
-  };
+  }
+
   function MePreDelete(index, item){
     var html = `
         <div class="message-body">
@@ -79,7 +81,7 @@ $(document).on('turbolinks:load', function(){
         </div>
     `
   return html;
-  };
+  }
 
   
   // 復元
@@ -101,7 +103,7 @@ $(document).on('turbolinks:load', function(){
           </div>
       `
       return html;
-  };
+  }
 
   function restoreOther(restore_data){
     var html = `
@@ -121,7 +123,7 @@ $(document).on('turbolinks:load', function(){
           </div>
       `
       return html;
-  };
+  }
 
 
   
@@ -203,12 +205,12 @@ $(document).on('turbolinks:load', function(){
     .done(function(restore_data){
       if (restore_data.item_seller.id == restore_data.user_id){  // 出品者とコメントしたユーザーが等しい場合
         var html = restoreMe(restore_data);
-        var content = $(`.comment_one_block[data-index=${index}]`).find(".message-self")
+        var content = $(`.comment_one_block[data-index=${index}]`).find(".message-self");
         content.empty();
         content.append(html);
       } else {   // 出品者とコメントしたユーザーが異なる場合
         var html = restoreOther(restore_data);
-        var content = $(`.comment_one_block[data-index=${index}]`).find(".message-self")
+        var content = $(`.comment_one_block[data-index=${index}]`).find(".message-self");
         content.empty();
         content.append(html);
       }

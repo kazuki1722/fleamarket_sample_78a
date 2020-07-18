@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
 
   before_action :set_message, only: [:update,:destroy,:restore]
-  before_action :check_user, only: [:update,:destroy,:restore]
 
   def create
     @message = Message.create(message_params)
@@ -36,14 +35,6 @@ class MessagesController < ApplicationController
 
   def set_message
     @message = Message.find(params[:id])
-  end
-
-  def check_user
-    unless @message.item.seller == current_user
-      flash[:alert] = "その操作はできません"
-      redirect_to root_path
-    end
-  end
- 
+  end 
   
 end
