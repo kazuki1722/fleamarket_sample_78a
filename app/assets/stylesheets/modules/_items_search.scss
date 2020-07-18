@@ -1,7 +1,6 @@
 .Search{
   background-color: #f5f5f5;
   width: 100vw;
-  height: 1000px;
   padding: 40px 0px 40px;
   &__Wrapper{
     width: 1024px;
@@ -12,7 +11,135 @@
     &__Side{
       width: 280px;
       margin-right: 40px;
-      background-color: white;
+      &__Form{
+        &__sorts{
+          display: block;
+          height: 48px;
+          width: 100%;
+          padding: 0px 16px;
+          font-size: 16px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+        }
+        &__input{
+          background-color: #FFF;
+          padding: 16px;
+          margin-top: 40px;
+          &__text{
+            font-size: 16px;
+            font-weight: bold;
+          }
+          &__cont{
+            margin-top: 24px;
+            &__title{
+              font-size: 14px;
+              font-weight: bold;
+            }
+            &__box{
+              width: 100%;
+              margin-top: 8px;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+            }
+          }
+          &__price{
+            margin-top: 24px;
+            &__title{
+              font-size: 14px;
+              font-weight: bold;
+            }
+            &__box{
+              &__left{
+                display: inline-block;
+                width: 45%;
+                margin-top: 8px;
+                height: 48px;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+              }
+              p{
+                display: inline-block;
+                font-size: 10px;
+                width: 5%;
+                text-align: center;
+              }
+              &__right{
+                display: inline-block;
+                width: 45%;
+                margin-top: 8px;
+                height: 48px;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+              }
+            }
+          }
+          &__check{
+            margin-top: 24px;
+            &__title{
+              font-size: 14px;
+              font-weight: bold;
+            }
+            &__box {
+              display: block;
+              margin-top: 16px;
+              width: 50%;
+              display: flex;
+              align-items: center;
+              height: 28px;
+              line-height: 13px;
+              font-size: 14px;
+              input[type="checkbox"]{
+                margin-right: 5px;
+              }
+            }
+            &__boxes{
+              label{
+                display: inline-block;
+                margin-top: 16px;
+                width: 44%;
+                height: 28px;
+                line-height: 13px;
+                font-size: 14px;
+                word-break: break-all;
+              }
+            }
+          }
+          &__submit{
+            height: 50px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            &__clear{
+              display: block;
+              height: 100%;
+              width: 45%;
+              background-color: #aaa;
+              border: 1px solid #aaa;
+              border-radius: 4px;
+              color: #fff;
+              font-size: 14px;
+              line-height: 48px;
+              text-align: center;
+            }
+            &__box{
+              display: block;
+              height: 100%;
+              width: 45%;
+              background-color: #ea352d;
+              border: 1px solid #ea352d;
+              border-radius: 4px;
+              color: #fff;
+              font-size: 14px;
+              line-height: 48px;
+              text-align: center;
+            }
+          }
+        }
+      }
     }
     &__Main{
       width: 700px;

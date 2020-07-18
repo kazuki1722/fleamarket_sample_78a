@@ -3,6 +3,49 @@
 .Search
   .Search__Wrapper
     .Search__Wrapper__Side
+      = search_form_for @q, url: ransack_items_path, class: "Search__Wrapper__Side__Form"  do |f|
+  
+        = f.select( :sorts, { '並び替え': 'id asc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の新しい順': 'updated_at desc'}, {}, { onchange: 'this.form.submit()', class: 'Search__Wrapper__Side__Form__sorts'})
+        .Search__Wrapper__Side__Form__input
+          .Search__Wrapper__Side__Form__input__text
+            詳細検索
+          .Search__Wrapper__Side__Form__input__cont
+            .Search__Wrapper__Side__Form__input__cont__title
+              キーワードを検索する
+            = f.search_field :name_cont, placeholder: "例）値下げ", class: "Search__Wrapper__Side__Form__input__cont__box"
+          .Search__Wrapper__Side__Form__input__cont
+            .Search__Wrapper__Side__Form__input__cont__title
+              ブランド名から探す
+            = f.search_field :brand_cont, placeholder: "例）シャネル", class: "Search__Wrapper__Side__Form__input__cont__box"
+          .Search__Wrapper__Side__Form__input__price
+            .Search__Wrapper__Side__Form__input__price__title
+              価格
+            .Search__Wrapper__Side__Form__input__price__box
+              = f.search_field :price_gteq, placeholder: "¥ Min", class: "Search__Wrapper__Side__Form__input__price__box__left"
+              %p 〜
+              = f.search_field :price_lteq, placeholder: "¥ Max", class: "Search__Wrapper__Side__Form__input__price__box__right"
+          .Search__Wrapper__Side__Form__input__check
+            .Search__Wrapper__Side__Form__input__check__title
+              商品の状態
+            %label.Search__Wrapper__Side__Form__input__check__box
+              %input{type: "checkbox"}
+                すべて
+            .Search__Wrapper__Side__Form__input__check__boxes
+              = f.collection_check_boxes :condition_id_in, Condition.all, :id, :name 
+          .Search__Wrapper__Side__Form__input__check
+            .Search__Wrapper__Side__Form__input__check__title
+              配送料の負担
+            %label.Search__Wrapper__Side__Form__input__check__box
+              %input{type: "checkbox"}
+                すべて
+            .Search__Wrapper__Side__Form__input__check__boxes
+              = f.collection_check_boxes :shipping_day_id_in, ShippingDay.all, :id, :name 
+            
+            
+          .Search__Wrapper__Side__Form__input__submit
+            = link_to "クリア", ransack_items_path, class: "Search__Wrapper__Side__Form__input__submit__clear"
+            = f.submit "完了", class: "Search__Wrapper__Side__Form__input__submit__box"
+
     .Search__Wrapper__Main
       %h2.Search__Wrapper__Main__result
         -if @keyword.present?
@@ -22,5 +65,5 @@
                 = i.name
             .Search__Wrapper__Main__items__box__price
               = "¥#{i.price}"
-          
+            
 = render partial: "items/footer"

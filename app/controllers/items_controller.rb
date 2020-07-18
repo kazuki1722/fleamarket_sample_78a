@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  
   before_action :set_items, only: [:edit, :update, :destroy]
 
 
@@ -67,11 +66,17 @@ class ItemsController < ApplicationController
   def search
     @keyword = params[:keyword]
     @items = Item.search(params[:keyword])
+    @q = Item.ransack(params[:q])
   end
 
   def ransack
     @q = Item.ransack(params[:q])
-    @items = @q.result(distinct: true)
+    @ransack = @q.result(distinct: true)
+    if params[:q].present?
+      @namekey = params[:q][:name_cont]
+    else
+      params[:q] = {sorts: 'id asc'}
+    end
   end
 
   private
