@@ -1,27 +1,9 @@
+- breadcrumb :item_show, @item
+
 %body
   = render partial: "header"
+  = render partial: "breadcrumbs"
   .Wrapper
-
-    %nav.List-box
-      %ul.List-menu
-        %li.List-menu__content
-          = link_to "カテゴリ", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "ベビー・キッズ", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "ベビー服(男女兼用) ~95cm", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "アウター", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content__last
-          = link_to "product2", "#"
 
     .Container
       .Items
