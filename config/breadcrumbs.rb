@@ -9,16 +9,16 @@ crumb :item_show do |item|
 end
 
 # マイページ
-crumb :mypage do
+crumb :mypage do 
   link "マイページ", mypages_path
-  parent [:root, :item_show]
+  parent :item_show
 end
 
 # 検索
-# crumb :category do
-#   link "カテゴリ一覧", "#"
-#   parent :root
-# end
+crumb :search do
+  link "検索結果", search_items_path
+  parent :root
+end
 
 # crumb :category_child do |child|
 #   link child, "#"
