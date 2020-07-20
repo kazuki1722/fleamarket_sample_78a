@@ -11,7 +11,7 @@ end
 # マイページ
 crumb :mypage do 
   link "マイページ", mypages_path
-  parent :item_show
+  parent :root
 end
 
 # 検索
