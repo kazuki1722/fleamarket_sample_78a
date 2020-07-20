@@ -42,6 +42,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'factory_bot_rails'
   gem 'pry-rails'
+  gem 'faker'
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
@@ -74,6 +75,9 @@ gem 'devise'
 gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'ancestry'
 gem 'jquery-rails'
+
+gem 'dotenv-rails'
+gem 'payjp'
 
 # 出品機能でのimage関連gem
 gem 'carrierwave'

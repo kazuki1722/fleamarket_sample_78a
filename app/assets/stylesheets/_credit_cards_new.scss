@@ -1,0 +1,185 @@
+.mypage-content__chapter-container {
+  width: 700px;
+  margin: 0 auto;
+  background: #fff;
+}
+.card-main {
+  background-color: #f8f8f8;
+  display: block;
+  font-size: 14px;
+
+  &__chapter-head {
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px 24px;
+  }
+
+  &__inner--registration-form {
+    padding: 24px 16px 40px;
+    border-top: 1px solid #f5f5f5;
+  }
+
+  &__content {
+    max-width: 343px;
+    margin: 0 auto;
+  }
+
+  &__form-group label {
+    font-weight: 600;
+  }
+
+  &__form-require {
+    background: #ea352d;
+    margin: 0 0 0 8px;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: #fff;
+    font-size: 12px;
+    vertical-align: top;
+  }
+
+  &__input-default {
+    width: 100%;
+    margin: 8px 0 0;
+    height: 48px;
+    padding: 10px 16px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+
+  &__card-list {
+    margin: 8px 0 0;
+    font-size: 0;
+    li {
+      display: inline-block;
+      margin: 0 0 0 8px;
+      vertical-align: middle;
+    }
+  }
+
+  &__form-group {
+    margin: 24px 0 0;
+  }
+
+  &__select-wrap {
+    display: inline-block;
+    width: calc(50% - 5px);
+    margin: 8px 0 0;
+    position: relative;
+    background: #fff;
+  }
+
+  &__month__select {
+    width: calc(100% - 38px);
+    position: relative;
+    z-index: 2;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+
+  &__seqcode {
+    position: relative;
+    margin: 8px 0 0;
+
+    &__text {
+      text-align: right;
+      color: #0099e8;
+    }
+
+    &__info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 28px;
+      z-index: 1;
+      padding: 16px;
+      border-radius: 6px;
+      background: #eee;
+      color: #333;
+      line-height: 1.5;
+      text-align: center;
+      -webkit-transition: all ease-out .3s;
+      transition: all ease-out .3s;
+      visibility: hidden;
+      opacity: 0;
+      &:before {
+        top: -8px;
+        right: 32px;
+        border-width: 0 8px 8px 8px;
+        border-color: transparent transparent #eee transparent;
+        display: block;
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+      img {
+        margin-top: 8px;
+      }
+    }
+  }
+  
+  &__form-question {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #0099e8;
+    color: #fff;
+    line-height: 14px;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  &__btn-red {
+    background: #ea352d;
+    border: 1px solid #ea352d;
+    color: #fff;
+  }
+
+  &__btn-default {
+    display: block;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    -webkit-transition: all ease-out .3s;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    text-align: center;
+  }
+
+}
+
+label {
+  display: inline-block;
+}
+
+.fa-chevron-down {
+  font-size: 10px;
+  margin: 0 6px 0 -15px;
+  position: relative;
+  top: 3px;
+  pointer-events: none;
+  right: 16px;
+  z-index: 2;
+  color: #888;
+}
+
+
+

@@ -47,16 +47,20 @@ body{
         height: 40px;
         margin-right: 40px;
       }
-      &__input{
-        width: calc(100vw - 310px);
-        height: 40px;
-        border: solid thin black;
-        font-size: 16px;
+      &__form{
         display: flex;
-        align-items: center;        
-      }
-      &__button{
-        background-color: #3ccace;
+        &__input{
+          width: calc(100vw - 310px);
+          height: 40px;
+          border: solid thin black;
+          font-size: 16px;
+          padding-left: 10px;
+        }
+        &__button{
+          background-color: #3ccace;
+          height: 40px;
+          width: 40px;
+        }
       }
     }
     .contents {
