@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Address do
+RSpec.describe Address, type: :model do
   describe '#create_address' do
     context "can save" do
       it "is valid with a address_family_name, address_first_name,

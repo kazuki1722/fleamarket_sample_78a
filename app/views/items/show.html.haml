@@ -26,30 +26,25 @@
     .Container
       .Items
         %p.Items__title
-          product2
+          = @item.name
         .Items__img-first
-          = image_tag asset_path('inu.jpg'), size: "500x400"
+          = image_tag "#{@images.first.image}", size: "500x400"
         .Items__img-second
-          = image_tag asset_path('inu.jpg'), size: "160x120"
-          = image_tag asset_path('inu.jpg'), size: "160x120"
-          = image_tag asset_path('inu.jpg'), size: "160x120"
+          - @images.each do |i|
+            = image_tag "#{i.image}", size: "160x120"
+
         %p.Items__price
-          ¥30000
+          = "¥#{@item.price}"
         %p.Items__sipping
           (税込) 送料込み
         %p.Items__introduction
-          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の
-          二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をし
-          たと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を
-          出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降
-          りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰
-          って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          = @item.introduction
         %table.Menu
           %tr.Menu__list
             %td.Menu__list__left
               出品者
             %td.Menu__list__right
-              やまだ
+              = @item.user.nickname
           %tr.Menu__list
             %td.Menu__list__left
               カテゴリ
@@ -64,37 +59,32 @@
             %td.Menu__list__left
               ブランド
             %td.Menu__list__right
-              Chanel
-          %tr.Menu__list
-            %td.Menu__list__left
-              商品のサイズ
-            %td.Menu__list__right
-              000×000
+              = @item.brand
           %tr.Menu__list
             %td.Menu__list__left
               商品の状態
             %td.Menu__list__right
-              未使用に近い
+              = @item.condition.name
           %tr.Menu__list
             %td.Menu__list__left
               配送料の負担
             %td.Menu__list__right
-              送料込み（出品者負担）
+              = @item.shipping_charge.name
           %tr.Menu__list
             %td.Menu__list__left
               発送元の地域
             %td.Menu__list__right
-              岩手県
+              = @item.prefecture.name
           %tr.Menu__list
             %td.Menu__list__left
               発送日の目安
             %td.Menu__list__right
-              4-7日で発送
+              = @item.shipping_day.name
 
         .Btn-area
           - if user_signed_in? && current_user.id == @item.seller_id
             .Items-btn.seller-btn
-              = link_to "#" do
+              = link_to edit_item_path(@item.id) do
                 編集・削除はこちらから
 
           - elsif user_signed_in? && current_user.id != @item.seller_id
@@ -104,10 +94,10 @@
 
           - else
             .Items-btn.login-btn
-              = link_to "#" do
-                %span
+              = link_to new_user_session_path do
+                .login-btn__top
                   ※ログインすると購入できます。
-                  %br
+                .login-btn__down
                   ログインはこちらから
 
         .Option-area
@@ -180,20 +170,29 @@
               
 
       %ul.Move-area
-        %li.Next
-          .Next__icon
-            = icon('fas', 'angle-left')
-          .Next__link
-            = link_to "前の商品", "#"
-        %li.Prev
-          .Prev__link
-            = link_to "後ろの商品", "#"
-          .Prev__icon
-            = icon('fas', 'angle-right')
-      .Recommend  
+        - if @item.next.present?
+          %li.Next
+            .Next__icon
+              = icon('fas', 'angle-left')
+            .Next__link
+              = link_to item_path(@item.next) do
+                前の商品
+        - else
+          %li.Next
+
+        - if @item.precious.present?
+          %li.Prev
+            .Prev__link
+              = link_to item_path(@item.precious) do
+                後ろの商品
+            .Prev__icon
+              = icon('fas', 'angle-right')
+        - else
+          %li.Prev
+
+      .Recommend
         .Recommend__link
           = link_to "ベビー・キッズをもっと見る", "#"
-
         .Recommend__category
           .recommend__category__img
             = image_tag asset_path('inu.jpg'), size: "220x150"
