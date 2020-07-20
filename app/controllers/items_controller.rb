@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
   before_action :category_parent_array, only: [:new, :create, :edit, :update]
   before_action :set_items, only: [:edit, :update, :destroy, :show]
+  before_action :set_ransack, only: [:search, :ransack]
+
 
 
   def index
@@ -56,6 +58,15 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
+  def ransack
+    @ransack = @q.result(distinct: true)
+    if params[:q].present?
+      @namekey = params[:q][:name_cont]
+    else
+      params[:q] = {sorts: 'id asc'}
+    end
+  end
+
 
   # 子カテゴリー
   def get_category_children
@@ -80,5 +91,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :price, :category_id,
       :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, 
       :brand, :buyer_id, :seller_id, item_images_attributes: [:image,:_destroy, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+  end
+
+  def set_ransack
+    @q = Item.ransack(params[:q])
   end
 end
