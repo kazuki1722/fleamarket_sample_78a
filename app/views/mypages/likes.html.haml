@@ -10,7 +10,7 @@
           = link_to "お知らせ", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "いいね！一覧", likes_mypages_path
+          = link_to "いいね！一覧", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "出品する", "#"
@@ -43,6 +43,22 @@
           = link_to "ログアウト", logout_mypages_path
           = icon('fa','chevron-right')
     .Mypage__Wrapper__Main
-      .Mypage__Wrapper__Main__user-name
-        = "#{current_user.nickname}さんのマイページ"
+      .main
+      %section.main-table
+      %h2.main__table__header
+        いいね！一覧
+      %ul.main__table__list
+        - current_user.like_items.each do |item|
+          %li
+            =link_to item_path(item), class: "main__table__list__item" do
+              .image
+                = image_tag item.item_images.first.image.url , size: '48x64'
+              .main__table__list__item__body
+                .main__table__list__item__body__text
+                = item.name
+                %br
+                = item.price 
+                円
+              .icon
+                .fas.fa-chevron-right
 = render partial: "items/footer"

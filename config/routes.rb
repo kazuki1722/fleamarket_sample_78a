@@ -38,9 +38,10 @@ Rails.application.routes.draw do
     end
   end
    
-  resources :mypages, only: :index do
+  resources :mypages, only: [:index, :show] do
     collection do
       get 'logout'
+      get :likes
     end
   end
   scope :mypages do
