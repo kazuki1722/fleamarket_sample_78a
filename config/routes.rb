@@ -27,8 +27,8 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
     member do
-      post   '/like/:item_id' => 'likes#like',   as: 'like'
-      delete '/like/:item_id' => 'likes#unlike', as: 'unlike'
+      post   '/like/:item_id', to: 'likes#like',   as: 'like'
+      delete '/like/:item_id', to: 'likes#unlike', as: 'unlike'
     end
     resources :purchase, only: [:index] do
       collection do
