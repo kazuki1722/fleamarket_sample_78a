@@ -3,20 +3,28 @@ class MessagesController < ApplicationController
   before_action :set_message, only: [:update,:destroy,:restore]
 
   def create
-    @message = Message.create(message_params)
+    @message = Message.new(message_params)
     @seller_of_item = User.find(@message.item.seller_id)
     @item = @message.item.id
-    respond_to do |format|
-      format.json
+    if @message.save
+      respond_to do |format|
+        format.json
+      end
+    else
+      redirect_to redirect_to item_path(@item.id)
     end
   end
 
   def update
-    @message.update(delete_check:1)
+    unless @message.update(delete_check:1)
+      redirect_to redirect_to item_path(@item.id)
+    end
   end
 
   def restore
-    @message.update(delete_check:0)
+    unless @message.update(delete_check:0)
+      redirect_to redirect_to item_path(@item.id)
+    end
     @seller_of_item = User.find(@message.item.seller_id)
     @item = @message.item.id
     respond_to do |format|
@@ -25,7 +33,9 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    @message.destroy
+    unless @message.destroy
+      redirect_to redirect_to item_path(@item.id)
+    end
   end
 
   private
