@@ -26,6 +26,11 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { fomat: 'json'}
       get 'get_category_grandchildren', defaults: { fomat: 'json'}
     end
+    resources :messages, only:[:create,:update,:destroy] do
+      member do
+        get 'restore'
+      end
+    end
     resources :purchase, only: [:index] do
       collection do
         post 'pay', to: 'purchase#pay'
