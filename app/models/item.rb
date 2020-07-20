@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   validates :price, numericality: {greater_than: 299, less_than: 9999999 }
   validates :item_images, presence: true
   has_many :item_images, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 
   has_many :messages, dependent: :destroy
 
