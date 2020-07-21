@@ -7,6 +7,7 @@
     .main__item
       .main__item__box
         .main__item__box__image
+          = image_tag @item.item_images.first.image.url , size: "100x100"
         .main__item__box__detail
           .main__item__box__detail__name
             = @item.name
