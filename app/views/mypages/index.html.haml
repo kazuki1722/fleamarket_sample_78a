@@ -1,4 +1,7 @@
+- breadcrumb :mypage
+
 = render partial: "items/header"
+= render partial: "items/breadcrumbs"
 .Mypage
   .Mypage__Wrapper
     .Mypage__Wrapper__Side
@@ -10,10 +13,10 @@
           = link_to "お知らせ", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "いいね！一覧", "#"
+          = link_to "いいね！一覧", likes_mypages_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "出品する", "#"
+          = link_to "出品する", new_item_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "出品した商品-出品中", "#"
