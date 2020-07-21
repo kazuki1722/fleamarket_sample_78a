@@ -1,7 +1,7 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
-  before_action :set_item, only:[:index, :pay]
+  before_action :set_item, only:[:index, :pay, :done]
   before_action :set_card, only:[:index, :pay]
 
   def index
