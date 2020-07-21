@@ -1,1 +1,147 @@
-= render 'items/form'  
+.product-container
+  = render 'items/form_header'
+  .product-form
+    = form_with model: @item, local: true do |f|
+      .product-form__image-container
+        %p.message
+          商品出品画像
+          %span.style_attention.required
+            必須
+        %p.image-message
+          最大10枚までアップロード出来ます
+        .upload-space
+          .icon
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @item.item_images.each_with_index do |image, i|
+                    .preview
+                      = image_tag image.image.url, data: { index: i }, width: "100", height: '100', class: "preview-image"
+                      .js-remove 削除
+              %label{class: "icon", id: "image-label", for: "item_item_images_attributes_#{@item.item_images.count}_image"}
+                = icon("fas", "camera")
+                = f.fields_for :item_images do |image|
+                  .js-file_group{"data-index" => "#{image.index}"}
+                    = image.file_field :image, class: 'js-file'
+                  - if @item.persisted?
+                    = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index": "#{@item.item_images.count}"}
+                    = file_field_tag :item_image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", class: 'js-file', id: "item_item_images_attributes_#{@item.item_images.count}_image"
+                .icon-comment
+                  %p#text カメラをクリックしてファイルをアップロード
+      .product-form__item-container
+        %p.message
+          商品名
+          %span.style_attention.required
+            必須  
+          = f.text_field :name, class: "product-form__item-container__name-box",  placeholder: "商品名（必須 40文字まで)"
+          -if @item.errors.messages[:name].any?
+            .error-message
+              %p2 入力してください
+        %p.message
+          商品の説明
+          %span.style_attention.required
+            必須
+          = f.text_area :introduction, class: "product-form__item-container__description-box", placeholder: "商品の説明"
+          -if @item.errors.messages[:introduction].any?
+            .error-message
+              %p2 入力してください
+      .product-form__details-container
+        %h3.explanation
+          商品の詳細
+        %p.message
+          カテゴリー
+          %span.style_attention.required
+            必須
+        -if @item.errors.messages[:category_id].any?
+          .error-message
+            %p2 選択してください
+        .category-form
+          = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください",selected: @item.category.parent_id}, {class: "product-form__details-container__category-box" }
+          = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name,{ include_blank: "選択してください",selected:  @item.category.parent.parent_id}, {class: "product-form__details-container__category-box" }
+          = f.collection_select :category_id, @item.category.parent.children, :id, :name,{ include_blank: "選択してください",selected: @item.category_id}, {class: "product-form__details-container__category-box"}
+        %p.message
+          ブランド
+          %span.style_attention.any
+            任意
+        = f.text_field :brand, class: "product-form__details-container__brand-box",  placeholder: "例) シャネル"    
+        %p.message
+          商品の状態
+          %span.style_attention.required
+            必須
+        = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__condition-box"}
+        -if @item.errors.messages[:condition].any?
+          .error-message
+            %p2 選択してください
+      .product-form__post-container
+        %h3.explanation
+          配送について
+        %p.message
+          配送料
+          %span.style_attention.required
+            必須
+        = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
+        -if @item.errors.messages[:shipping_charge_id].any?
+          .error-message
+            %p2 選択してください
+        %p.message
+          配送元
+          %span.style_attention.required
+            必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"} 
+        -if @item.errors.messages[:prefecture_id].any?
+          .error-message
+            %p2 選択してください
+        %p.message
+          配送までの日数
+          %span.style_attention.required
+            必須
+        = f.collection_select :shipping_day_id, ShippingDay.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
+        -if @item.errors.messages[:shipping_day_id].any?
+          .error-message
+            %p2 選択してください
+      .product-form__price-container
+        %h3.explanation
+          販売価格(300〜9,999,999)  
+        %ul
+          %li
+            %p.message
+              販売価格
+              %span.style_attention.required
+                必須
+          %li
+            .price
+              %span ¥
+              =f.number_field :price, placeholder: "0", type: "number", class: "product-form__price-container__price-box"
+              -if @item.errors.messages[:shipping_day_id].any?
+                .error-message
+                  %p2 300以上9,999,999以下で入力してください 
+      .product-form__submit-container
+        .product-form__submit-container__button
+          %input{type: "submit", class: "product-form__submit-container__exhibition", value: "出品する"}
+        - if @item.persisted?
+          .product-form__submit-container__button
+            = link_to "この商品を削除する", item_path(@item.id), method: :delete, class: "product-form__submit-container__exhibition", data: {confirm: "削除しますか？"}
+        .product-form__submit-container__back
+          = link_to root_path do
+            もどる
+      .product-form__attention-container
+        %p.sub-message
+          禁止されている
+          = link_to "#" do
+            行為
+          および
+          = link_to "#" do
+            出品物
+          を必ずご確認ください。
+          = link_to "#" do
+            偽ブランド品
+          や
+          = link_to "#" do
+            盗品物
+          などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+          = link_to "#" do
+            加盟店規約
+          同意したことになります。
+  = render 'items/form_footer'
