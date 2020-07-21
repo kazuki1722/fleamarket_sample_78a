@@ -2,10 +2,6 @@
   display: none;
 }
 
-.category__icon,.brands__icon{
-  color: #fff;
-}
-
 // カテゴリーの大枠の要素の共通項
 .category__list{
   position: absolute;
@@ -35,7 +31,6 @@
       display: block;
       &__name{
         width: 100%;
-        color: black;
         display: inline-block;
         padding: 10px 20px;
         font-size: 14px;

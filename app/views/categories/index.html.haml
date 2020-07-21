@@ -1,0 +1,26 @@
+.category__container
+  .category__container--top
+    .category__container--top__title
+      カテゴリー一覧
+  - @@category_parent_array.each do |parent, i|
+    - unless parent.name.include?("カテゴリー一覧")
+      .category__container--box
+        .category__container--box--title{id: "#{i}"}
+          = parent.name
+        .category__box--child
+          .category__box--child--all
+            = link_to category_path(parent), class: "category__link--btn" do
+              すべて
+          - parent.children.each do |child|
+            .child__box
+              .child__box--name
+                = child.name  
+              .grandchild__box
+                .grandchild__link
+                  = link_to category_path(child), class: "category__link--btn" do
+                    すべて
+                - child.children.each do |grandchild|
+                  .grandchild__link
+                    - unless grandchild.name.include?("すべて")
+                      = link_to category_path(grandchild), class: "category__link--btn" do
+                        = grandchild.name
