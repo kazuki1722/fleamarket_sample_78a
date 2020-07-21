@@ -1,28 +1,10 @@
+- breadcrumb :item_show, @item
+
 %body
   = render partial: "header"
+
   .Wrapper
-
-    %nav.List-box
-      %ul.List-menu
-        %li.List-menu__content
-          = link_to "カテゴリ", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "ベビー・キッズ", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "ベビー服(男女兼用) ~95cm", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content
-          = link_to "アウター", "#"
-        %li.List-menu__icon
-          = icon('fas', 'angle-right')
-        %li.List-menu__content__last
-          = link_to "product2", "#"
-
+    = render partial: "breadcrumbs"
     .Container
       .Items
         %p.Items__title
@@ -89,7 +71,7 @@
 
           - elsif user_signed_in? && current_user.id != @item.seller_id
             .Items-btn.buyer-btn
-              = link_to "#" do
+              = link_to item_purchase_index_path(@item.id) do
                 購入する
 
           - else
