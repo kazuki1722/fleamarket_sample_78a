@@ -15,6 +15,9 @@ class PurchaseController < ApplicationController
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
     end
+    if @item.buyer_id.present?
+      redirect_to item_path(@item.id)
+    end
   end
 
   def pay
