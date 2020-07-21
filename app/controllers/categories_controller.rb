@@ -1,24 +1,40 @@
 class CategoriesController < ApplicationController
 
-  def index
+  before_action :category_parent_array
+  before_action :set_category
+
+  def grandchild
+    @items = Item.where(category_id: params[:id]).order('created_at DESC').limit(30)
   end
 
-  def show
-    @items = Item.includes(:item_images).order('created_at DESC').limit(4)
-    # @items = Item.including.where(category_id: @category.subtree_ids)
-    # @items = @category..order("created_at DESC").all
-    # カテゴリーidを元に,クリックされたカテゴリーのレコードを取得
-    @category = Category.find(params[:id])
-    # ↓詳細カテゴリページのリンク用
-    # 一階層下のカテゴリーがある場合はそれを格納
-    if @category.has_children?
-      @category_links = @category.children
-    # 無い場合は同じ階層のカテゴリーを格納
-    else
-      @category_links = @category.siblings
-     end
+  def child
+    grandchildren = @category.children
+    @items = []
+    grandchildren.each do |grandchild|
+      @items += Item.where(category_id: grandchild.id).order('created_at DESC').limit(30)
+    end
   end
 
+  def parent
+    children = @category.children
+    grandchildren = []
+    children.each do |child|
+      grandchildren << Category.where(ancestry: "#{@category.id}/#{child.id}")
+    end
+    @items = []
+    grandchildren.each do |grandchild|
+      grandchild.each do |id|
+        @items += Item.where(category_id: id).order('created_at DESC').limit(30)
+      end
+    end
+  end
   
+  private
+  def category_parent_array
+    @category_parent_array = Category.where(ancestry: nil)
+  end
 
+  def set_category
+    @category = Category.find(params[:id])
+  end
 end

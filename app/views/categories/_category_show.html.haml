@@ -7,12 +7,13 @@
       .items-box-content
         - @items.each do |item|
           .items-box
-            = link_to "#" do
-              %figure.items-box-photo
-                = image_tag "#{item.item_images[0].image}"
+            = link_to item_path(item.id) do
+              .items-box-photo
+                = image_tag item.item_images.first.image.url if item.item_images.present?
               .items-box-body
                 %h3.items-box-name
-                  大きいサイズ レディース春新作ダメージデニム オーバーオール サロペット
+                  = item.introduction
                 .items-box-num
                   .items-box-price
-                    7000
+                    ¥
+                    = item.price
