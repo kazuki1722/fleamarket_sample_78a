@@ -1,0 +1,19 @@
+.l-container
+  .l-content
+    .items-box-container
+      %h1.items-box-head
+        = @category.name
+        の商品一覧
+      .items-box-content
+        - @items.each do |item|
+          .items-box
+            = link_to item_path(item.id) do
+              .items-box-photo
+                = image_tag item.item_images.first.image.url if item.item_images.present?
+              .items-box-body
+                %h3.items-box-name
+                  = item.introduction
+                .items-box-num
+                  .items-box-price
+                    ¥
+                    = item.price
