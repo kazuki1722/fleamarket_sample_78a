@@ -58,9 +58,9 @@
           .error-message
             %p2 選択してください
         .category-form
-          = f.collection_select :category_id, @category_parent_array, :id, :name,{ include_blank: "選択してください",selected: @item.category.parent_id}, {class: "product-form__details-container__category-box" }
-          = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name,{ include_blank: "選択してください",selected:  @item.category.parent.parent_id}, {class: "product-form__details-container__category-box" }
-          = f.collection_select :category_id, @item.category.parent.children, :id, :name,{ include_blank: "選択してください",selected: @item.category_id}, {class: "product-form__details-container__category-box"}
+          = f.collection_select :category_id, @category_parent_array, :id, :name, { include_blank: "選択してください", selected: @item.category.parent.parent_id}, {class: "product-form__details-container__category-box", id: 'parent_category'}
+          = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, { include_blank: "選択してください", selected: @item.category.parent_id}, {class: "product-form__details-container__category-box", id: "child_category", name: "item[category_id]"}
+          = f.collection_select :category_id, @item.category.parent.children, :id, :name, { include_blank: "選択してください", selected: @item.category_id}, {class: "product-form__details-container__category-box", id: "grandchild_category", name: "item[category_id]"}
         %p.message
           ブランド
           %span.style_attention.any

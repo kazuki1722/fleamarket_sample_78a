@@ -1,8 +1,8 @@
 class PurchaseController < ApplicationController
 
   require 'payjp'
-  before_action :set_item, only:[:index, :pay, :done]
-  before_action :set_card, only:[:index, :pay]
+  before_action :set_item
+  before_action :set_card
 
   def index
     if @card.blank?
@@ -14,6 +14,9 @@ class PurchaseController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
       @default_card_information = customer.cards.retrieve(@card.card_id)
+    end
+    if @item.buyer_id.present?
+      redirect_to item_path(@item.id)
     end
   end
 
