@@ -4,16 +4,16 @@
     .Mypage__Wrapper__Side
       %ul
         %li.Mypage__Wrapper__Side__list
-          = link_to "マイページ", mypages_path, class: "PageActive"
+          = link_to "マイページ", mypages_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "お知らせ", "#"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "いいね！一覧", "#"
+          = link_to "いいね！一覧", likes_mypages_path, class: "PageActive"
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
-          = link_to "出品する", "#"
+          = link_to "出品する", new_item_path
           = icon('fa','chevron-right')
         %li.Mypage__Wrapper__Side__list
           = link_to "出品した商品-出品中", "#"
