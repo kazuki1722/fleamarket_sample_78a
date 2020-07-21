@@ -26,5 +26,8 @@ class User < ApplicationRecord
   # ひらがな
   has_one :address
   has_one :credit_card, dependent: :destroy
-  has_many :items
+  has_many :likes, dependent: :destroy
+  has_many :like_items, through: :likes, source: :item
+  has_many :items, through: :likes, source: :item
+  has_many :messages, dependent: :destroy
 end

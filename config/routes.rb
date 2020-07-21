@@ -18,13 +18,22 @@ Rails.application.routes.draw do
   end
 
   root 'items#index'
-    
   resources :items do
     collection do
       get 'signup'
       get 'search'
+      get 'ransack'
       get 'get_category_children', defaults: { fomat: 'json'}
       get 'get_category_grandchildren', defaults: { fomat: 'json'}
+    end
+    member do
+      post   '/like/:item_id', to: 'likes#like',   as: 'like'
+      delete '/like/:item_id', to: 'likes#unlike', as: 'unlike'
+    end
+    resources :messages, only:[:create,:update,:destroy] do
+      member do
+        get 'restore'
+      end
     end
     resources :purchase, only: [:index] do
       collection do
@@ -42,9 +51,10 @@ Rails.application.routes.draw do
     end
   end
    
-  resources :mypages, only: :index do
+  resources :mypages, only: [:index] do
     collection do
       get 'logout'
+      get :likes
     end
   end
   scope :mypages do
