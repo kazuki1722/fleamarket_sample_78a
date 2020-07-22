@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :category_parent_array, only: [:new, :create, :edit, :update]
+  before_action :category_parent_array, only: [:index, :show, :new, :create, :edit, :update]
   before_action :set_items, only: [:edit, :update, :destroy, :show]
   before_action :set_ransack, only: [:search, :ransack]
 
@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:item_images).order('created_at DESC').limit(4)
-    
   end
 
   def new
@@ -18,15 +17,10 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if item_params[:category_id] == ""
-      
+    if @item.save
+      redirect_to root_path
+    else 
       render :new
-    else
-      if @item.save
-        redirect_to root_path
-      else 
-        render :new
-      end
     end
   end
 
@@ -82,7 +76,7 @@ class ItemsController < ApplicationController
   private
 
   def category_parent_array
-    @category_parent_array = Category.where(ancestry: nil) 
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
   def set_items
@@ -92,7 +86,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :category_id,
       :condition_id, :prefecture_id, :shipping_charge_id, :shipping_day_id, 
-      :brand, :buyer_id, :seller_id, item_images_attributes: [:image,:_destroy, :id]).merge(seller_id: current_user.id, user_id: current_user.id)
+      :brand, :buyer_id, :seller_id, item_images_attributes: [:image,:_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_ransack

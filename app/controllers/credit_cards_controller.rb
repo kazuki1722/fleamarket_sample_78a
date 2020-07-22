@@ -2,6 +2,7 @@ class CreditCardsController < ApplicationController
 
   require "payjp"
   before_action :set_card, only:[:show, :delete]
+  before_action :category_parent_array, only: [:new, :show]
 
 
   def new
@@ -72,6 +73,10 @@ class CreditCardsController < ApplicationController
   private
   def set_card
     @card = CreditCard.where(user_id: current_user.id).first
+  end
+
+  def category_parent_array
+    @category_parent_array = Category.where(ancestry: nil) 
   end
 
 end

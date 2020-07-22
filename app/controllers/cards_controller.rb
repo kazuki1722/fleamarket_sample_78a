@@ -1,4 +1,7 @@
 class CardsController < ApplicationController
+
+  before_action :category_parent_array
+
   def index
     @card = CreditCard.where(user_id: current_user.id).first
     if @card.present?
@@ -23,6 +26,11 @@ class CardsController < ApplicationController
         @default_card_src = "saison-card.svg"
       end
     end
+  end
+
+  private
+  def category_parent_array
+    @category_parent_array = Category.where(ancestry: nil) 
   end
 
 end
