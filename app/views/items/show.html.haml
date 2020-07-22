@@ -68,6 +68,10 @@
             .Items-btn.seller-btn
               = link_to edit_item_path(@item.id) do
                 編集・削除はこちらから
+          
+          - elsif @item.buyer_id.present?
+            .item-purchase
+              ※この商品は既に購入されております
 
           - elsif user_signed_in? && current_user.id != @item.seller_id
             .Items-btn.buyer-btn
