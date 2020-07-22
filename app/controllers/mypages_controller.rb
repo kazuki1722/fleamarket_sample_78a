@@ -1,6 +1,6 @@
 class MypagesController < ApplicationController
 
-  before_action :category_parent_array, only: [:index, :logout]
+  before_action :category_parent_array
 
   def index
   end
