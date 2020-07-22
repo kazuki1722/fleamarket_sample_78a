@@ -24,7 +24,7 @@ class User < ApplicationRecord
   # 漢字ひらがな
   validates :family_name_kana, :first_name_kana, format: { with: /\A[ぁ-んー－]+\z/ }
   # ひらがな
-  has_one :address
+  has_one :address, dependent: :destroy
   has_one :credit_card, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_items, through: :likes, source: :item

@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   const buildFileField = (num)=> {
     const html = `<div data-index="${num}" class="js-file_group">
                     <input class="js-file" type="file"
@@ -74,4 +74,4 @@ $(function(){
     const index = $(this).data("index")
     $(`#item_item_images_attributes_${index}_image`).click()
   });
-})
+});

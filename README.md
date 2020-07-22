@@ -3,21 +3,21 @@
 # usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
+|nickname|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|user_image|string|null: false|
 |birthday|date|null: false|
+
 ### Association
-- has_many :seller_items, foreign_key: "seller_id", class_name: "items"
-- has_many :buyer_items, foreign_key: "buyer_id", class_name: "items"
-- has_many :comments dependent: :destroy
-- has_one :credit_cards dependent: :destroy
 - has_one :address dependent: :destroy
+- has_one :credit_card dependent: :destroy
+- has_many :comments dependent: :destroy
+- has_many :messages, dependent: :destroy
+- has_many :items, through: :likes, source: :item
 
 
 # itemsテーブル
@@ -35,11 +35,15 @@
 |buyer|references||
 |category|references|null: false|
 |user|references|foreign_key: true|
+|likes_count|integer||
+
 ### Association
+- has_many :likes, dependent: :destroy
+- has_many :liking_users, through: :likes, source: :user
 - has_many :item_images, dependent: :destroy
-- has_many :comments, dependent: :destroy
+- has_many :messages, dependent: :destroy
 - belongs_to :user, optional: true
-- belongs_to :category, optional: true
+- belongs_to :category
 - belongs_to :seller, class_name: "User", foreign_key: 'seller_id'
 - belongs_to :buyer, class_name: "User", foreign_key: 'buyer_id'
 - belongs_to_active_hash :shipping_charge
@@ -50,26 +54,26 @@
 # addressテーブル
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|post_code|integer|null: false|
+|address_family_name|string|null: false|
+|address_first_name|string|null: false|
+|address_family_name_kana|string|null: false|
+|address_first_name_kana|string|null: false|
+|zipcode|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
 |house_number|string|null: false|
-|building|string|null: false|
-|phone_number|integer|null: false, unique: false|
-|user_id|references|null: false, foreign_key: true|
+|building|string||
+|phone_number|string||
+|user|references||
 ### Association
 - belongs_to :user, :optional	true
 
 # credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|customer_id|string|null: false, unique: false|
-|card_id|string|null: false, unique: false|
 |user_id|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 ### Association
 - belongs_to :user
 
@@ -98,7 +102,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|null: false|
+|ancestry|string|index: true|
 ### Association
 - has_many :items
 
@@ -106,16 +110,35 @@
 |Column|Type|Options|
 |------|----|-------|
 |image|string|null: false|
-|item_id|references|null: false, foreign_key: true|
+|item|references|foreign_key: true|
 ### Association
 - belongs_to :item
 
-# commentsテーブル(仮)
+# messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|comment|text|null: false|
-|item_id|references|null: false, foreign_key: true|
-|user_id|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|message|string|null: false|
+|delete|integer|default: 0|
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+# sns_credentialsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|provider|string||
+|uid|string||
+|user|references|foreign_key: true|
+### Association
+- belongs_to :user, optional: true
+
+# likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer||
+|item_id|integer||
+### Association
+- belongs_to :item, counter_cache: :likes_count
+- belongs_to :user

@@ -237,8 +237,23 @@ a {
 .message {
   font-size: 14px;
   font-weight: 600;
+  display: inline-block;
 }
-
+.error-message{
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: bold;
+}
+.message-price {
+  font-size: 14px;
+  font-weight: 600;
+}
+.error-message-price{
+  margin-left: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: right;
+}
 
 .image-message {
   font-size: 14px;
@@ -312,7 +327,6 @@ a {
   text-align: center;
   color: black;
   font-size: 12px;
-
 }
 
 
