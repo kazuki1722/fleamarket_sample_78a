@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: :new
-  before_action :category_parent_array, only: [:index, :show, :new, :create, :edit, :update]
+  before_action :category_parent_array, except: [:destroy]
   before_action :set_items, only: [:edit, :update, :destroy, :show]
   before_action :set_ransack, only: [:search, :ransack]
 
