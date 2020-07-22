@@ -35,18 +35,20 @@
           商品名
           %span.style_attention.required
             必須  
-          = f.text_field :name, class: "product-form__item-container__name-box",  placeholder: "商品名（必須 40文字まで)"
           -if @item.errors.messages[:name].any?
             .error-message
-              %p2 入力してください
+              入力してください
+        .input-field
+          = f.text_field :name, class: "product-form__item-container__name-box",  placeholder: "商品名（必須 40文字まで)"
         %p.message
           商品の説明
           %span.style_attention.required
             必須
-          = f.text_area :introduction, class: "product-form__item-container__description-box", placeholder: "商品の説明"
           -if @item.errors.messages[:introduction].any?
             .error-message
-              %p2 入力してください
+              入力してください
+        .input-field 
+          = f.text_area :introduction, class: "product-form__item-container__description-box", placeholder: "商品の説明"
       .product-form__details-container
         %h3.explanation
           商品の詳細
@@ -54,9 +56,9 @@
           カテゴリー
           %span.style_attention.required
             必須
-        -if @item.errors.messages[:category_id].any?
-          .error-message
-            %p2 選択してください
+          -if @item.errors.messages[:category_id].any?
+            .error-message
+              選択してください
         .category-form
           = f.collection_select :category_id, @category_parent_array, :id, :name, { include_blank: "選択してください", selected: @item.category.parent.parent_id}, {class: "product-form__details-container__category-box", id: 'parent_category'}
           = f.collection_select :category_id, @item.category.parent.parent.children, :id, :name, { include_blank: "選択してください", selected: @item.category.parent_id}, {class: "product-form__details-container__category-box", id: "child_category", name: "item[category_id]"}
@@ -70,10 +72,11 @@
           商品の状態
           %span.style_attention.required
             必須
-        = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__condition-box"}
-        -if @item.errors.messages[:condition].any?
-          .error-message
-            %p2 選択してください
+          -if @item.errors.messages[:condition_id].any?
+            .error-message
+              選択してください
+        .input-field
+          = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__details-container__condition-box"}
       .product-form__post-container
         %h3.explanation
           配送について
@@ -81,32 +84,35 @@
           配送料
           %span.style_attention.required
             必須
-        = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
-        -if @item.errors.messages[:shipping_charge_id].any?
-          .error-message
-            %p2 選択してください
+          -if @item.errors.messages[:shipping_charge_id].any?
+            .error-message
+              選択してください
+        .input-field
+          = f.collection_select :shipping_charge_id, ShippingCharge.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
         %p.message
           配送元
           %span.style_attention.required
             必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"} 
-        -if @item.errors.messages[:prefecture_id].any?
-          .error-message
-            %p2 選択してください
+          -if @item.errors.messages[:prefecture_id].any?
+            .error-message
+              選択してください
+        .input-field
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"} 
         %p.message
           配送までの日数
           %span.style_attention.required
             必須
-        = f.collection_select :shipping_day_id, ShippingDay.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
-        -if @item.errors.messages[:shipping_day_id].any?
-          .error-message
-            %p2 選択してください
+          -if @item.errors.messages[:shipping_day_id].any?
+            .error-message 
+              選択してください  
+        .input-field
+          = f.collection_select :shipping_day_id, ShippingDay.all, :id, :name, {prompt: "選択してください"}, {class: "product-form__post-container__shipping-charge-box"}
       .product-form__price-container
         %h3.explanation
           販売価格(300〜9,999,999)  
         %ul
           %li
-            %p.message
+            %p.message-price
               販売価格
               %span.style_attention.required
                 必須
@@ -114,9 +120,9 @@
             .price
               %span ¥
               =f.number_field :price, placeholder: "0", type: "number", class: "product-form__price-container__price-box"
-              -if @item.errors.messages[:shipping_day_id].any?
-                .error-message
-                  %p2 300以上9,999,999以下で入力してください 
+        -if @item.errors.messages[:shipping_day_id].any?
+          .error-message-price
+            300以上9,999,999以下で入力してください 
       .product-form__submit-container
         .product-form__submit-container__button
           %input{type: "submit", class: "product-form__submit-container__exhibition", value: "出品する"}
