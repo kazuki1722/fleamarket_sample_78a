@@ -8,8 +8,8 @@ $(document).on('turbolinks:load', function(){
     return html;
   }
   const buildImg = (index, url)=> {
-    const html = `<div class="preview" data-index="${index}">
-                    <image src="${url}" width="100px" height="100px">
+    const html = `<div class="preview">
+                    <image src="${url}" width="100px" height="100px" class="preview-image" data-index="${index}">
                     <div class="js-remove">削除</div>
                   </div>`;
     return html;

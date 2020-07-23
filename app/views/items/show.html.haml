@@ -31,11 +31,11 @@
             %td.Menu__list__left
               カテゴリ
             %td.Menu__list__right
-              = link_to "#{@category_parent.name}","#"
+              = link_to "#{@category_parent.name}", parent_category_path(id: @category_parent)
               %br
-              = link_to "#{@category_child.name}","#"
+              = link_to "#{@category_child.name}", child_category_path(id: @category_child)
               %br
-              = link_to "#{@category_grandchild.name}","#"
+              = link_to "#{@category_grandchild.name}", grandchild_category_path(id: @category_grandchild)
               %br
           %tr.Menu__list
             %td.Menu__list__left
